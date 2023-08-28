@@ -1,0 +1,42 @@
+{
+  "name": "low-code-web-app",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
+    "prettier": "prettier --write ."
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
+    "@vueuse/core": "^9.13.0",
+    "element-plus": "^2.3.9",
+    "react-dnd-html5-backend": "^16.0.1",
+    "uuid": "^9.0.0",
+    "vue": "^3.3.4",
+    "vue-dark-switch": "^1.0.5",
+    "vue-router": "^4.0.0-0",
+    "vue3-dnd": "^2.0.3",
+    "vuex": "^4.0.0-0",
+    "xe-utils": "^3.5.12"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.6",
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
+    "@typescript-eslint/parser": "^5.15.0",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.0",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.5.0",
+    "husky": "^7.0.0",
+    "prettier": "^2.6.0",
+    "sass": "^1.58.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vue-tsc": "^1.8.5"
+  }
+}

@@ -1,0 +1,21 @@
+.zth-left-nav-item {
+  display: inline-block;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.nav-item-active {
+  color: var(--color-primary);
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -1px;
+    border-left: 2px solid var(--color-primary);
+  }
+}
