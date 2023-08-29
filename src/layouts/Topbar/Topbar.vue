@@ -13,6 +13,6 @@ import { ref } from 'vue'
   align-items: center;
   justify-content: space-between;
   height: 48px;
-  border-bottom: 1px solid rgb(66, 66, 66);
+  border-bottom: 1px solid var(--border-color);
 }
 </style>

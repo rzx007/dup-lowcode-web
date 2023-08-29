@@ -1,5 +1,7 @@
 export interface INodeMeta {
   componentName: string
+  compoentsTitle?: string
+  icon?: JSX.Element
   props?: {
     [key: string]: unknown
   }

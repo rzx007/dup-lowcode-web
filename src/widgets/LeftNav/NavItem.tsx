@@ -5,11 +5,6 @@ export type ButtonItem = {
   title?: string
   icon: JSX.Element
 }
-export type NavButtonProps = {
-  actived?: boolean
-  item: ButtonItem
-  onSelect?: (key: string) => void
-}
 export const NavItem = defineComponent({
   name: 'NavItem',
   props: {
@@ -18,12 +13,14 @@ export const NavItem = defineComponent({
     onSelect: { type: Function },
   },
   setup(props) {
-    const { actived = false, item, onSelect } = toRefs(props)
+    const { actived, item, onSelect } = toRefs(props)
     const { icon, title, key } = item.value as ButtonItem
+
     return () => (
       <el-tooltip class='box-item' effect='dark' content={title} placement='right-start'>
-        <div class={['zth-left-nav-item', actived ? 'nav-item-active' : '']} onClick={onSelect}>
+        <div class={['zth-left-nav-item', actived.value ? 'nav-item-active' : '']} onClick={() => onSelect.value!(key)}>
           {icon}
+          {/* {actived.value} */}
         </div>
       </el-tooltip>
     )

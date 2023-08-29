@@ -6,7 +6,12 @@ const resolve = (dir: string) => path.join(__dirname, dir)
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueJsx()],
+  plugins: [vue({
+    script: {
+      defineModel: true, // 开启defineModel功能
+      propsDestructure: true, // 开启props结构响应式
+    }
+  }), vueJsx()],
   resolve: {
     alias: {
       '@': resolve('src'),

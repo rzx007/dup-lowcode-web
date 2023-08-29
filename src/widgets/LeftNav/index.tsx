@@ -19,6 +19,8 @@ export const LeftNav = defineComponent({
   setup(props) {
     const actived = ref(props.defaultActivedKey)
     const { items } = toRefs(props)
+    console.log(actived.value)
+
     const handleSelect = (key: string) => {
       props.onActive?.(key)
       actived.value = key

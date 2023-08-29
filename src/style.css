@@ -12,6 +12,21 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  --color-primary: #0fa59b;
+  --color-warning: #e6a23c;
+  --color-success: #67c23a;
+  --color-danger: #f56c6c;
+  --background: #f0f2f5;
+  --content-background: #ffffff;
+  --font-color: #1a1919;
+  --border-color: #e4e7ed;
+
+}
+[class='dark'] {
+  --color-primary: #0052d9;
+  --background: #1e1e1e;
+  --content-background: #222226;
+  --border-color: rgb(66, 66, 66);
 }
 html, body, #app {
   height: 100%;
