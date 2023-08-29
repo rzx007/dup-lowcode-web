@@ -1,18 +1,17 @@
-
 const buttonSchema = {
   propsSchemas: [
     {
-      componentName: "Input",
-      "x-field": {
-        name: "title",
-        label: "$title",
+      componentName: 'Input',
+      'x-field': {
+        name: 'title',
+        label: '$title',
       },
     },
     {
-      componentName: "Select",
-      "x-field": {
-        name: "type",
-        label: "$type",
+      componentName: 'Select',
+      'x-field': {
+        name: 'type',
+        label: '$type',
       },
       props: {
         options: [
@@ -40,106 +39,106 @@ const buttonSchema = {
             value: 'default',
             label: 'Default',
           },
-        ]
-      }
-    },
-    {
-      componentName: "Switch",
-      "x-field": {
-        name: "disabled",
-        label: "$disabled",
-        params: {
-          valuePropName: "checked",
-        }
+        ],
       },
     },
     {
-      componentName: "Switch",
-      "x-field": {
-        name: "block",
-        label: "$block",
+      componentName: 'Switch',
+      'x-field': {
+        name: 'disabled',
+        label: '$disabled',
         params: {
-          valuePropName: "checked",
-        }
+          valuePropName: 'checked',
+        },
       },
     },
     {
-      componentName: "Switch",
-      "x-field": {
-        name: "danger",
-        label: "$danger",
+      componentName: 'Switch',
+      'x-field': {
+        name: 'block',
+        label: '$block',
         params: {
-          valuePropName: "checked",
-        }
+          valuePropName: 'checked',
+        },
       },
     },
     {
-      componentName: "Switch",
-      "x-field": {
-        name: "ghost",
-        label: "$ghost",
+      componentName: 'Switch',
+      'x-field': {
+        name: 'danger',
+        label: '$danger',
         params: {
-          valuePropName: "checked",
-        }
+          valuePropName: 'checked',
+        },
       },
     },
     {
-      componentName: "Radio.Group",
-      "x-field": {
-        name: "shape",
-        label: "$shape",
+      componentName: 'Switch',
+      'x-field': {
+        name: 'ghost',
+        label: '$ghost',
+        params: {
+          valuePropName: 'checked',
+        },
+      },
+    },
+    {
+      componentName: 'Radio.Group',
+      'x-field': {
+        name: 'shape',
+        label: '$shape',
       },
       props: {
-        optionType: "button",
-        size: "small",
+        optionType: 'button',
+        size: 'small',
         options: [
           {
-            label: "$default",
-            value: "default"
+            label: '$default',
+            value: 'default',
           },
           {
-            label: "$circle",
-            value: "circle"
+            label: '$circle',
+            value: 'circle',
           },
           {
-            label: "$round",
-            value: "round"
+            label: '$round',
+            value: 'round',
           },
         ],
-        defaultValue: "default",
-      }
+        defaultValue: 'default',
+      },
     },
     {
-      componentName: "Radio.Group",
-      "x-field": {
-        name: "size",
-        label: "$size",
+      componentName: 'Radio.Group',
+      'x-field': {
+        name: 'size',
+        label: '$size',
       },
       props: {
-        optionType: "button",
-        size: "small",
+        optionType: 'button',
+        size: 'small',
         options: [
           {
-            label: "$large",
-            value: "large"
+            label: '$large',
+            value: 'large',
           },
           {
-            label: "$middle",
-            value: "middle"
+            label: '$middle',
+            value: 'middle',
           },
           {
-            label: "$small",
-            value: "small"
+            label: '$small',
+            value: 'small',
           },
         ],
-        defaultValue: "middle",
-      }
+        defaultValue: 'middle',
+      },
     },
   ],
-  slotsSchemas:  {
-    name: "icon",
-    label: "$icon"
-  }
+  slotsSchemas: {
+    name: 'icon',
+    label: '$icon',
+  },
 }
 
 export { buttonSchema }

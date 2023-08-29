@@ -26,11 +26,12 @@ export const ComponentResourceWidget = defineComponent({
       <el-col span={8}>
         <DrageShell dragType={props.dragType} meterial={props.meterial}>
           <div class='resource-widget'>
-            <div class='resource-icon' style={colorStyle}>{meterial?.resource?.icon}</div>
+            <div class='resource-icon' style={colorStyle}>
+              {meterial?.resource?.icon}
+            </div>
             <div class='resource-text'>{meterial?.resource?.name}</div>
           </div>
         </DrageShell>
-
       </el-col>
     )
   },

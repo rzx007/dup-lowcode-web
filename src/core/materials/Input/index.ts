@@ -1,8 +1,8 @@
-import { IComponentMaterial } from "@/core/interfaces/component";
-import { buttonSchema } from "./schema";
-import { inputIcon } from "./icon";
+import { IComponentMaterial } from '@/core/interfaces/component'
+import { buttonSchema } from './schema'
+import { inputIcon } from './icon'
 
-const name = "输入框"
+const name = '输入框'
 export const InputMaterial: IComponentMaterial = {
   componentName: 'el-input',
   compoentsTitle: name,
@@ -15,6 +15,6 @@ export const InputMaterial: IComponentMaterial = {
   resource: {
     name: name,
     icon: inputIcon,
-    color: "#dfa324",
+    color: '#dfa324',
   },
 }

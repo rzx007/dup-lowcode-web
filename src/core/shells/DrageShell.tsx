@@ -1,8 +1,8 @@
-import { CSSProperties, PropType, computed, defineComponent, unref } from "vue";
+import { CSSProperties, PropType, computed, defineComponent, unref } from 'vue'
 import { INodeSchema } from '@/types'
 import { toRefs } from '@vueuse/core'
-import { useDrag } from "vue3-dnd";
-import { clone } from "xe-utils";
+import { useDrag } from 'vue3-dnd'
+import { clone } from 'xe-utils'
 import { v4 as uuidv4 } from 'uuid'
 
 export const ItemTypes = {
@@ -19,7 +19,7 @@ export const DrageShell = defineComponent({
     meterial: { type: Object as PropType<INodeSchema>, required: true },
     dragType: { type: String, default: ItemTypes.ITEM },
   },
-  setup(props, { slots}) {
+  setup(props, { slots }) {
     const [collect, drag] = useDrag(() => ({
       type: props.dragType || ItemTypes.ITEM,
       item: () => ({
@@ -42,13 +42,9 @@ export const DrageShell = defineComponent({
 
     const opacity = computed<CSSProperties>(() => ({ opacity: unref(isDragging) ? 0.4 : 1 }))
     return () => (
-      <div ref={drag}  style={opacity.value}>
+      <div ref={drag} style={opacity.value}>
         {slots.default?.()}
       </div>
-      
     )
   },
 })
-
-    
-    
