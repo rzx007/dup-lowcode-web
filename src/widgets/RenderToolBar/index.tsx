@@ -2,6 +2,7 @@ import { defineComponent } from 'vue'
 import { CanvasToolbar } from '@/layouts/CanvasToolbar'
 import { UndoRedoButtons } from '../UndoRedoButtons'
 import { AuxButtions } from '../AuxButtions'
+import { ViewButton } from '../ViewButton'
 export const RenderToolBar = defineComponent({
   name: 'RenderToolBar',
   setup(_props) {
@@ -15,7 +16,11 @@ export const RenderToolBar = defineComponent({
               <AuxButtions />
             </>
           ),
-          right: () => <div />,
+          right: () => (
+            <>
+              <ViewButton />
+            </>
+          ),
         }}
       </CanvasToolbar>
     )
