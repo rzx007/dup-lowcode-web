@@ -7,7 +7,6 @@ export const ResourceCollapsePannel = defineComponent({
     title: { type: String, required: true },
   },
   setup(props, { slots }) {
-    const { title } = props
     const collapse = ref(true)
     const handleCollapseClick = () => {
       console.log('collapse')
@@ -22,7 +21,7 @@ export const ResourceCollapsePannel = defineComponent({
       <div class='component-collapse'>
         <div class='title' onClick={handleCollapseClick}>
           <el-icon style='margin-right: 6px;'>{collapse.value ? <ArrowDown /> : <ArrowRight />}</el-icon>
-          {title}
+          {props.title}
         </div>
         <div class='collapse-content' style={style.value}>
           <el-row gutter={0}>{slots.default?.()}</el-row>

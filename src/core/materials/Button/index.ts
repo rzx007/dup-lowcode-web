@@ -11,8 +11,7 @@ export const ButtonMaterial: IComponentMaterial = {
     // 初始化属性
     type: 'primary',
     size: 'medium',
-    round: false,
-    circle: true,
+    round: true,
   },
   resource: {
     name: name,

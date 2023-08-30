@@ -12,7 +12,8 @@ export const CanvasToolbar = defineComponent({
   setup(props, { slots }) {
     return () => (
       <div class='zth-canvas-toolbar' style={props.style}>
-        {slots.default?.()}
+        <div class='left'>{slots.left?.()}</div>
+        <div class='right'>{slots.right?.()}</div>
       </div>
     )
   },

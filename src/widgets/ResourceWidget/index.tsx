@@ -4,9 +4,13 @@ import { ComponentResourceWidget } from '../ComponentResourceWidget'
 import { defineComponent } from 'vue'
 import './style.scss'
 import { materials } from '@/core/materials'
+import { DndTypes } from '@/core/interfaces/dndTypes'
 export const ResourceWidget = defineComponent({
   name: 'ResourceWidget',
-  setup() {
+  props: {
+    accept: { type: String, default: DndTypes.SHELL },
+  },
+  setup(props) {
     return () => (
       <div class='zth-resource-contianer'>
         <ResourcesTitle />
@@ -15,7 +19,9 @@ export const ResourceWidget = defineComponent({
             return (
               <ResourceCollapsePannel key={group.titleKey} title={group.titleKey}>
                 {group.items.map((material) => {
-                  return <ComponentResourceWidget key={material.componentName} meterial={material} />
+                  return (
+                    <ComponentResourceWidget key={material.componentName} accept={props.accept} meterial={material} />
+                  )
                 })}
               </ResourceCollapsePannel>
             )

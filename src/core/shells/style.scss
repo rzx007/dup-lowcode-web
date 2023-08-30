@@ -1,0 +1,17 @@
+.shell-container {
+  position: relative;
+  border: 1px dashed gray;
+  cursor: move;
+  .indicator {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: #000;
+
+    &.first {
+      top: 0;
+      bottom: unset;
+    }
+  }
+}

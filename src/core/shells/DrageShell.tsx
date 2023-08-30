@@ -1,33 +1,26 @@
 import { CSSProperties, PropType, computed, defineComponent, unref } from 'vue'
-import { INodeSchema } from '@/types'
 import { toRefs } from '@vueuse/core'
 import { useDrag } from 'vue3-dnd'
 import { clone } from 'xe-utils'
 import { v4 as uuidv4 } from 'uuid'
+import { DndTypes, IDragItems } from '@/core/interfaces/dndTypes'
+import { IComponentMaterial, ITreeSchema } from '../interfaces/component'
 
-export const ItemTypes = {
-  ITEM: 'item',
-  SHELL: 'shell',
-}
-export interface DropResult {
-  nodeSchema: any
-  dragType: string
-}
 export const DrageShell = defineComponent({
   name: 'DrageShell',
   props: {
-    meterial: { type: Object as PropType<INodeSchema>, required: true },
-    dragType: { type: String, default: ItemTypes.ITEM },
+    meterial: { type: Object as PropType<IComponentMaterial>, required: true },
+    accept: { type: String, default: DndTypes.SHELL },
   },
   setup(props, { slots }) {
     const [collect, drag] = useDrag(() => ({
-      type: props.dragType || ItemTypes.ITEM,
+      type: props.accept || DndTypes.SHELL,
       item: () => ({
         source: 'tree',
-        schema: { id: uuidv4(), ...clone(props.meterial, true) },
+        schema: { id: uuidv4(), ...clone(props.meterial, true) } as ITreeSchema,
       }),
       end: (item, monitor) => {
-        const dropResult = monitor.getDropResult<DropResult>()
+        const dropResult = monitor.getDropResult<IDragItems | undefined>()
         if (item && dropResult) {
           console.log(dropResult)
         }
