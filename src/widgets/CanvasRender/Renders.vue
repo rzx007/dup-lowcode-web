@@ -1,7 +1,7 @@
 <template>
   <template v-for="item in data" :key="item?.id">
     <Shell v-if="item?.componentName" :item="item">
-      <component :is="item.componentName" v-if="item.slots?.length" :item="item">
+      <component :is="item.componentName" v-if="item.slots?.length">
         <template v-for="(slot, i) in item?.slots" :key="i" #[slotName(slot)]>
           <Renders
             v-if="slot[slotName(slot)]?.length"
@@ -12,7 +12,7 @@
           <SlotPalcehodler v-else :parent-id="item.id" :slot-name="slotName(slot)" :item-schema="item" />
         </template>
       </component>
-      <component :is="item.componentName" v-bind="item.props!" v-else :item="item">{{ item.compoentsTitle }}</component>
+      <component :is="item.componentName" v-bind="item.props!" v-else>{{ item.compoentsTitle }}</component>
     </Shell>
   </template>
 </template>

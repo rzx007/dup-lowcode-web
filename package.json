@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build": "vite build",
+    "build:lint": "vue-tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
     "prettier": "prettier --write ."
@@ -14,13 +15,14 @@
     "@element-plus/icons-vue": "^2.1.0",
     "@vueuse/core": "^9.13.0",
     "element-plus": "^2.3.9",
+    "monaco-editor": "^0.41.0",
+    "pinia": "^2.1.6",
     "react-dnd-html5-backend": "^16.0.1",
     "uuid": "^9.0.0",
     "vue": "^3.3.4",
     "vue-dark-switch": "^1.0.5",
     "vue-router": "^4.0.0-0",
     "vue3-dnd": "^2.0.3",
-    "vuex": "^4.0.0-0",
     "xe-utils": "^3.5.12"
   },
   "devDependencies": {

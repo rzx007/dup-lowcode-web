@@ -4,16 +4,20 @@ export const UndoRedoButtons = defineComponent({
   name: 'UndoRedoButtons',
   setup(_props) {
     const iconStyle = {
-      fontSize: '18px',
-      cursor: 'pointer',
+      padding: '5px',
+      fontSize: '16px',
     }
     return () => (
       <el-space>
         <el-tooltip effect='dark' content='撤销' placement='top-start'>
-          <i style={iconStyle}>{undoIcon}</i>
+          <el-button style={iconStyle} disabled text size='small'>
+            {undoIcon}
+          </el-button>
         </el-tooltip>
         <el-tooltip effect='dark' content='重做' placement='top-start'>
-          <i style={iconStyle}>{redoIcon}</i>
+          <el-button style={iconStyle} text size='small'>
+            {redoIcon}
+          </el-button>
         </el-tooltip>
       </el-space>
     )

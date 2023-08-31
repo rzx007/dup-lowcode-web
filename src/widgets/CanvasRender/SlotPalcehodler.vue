@@ -7,6 +7,7 @@ import { inject, ref } from 'vue'
 import { toRefs } from '@vueuse/core'
 import { DndTypes, IDragItems } from '@/core/interfaces/dndTypes'
 import { ITreeSchema } from '@/core/interfaces/component'
+import { useDndActionStore } from '@/store/dnd-action'
 
 interface DragItem {
   source?: string
@@ -18,8 +19,8 @@ const props = defineProps<{
   slotName?: string | undefined
   itemSchema: ITreeSchema
 }>()
-
-const { insertSlotItems } = inject<any>('grid-provide')
+const store = useDndActionStore()
+const { insertSlotItems } = store
 const [collect, drop] = useDrop(() => ({
   accept: DndTypes.SHELL,
   drop: (item: DragItem, monitor) => {

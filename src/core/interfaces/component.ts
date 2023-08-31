@@ -10,7 +10,7 @@ export interface IComponentMaterial {
   componentName: string // 组件名称 用于注册
   compoentsTitle?: string // 组件标题
   designerSchema: any // 组件设计器配置
-  resource: IResource // 组件展示资源
+  resource?: IResource // 组件展示资源
   props?: {
     [key: string]: unknown
   }

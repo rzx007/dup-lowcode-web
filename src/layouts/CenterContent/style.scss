@@ -3,4 +3,10 @@
   display: flex;
   flex-flow: column;
   height: 100%;
+  background-color: rgb(240, 240, 240);
+}
+[class='dark'] {
+  .zth-center-content {
+    background-color: rgb(48, 48, 48);
+  }
 }

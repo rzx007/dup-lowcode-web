@@ -11,6 +11,8 @@ export const DnDShell = defineComponent({
     drop: { type: Function as PropType<(arg0: any, monitor: DropTargetMonitor) => any>, required: false },
     hover: { type: Function as PropType<(item: any, monitor: DropTargetMonitor) => void>, required: false },
     accept: { type: String, default: DndTypes.ITEM, required: false },
+    outline: { type: Boolean, default: false, required: false },
+    paddingLine: { type: Boolean, default: false, required: false },
   },
   setup(props, { slots }) {
     const [dropCollect, drop] = useDrop<IDragItems, void, { handlerId: any; isShallowOver: boolean }>({
@@ -76,8 +78,19 @@ export const DnDShell = defineComponent({
       e.preventDefault()
       console.log('选中组件', props.item)
     }
+    const outlineClass = computed(() => {
+      return props.outline ? 'zth-shell-outlined' : ''
+    })
+    const paddingLineClass = computed(() => {
+      return props.paddingLine ? 'zth-shell-padding-line' : ''
+    })
     return () => (
-      <div ref={setRef} class='shell-container' style={opacity.value} data-handler-id={handlerId} onClick={clickHnadle}>
+      <div
+        ref={setRef}
+        class={['shell-container', outlineClass.value, paddingLineClass.value]}
+        style={opacity.value}
+        data-handler-id={handlerId}
+        onClick={clickHnadle}>
         {slots.default?.()}
         {isShallowOver.value && !isDragging.value ? <div class='indicator'></div> : null}
       </div>

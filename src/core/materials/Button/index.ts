@@ -10,7 +10,7 @@ export const ButtonMaterial: IComponentMaterial = {
   props: {
     // 初始化属性
     type: 'primary',
-    size: 'medium',
+    size: 'default',
     round: true,
   },
   resource: {

@@ -19,8 +19,7 @@
           <OutlineWidget v-show="activedKey === LeftNavType.outline"></OutlineWidget>
         </ToggleAblePane>
         <CenterContent>
-          <RenderToolBar />
-          <CanvasRender></CanvasRender>
+          <DocumentView />
         </CenterContent>
         <ToggleAblePane />
       </Workbench>
@@ -34,19 +33,19 @@ import { LeftNav } from '@/widgets/LeftNav'
 import { Logo } from '@/widgets/Logo'
 import { componentsIcon, historyIcon, outlineIcon, document } from '@/icons'
 import { Workbench, ShellContainer, Topbar, ToggleAblePane, ToggleType, LeftSidebar, CenterContent } from '@/layouts'
-import { RenderToolBar } from '@/widgets/RenderToolBar'
+import { DocumentView } from '@/widgets/DocumentView'
 import { ButtonItem } from '@/widgets/LeftNav/NavItem'
 import { ResourceWidget } from '@/widgets/ResourceWidget'
 import { PagesWidget } from '@/widgets/PagesWidget'
 import { HistoryWidget } from '@/widgets/HistoryWidget'
 import { OutlineWidget } from '@/widgets/OutlineWidget'
-import CanvasRender from '@/widgets/CanvasRender/index.vue'
 import { DndProvider } from 'vue3-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { computed, provide, ref } from 'vue'
 import { ITreeSchema } from '@/core/interfaces/component'
-import { DndTypes } from '@/core/interfaces/dndTypes'
 import { INode } from '@/types'
+import { useDndActionStore } from '@/store/dnd-action'
+
 enum LeftNavType {
   pages = 'pages',
   compoents = 'components',
@@ -133,8 +132,10 @@ provide('grid-provide', {
   },
 })
 
+const dndStore = useDndActionStore()
+
 const dragType = computed(() => {
-  return data.value.length > 0 ? DndTypes.SHELL : DndTypes.ITEM
+  return dndStore.dragType
 })
 
 // 根据id寻找节点

@@ -8,7 +8,6 @@ export const CardMaterial: IComponentMaterial = {
   designerSchema: [],
   slots: [{ default: [] }, { header: [] }],
   props: {
-    header: '标题',
     'body-style': '',
     shadow: 'none',
   },

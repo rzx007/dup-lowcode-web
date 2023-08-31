@@ -1,7 +1,7 @@
 .shell-container {
   position: relative;
-  border: 1px dashed gray;
   cursor: move;
+  box-sizing: border-box;
   .indicator {
     position: absolute;
     bottom: 0;
@@ -14,4 +14,10 @@
       bottom: unset;
     }
   }
+}
+.zth-shell-outlined {
+  outline: 1px dashed gray;
+}
+.zth-shell-padding-line {
+  padding: 8px;
 }

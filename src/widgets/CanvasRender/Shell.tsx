@@ -3,13 +3,18 @@ import { DnDShell } from '@/core/shells/DrageAndDropShell'
 import { DndTypes, IDragItems } from '@/core/interfaces/dndTypes'
 import { ITreeSchema } from '@/core/interfaces/component'
 import { DropTargetMonitor } from 'vue3-dnd'
+import { useOutlineStore } from '@/store/outline'
+import { useDndActionStore } from '@/store/dnd-action'
+
 export const Shell = defineComponent({
   name: 'Shell',
   props: {
     item: { type: Object as PropType<ITreeSchema>, required: true },
   },
   setup(props, { slots }) {
-    const { insertItems } = inject<any>('grid-provide')
+    const store = useOutlineStore()
+    const dndStore = useDndActionStore()
+    const { insertItems } = dndStore
     const dropHandle = (item: IDragItems, monitor: DropTargetMonitor) => {
       const didDrop = monitor.didDrop()
       if (didDrop) {
@@ -22,7 +27,12 @@ export const Shell = defineComponent({
       insertItems(dropItem, dragItem, item.source)
     }
     return () => (
-      <DnDShell item={props.item} drop={dropHandle} accept={DndTypes.ITEM}>
+      <DnDShell
+        item={props.item}
+        drop={dropHandle}
+        accept={DndTypes.ITEM}
+        outline={store.outline}
+        paddingLine={store.paddingLine}>
         {slots.default?.()}
       </DnDShell>
     )
