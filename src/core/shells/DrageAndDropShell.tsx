@@ -1,9 +1,12 @@
-import { defineComponent, computed, onMounted, ref, unref, PropType, CSSProperties } from 'vue'
+import { defineComponent, computed, onMounted, ref, unref, PropType, CSSProperties, inject, watch } from 'vue'
 import { DragSourceMonitor, DropTargetMonitor, useDrag, useDrop } from 'vue3-dnd'
 import { toRefs } from '@vueuse/core'
 import { DndTypes, IDragItems } from '@/core/interfaces/dndTypes'
 import { ITreeSchema } from '@/core/interfaces/component'
 import './style.scss'
+import { DESIGER_PROVIDE } from '../Designer'
+import { ActivedOutline } from '../auxwidgets/outlines/ActivedOutline'
+import { SelectedOutline } from '../auxwidgets/outlines/SelectedOutline'
 
 export const DnDShell = defineComponent({
   props: {
@@ -73,24 +76,42 @@ export const DnDShell = defineComponent({
       }
     })
 
-    const clickHnadle = (e: MouseEvent) => {
-      e.stopPropagation()
-      e.preventDefault()
-      console.log('选中组件', props.item)
-    }
-    const outlineClass = computed(() => {
-      return props.outline ? 'zth-shell-outlined' : ''
-    })
+    // const clickHnadle = (e: MouseEvent) => {
+    //   e.stopPropagation()
+    //   e.preventDefault()
+    //   console.log('选中组件', props.item)
+    // }
     const paddingLineClass = computed(() => {
       return props.paddingLine ? 'zth-shell-padding-line' : ''
+    })
+
+    const [activedOutline, selectedOutline] = inject<[ActivedOutline, SelectedOutline]>(DESIGER_PROVIDE)!
+    const mounseoverHnadle = (e: MouseEvent) => {
+      e.preventDefault()
+      e.stopPropagation()
+      activedOutline!.handleActivedChange(handlerId.value)
+    }
+    // 点击选中
+    const clickHandle = (e: MouseEvent) => {
+      e.preventDefault()
+      e.stopPropagation()
+      selectedOutline!.handleSelectChange(handlerId.value)
+    }
+    // 拖拽时移除选中
+    watch(isDragging, (val) => {
+      if (val) {
+        selectedOutline!.handleOutNode()
+      }
     })
     return () => (
       <div
         ref={setRef}
-        class={['shell-container', outlineClass.value, paddingLineClass.value]}
+        class={['shell-container', { 'zth-shell-outlined': props.outline }, paddingLineClass.value]}
         style={opacity.value}
-        data-handler-id={handlerId}
-        onClick={clickHnadle}>
+        data-handler-id={handlerId.value}
+        onMouseover={mounseoverHnadle}
+        onMouseleave={activedOutline!.handleOutNode}
+        onClick={clickHandle}>
         {slots.default?.()}
         {isShallowOver.value && !isDragging.value ? <div class='indicator'></div> : null}
       </div>

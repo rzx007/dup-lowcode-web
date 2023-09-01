@@ -19,8 +19,10 @@
 <script setup lang="ts">
 import { Shell } from './Shell'
 import { ITreeSchema } from '@/core/interfaces/component'
-import SlotPalcehodler from './SlotPalcehodler.vue'
+import { SlotPalcehodler } from './SlotPalcehodler'
 import { isObject } from '@/utils'
+import './style.scss'
+
 defineProps<{
   data: ITreeSchema[]
   parentId?: string | undefined

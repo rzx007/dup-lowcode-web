@@ -1,32 +1,35 @@
 <template>
-  <ShellContainer>
-    <Topbar>
-      <Logo />
-      <el-space wrap>
-        <ThemeButton />
-        <SaveButton />
-      </el-space>
-    </Topbar>
-    <DndProvider :backend="HTML5Backend">
-      <Workbench>
-        <LeftSidebar>
-          <LeftNav default-actived-key="components" :items="navList" :on-active="handleActive" />
-        </LeftSidebar>
-        <ToggleAblePane :toggle-type="ToggleType.right">
-          <PagesWidget v-show="activedKey === LeftNavType.pages"></PagesWidget>
-          <ResourceWidget v-show="activedKey === LeftNavType.compoents" :accept="dragType"></ResourceWidget>
-          <HistoryWidget v-show="activedKey === LeftNavType.history"></HistoryWidget>
-          <OutlineWidget v-show="activedKey === LeftNavType.outline"></OutlineWidget>
-        </ToggleAblePane>
-        <CenterContent>
-          <DocumentView />
-        </CenterContent>
-        <ToggleAblePane />
-      </Workbench>
-    </DndProvider>
-  </ShellContainer>
+  <Designer>
+    <ShellContainer>
+      <Topbar>
+        <Logo />
+        <el-space wrap>
+          <ThemeButton />
+          <SaveButton />
+        </el-space>
+      </Topbar>
+      <DndProvider :backend="HTML5Backend">
+        <Workbench>
+          <LeftSidebar>
+            <LeftNav default-actived-key="components" :items="navList" :on-active="handleActive" />
+          </LeftSidebar>
+          <ToggleAblePane :toggle-type="ToggleType.right">
+            <PagesWidget v-show="activedKey === LeftNavType.pages"></PagesWidget>
+            <ResourceWidget v-show="activedKey === LeftNavType.compoents" :accept="dragType"></ResourceWidget>
+            <HistoryWidget v-show="activedKey === LeftNavType.history"></HistoryWidget>
+            <OutlineWidget v-show="activedKey === LeftNavType.outline"></OutlineWidget>
+          </ToggleAblePane>
+          <CenterContent>
+            <DocumentView />
+          </CenterContent>
+          <ToggleAblePane />
+        </Workbench>
+      </DndProvider>
+    </ShellContainer>
+  </Designer>
 </template>
 <script setup lang="ts">
+import { Designer } from '@/core/Designer'
 import { ThemeButton } from '@/widgets/ThemeButton'
 import { SaveButton } from '@/widgets/SaveButton'
 import { LeftNav } from '@/widgets/LeftNav'

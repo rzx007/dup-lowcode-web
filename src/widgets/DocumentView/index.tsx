@@ -22,37 +22,32 @@ export const DocumentView = defineComponent({
   setup(_props) {
     const store = useDocmentStore()
     const dndStore = useDndActionStore()
-    const children = computed(() => {
-      return store.documentType === DocumentType.DESIGN ? (
-        <CanvasRebder />
-      ) : store.documentType === DocumentType.JSON ? (
-        <JsonView />
-      ) : (
-        <div style={style}>
-          <PreviewRender data={dndStore.data} />
-        </div>
-      )
-    })
-
+    const slots = {
+      left: () => (
+        <>
+          <UndoRedoButtons />
+          <el-divider direction='vertical' />
+          <AuxButtions />
+        </>
+      ),
+      right: () => (
+        <>
+          <ViewButton />
+        </>
+      ),
+    }
     return () => (
       <>
-        <CanvasToolbar>
-          {{
-            left: () => (
-              <>
-                <UndoRedoButtons />
-                <el-divider direction='vertical' />
-                <AuxButtions />
-              </>
-            ),
-            right: () => (
-              <>
-                <ViewButton />
-              </>
-            ),
-          }}
-        </CanvasToolbar>
-        <Viewport>{children.value}</Viewport>
+        <CanvasToolbar v-slots={slots}></CanvasToolbar>
+        <Viewport>
+          {store.documentType === DocumentType.DESIGN && <CanvasRebder />}
+          {store.documentType === DocumentType.JSON && <JsonView />}
+          {store.documentType === DocumentType.PREVIEW && (
+            <div style={style}>
+              <PreviewRender data={dndStore.data} />
+            </div>
+          )}
+        </Viewport>
       </>
     )
   },
