@@ -17,7 +17,8 @@ export const DnDShell = defineComponent({
     outline: { type: Boolean, default: false, required: false },
     paddingLine: { type: Boolean, default: false, required: false },
   },
-  setup(props, { slots }) {
+  emits: ['click'],
+  setup(props, { slots, emit }) {
     const [dropCollect, drop] = useDrop<IDragItems, void, { handlerId: any; isShallowOver: boolean }>({
       accept: DndTypes.SHELL,
       collect(monitor) {
@@ -96,6 +97,7 @@ export const DnDShell = defineComponent({
       e.preventDefault()
       e.stopPropagation()
       selectedOutline!.handleSelectChange(handlerId.value)
+      emit('click', props.item)
     }
     // 拖拽时移除选中
     watch(isDragging, (val) => {

@@ -31,6 +31,5 @@ const [, drop] = useDrop(() => ({
   flex: 1;
   transition: width 0.3s;
   box-sizing: border-box;
-  background-color: #eee;
 }
 </style>

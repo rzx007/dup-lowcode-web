@@ -15,7 +15,6 @@ const style: CSSProperties = {
   flex: 1,
   transition: 'width 0.3s',
   boxSizing: 'border-box',
-  backgroundColor: '#eee',
 }
 export const DocumentView = defineComponent({
   name: 'DocumentView',

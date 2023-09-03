@@ -11,7 +11,7 @@ export const Shell = defineComponent({
   props: {
     item: { type: Object as PropType<ITreeSchema>, required: true },
   },
-  setup(props, { slots }) {
+  setup(props, { slots, attrs }) {
     const store = useOutlineStore()
     const dndStore = useDndActionStore()
     const { insertItems } = dndStore
@@ -28,6 +28,7 @@ export const Shell = defineComponent({
     }
     return () => (
       <DnDShell
+        {...attrs}
         item={props.item}
         drop={dropHandle}
         accept={DndTypes.ITEM}

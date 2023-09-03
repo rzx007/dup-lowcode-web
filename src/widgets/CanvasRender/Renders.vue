@@ -1,6 +1,6 @@
 <template>
   <template v-for="item in data" :key="item?.id">
-    <Shell v-if="item?.componentName" :item="item">
+    <Shell v-if="item?.componentName" :item="item" @click="handleClick">
       <component :is="item.componentName" v-if="item.slots?.length">
         <template v-for="(slot, i) in item?.slots" :key="i" #[slotName(slot)]>
           <Renders
@@ -33,6 +33,10 @@ const slotName = (slot: string | Object): string => {
     return Object.keys(slot)[0] as string
   }
   return slot as string
+}
+const handleClick = (item: ITreeSchema) => {
+  console.log(item);
+  
 }
 </script>
 <script lang="ts">

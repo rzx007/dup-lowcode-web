@@ -22,7 +22,7 @@ export const PreviewRender = defineComponent({
       item.slots!.forEach((ele) => {
         const name = slotName(ele)
         const children = ele![name] as ITreeSchema[]
-        slots[name] = () => <PreviewRender data={children} parentId={item.id}></PreviewRender>
+        slots[name] = () => <PreviewRender data={children} parentId={item?.id}></PreviewRender>
       })
       return slots
     }

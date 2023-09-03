@@ -22,7 +22,9 @@
           <CenterContent>
             <DocumentView />
           </CenterContent>
-          <ToggleAblePane />
+          <ToggleAblePane width="280px"> 
+            <FieldRender />
+          </ToggleAblePane>
         </Workbench>
       </DndProvider>
     </ShellContainer>
@@ -42,6 +44,7 @@ import { ResourceWidget } from '@/widgets/ResourceWidget'
 import { PagesWidget } from '@/widgets/PagesWidget'
 import { HistoryWidget } from '@/widgets/HistoryWidget'
 import { OutlineWidget } from '@/widgets/OutlineWidget'
+import FieldRender from '@/widgets/FieldRender/index.vue'
 import { DndProvider } from 'vue3-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { computed, provide, ref } from 'vue'
