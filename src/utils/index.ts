@@ -38,3 +38,18 @@ export const toCss = (obj: any) => {
 export const isNumber = (value: string) => {
   return /^\d+$/.test(value)
 }
+
+export const parseJsStrToLte = (code: string): string => {
+
+  // 匹配 {{}} 的内容
+  const regex = /\{\{(.+?)\}\}/g;
+  
+  // {{}} -> ${}
+  const result = code.replace(regex, '${$1}');
+
+  // 转换成为模板字符串`${a1} ${a2}`格式
+  
+  return `\`${result}\``;
+  
+}
+
