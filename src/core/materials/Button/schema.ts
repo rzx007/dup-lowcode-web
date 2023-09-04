@@ -1,7 +1,15 @@
-import { createSchema } from "@/core/shared/createSchema"
+import { createSchema } from '@/core/shared/createSchema'
 
 const options = {
   propsSchemas: [
+    {
+      componentName: 'el-input',
+      'x-field': {
+        name: 'title',
+        label: '标题',
+        defaultValue: '按钮',
+      },
+    },
     {
       componentName: 'el-select',
       'x-field': {
@@ -44,7 +52,7 @@ const options = {
       'x-field': {
         name: 'disabled',
         label: '禁用',
-        defaultValue: false
+        defaultValue: false,
       },
     },
     {
@@ -52,7 +60,7 @@ const options = {
       'x-field': {
         name: 'plain',
         label: '朴素按钮',
-        defaultValue: false
+        defaultValue: false,
       },
     },
     {
@@ -60,7 +68,7 @@ const options = {
       'x-field': {
         name: 'text',
         label: '文字按钮',
-        defaultValue: false
+        defaultValue: false,
       },
     },
     {
@@ -68,7 +76,7 @@ const options = {
       'x-field': {
         name: 'link',
         label: '链接按钮',
-        defaultValue: false
+        defaultValue: false,
       },
     },
     {
@@ -76,7 +84,7 @@ const options = {
       'x-field': {
         name: 'round',
         label: '圆角按钮',
-        defaultValue: false
+        defaultValue: false,
       },
     },
     {
@@ -84,7 +92,7 @@ const options = {
       'x-field': {
         name: 'circle',
         label: '圆形按钮',
-        defaultValue: false
+        defaultValue: false,
       },
     },
     {
@@ -123,6 +131,6 @@ const options = {
     },
   ],
   styleSchemas: {},
-};
+}
 
 export const buttonSchema = createSchema(options)

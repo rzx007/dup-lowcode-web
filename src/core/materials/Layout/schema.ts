@@ -108,4 +108,4 @@ const options = {
   ],
 }
 
-export const inputSchema = createSchema(options)
+export const layoutSchema = createSchema(options)

@@ -5,13 +5,12 @@ import { materials } from '@/core/materials'
 import { useDndActionStore } from '@/store/dnd-action'
 import { ITreeSchema } from '@/core/interfaces/component'
 type TFields = {
-  props?: any;
-  style?: any;
+  props?: any
+  style?: any
   [x: string]: any
 }
 
 export const useFieldsStore = defineStore('fieldsStore', () => {
-
   const currentNode = ref<ITreeSchema>()
   const currentDesignerSchema = ref<any>({})
   const fields = ref<TFields>({})
@@ -20,7 +19,7 @@ export const useFieldsStore = defineStore('fieldsStore', () => {
   const setCurDesignerSchema = () => {
     materials.forEach((eles) => {
       if (eles.items) {
-        eles.items.forEach(item => {
+        eles.items.forEach((item) => {
           if (item.componentName === currentNode.value?.componentName) {
             currentDesignerSchema.value = item.designerSchema
           }
@@ -31,12 +30,16 @@ export const useFieldsStore = defineStore('fieldsStore', () => {
   const clearCurDesignerSchema = () => {
     currentDesignerSchema.value = []
   }
-  watch(currentNode, (val, old) => {
-    if (val?.componentName !== old?.componentName) {
-      clearCurDesignerSchema()
-      setCurDesignerSchema()
-    }
-  }, { deep: true })
+  watch(
+    currentNode,
+    (val, old) => {
+      if (val?.componentName !== old?.componentName) {
+        clearCurDesignerSchema()
+        setCurDesignerSchema()
+      }
+    },
+    { deep: true }
+  )
 
   // 当前选中的组件
   const setCurNode = (node: ITreeSchema) => {
@@ -51,13 +54,13 @@ export const useFieldsStore = defineStore('fieldsStore', () => {
     const dndStore = useDndActionStore()
     const findComponent = (data: ITreeSchema[]) => {
       for (let index = 0; index < data.length; index++) {
-        let item = data[index];
+        const item = data[index]
         if (item.id === currentNode.value?.id) {
           data[index] = Object.assign({}, item, fields.value)
           break
         }
         if (item?.slots?.length) {
-          item.slots.forEach(slotItem => {
+          item.slots.forEach((slotItem) => {
             const slots = slotName(slotItem)
             findComponent(slotItem[slots])
           })
@@ -65,7 +68,6 @@ export const useFieldsStore = defineStore('fieldsStore', () => {
       }
     }
     findComponent(dndStore.data)
-    
   }
 
   function slotName(slot: string | Object): string {

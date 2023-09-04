@@ -1,15 +1,16 @@
 import { IComponentMaterial } from '@/core/interfaces/component'
+import { cardSchema } from './schema'
 import { icon } from './icon'
 
 const name = '卡片'
 export const CardMaterial: IComponentMaterial = {
   componentName: 'el-card',
   compoentsTitle: name,
-  designerSchema: {},
+  designerSchema: cardSchema,
   slots: [{ default: [] }, { header: [] }],
   props: {
     'body-style': '',
-    shadow: 'none',
+    shadow: 'hover',
   },
   resource: {
     name: name,

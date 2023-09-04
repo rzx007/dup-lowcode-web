@@ -6,5 +6,11 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import './style.css'
+import DndUi from '@/core/components'
 
-createApp(App).use(store).use(router).use(ElementPlus).mount('#app')
+const app = createApp(App)
+app.use(store)
+app.use(router)
+app.use(ElementPlus)
+app.use(DndUi, { size: 1 })
+app.mount('#app')

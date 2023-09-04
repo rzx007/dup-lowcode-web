@@ -1,144 +1,35 @@
-const buttonSchema = {
+import { createSchema } from '@/core/shared/createSchema'
+
+const options = {
   propsSchemas: [
     {
-      componentName: 'Input',
+      componentName: 'el-radio-group',
       'x-field': {
-        name: 'title',
-        label: '$title',
-      },
-    },
-    {
-      componentName: 'Select',
-      'x-field': {
-        name: 'type',
-        label: '$type',
-      },
-      props: {
-        options: [
-          {
-            value: 'primary',
-            label: 'Primary',
-          },
-          {
-            value: 'ghost',
-            label: 'Ghost',
-          },
-          {
-            value: 'dashed',
-            label: 'Dashed',
-          },
-          {
-            value: 'link',
-            label: 'Link',
-          },
-          {
-            value: 'text',
-            label: 'Text',
-          },
-          {
-            value: 'default',
-            label: 'Default',
-          },
-        ],
-      },
-    },
-    {
-      componentName: 'Switch',
-      'x-field': {
-        name: 'disabled',
-        label: '$disabled',
-        params: {
-          valuePropName: 'checked',
-        },
-      },
-    },
-    {
-      componentName: 'Switch',
-      'x-field': {
-        name: 'block',
-        label: '$block',
-        params: {
-          valuePropName: 'checked',
-        },
-      },
-    },
-    {
-      componentName: 'Switch',
-      'x-field': {
-        name: 'danger',
-        label: '$danger',
-        params: {
-          valuePropName: 'checked',
-        },
-      },
-    },
-    {
-      componentName: 'Switch',
-      'x-field': {
-        name: 'ghost',
-        label: '$ghost',
-        params: {
-          valuePropName: 'checked',
-        },
-      },
-    },
-    {
-      componentName: 'Radio.Group',
-      'x-field': {
-        name: 'shape',
-        label: '$shape',
+        name: 'shadow',
+        label: '卡片阴影',
+        defaultValue: 'never',
       },
       props: {
         optionType: 'button',
         size: 'small',
+        childElement: 'el-radio-button',
         options: [
           {
-            label: '$default',
-            value: 'default',
+            label: '总是',
+            value: 'always',
           },
           {
-            label: '$circle',
-            value: 'circle',
+            label: '绝不',
+            value: 'never',
           },
           {
-            label: '$round',
-            value: 'round',
+            label: '悬浮',
+            value: 'hover',
           },
         ],
-        defaultValue: 'default',
-      },
-    },
-    {
-      componentName: 'Radio.Group',
-      'x-field': {
-        name: 'size',
-        label: '$size',
-      },
-      props: {
-        optionType: 'button',
-        size: 'small',
-        options: [
-          {
-            label: '$large',
-            value: 'large',
-          },
-          {
-            label: '$middle',
-            value: 'middle',
-          },
-          {
-            label: '$small',
-            value: 'small',
-          },
-        ],
-        defaultValue: 'middle',
       },
     },
   ],
-  slotsSchemas: {
-    name: 'icon',
-    label: '$icon',
-  },
 }
 
-export { buttonSchema }
+export const cardSchema = createSchema(options)

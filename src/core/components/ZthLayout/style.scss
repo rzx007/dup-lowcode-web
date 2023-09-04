@@ -1,0 +1,19 @@
+.zth-container {
+  height: 100%;
+  width: 100%;
+  .aside {
+    background-color: #001529;
+  }
+  .header {
+    background-color: #fff;
+    .header-content {
+      height: inherit;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .left {
+        cursor: pointer;
+      }
+    }
+  }
+}

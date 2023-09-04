@@ -1,16 +1,19 @@
 import { IComponentMaterial } from '@/core/interfaces/component'
-import { buttonSchema } from './schema'
+import { inputSchema } from './schema'
 import { inputIcon } from './icon'
 
 const name = '输入框'
 export const InputMaterial: IComponentMaterial = {
   componentName: 'el-input',
   compoentsTitle: name,
-  designerSchema: {},
+  designerSchema: inputSchema,
   props: {
     type: 'text',
     placeholder: '请输入内容',
     clearable: true,
+  },
+  style: {
+    width: '200px',
   },
   resource: {
     name: name,

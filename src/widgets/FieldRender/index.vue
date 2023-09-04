@@ -8,13 +8,22 @@
             <el-col :span="17">
               <component :is="item.componentName" v-bind="item.props" v-model="fields[tab.name][item['x-field']?.name]">
                 <template v-if="eles.includes(item.componentName) && item.props?.options">
-                  <component v-for="(ele, idx) in item.props?.options" :key="idx" :label="ele.value" :is="item.props?.childElement">
+                  <component
+                    :is="item.props?.childElement"
+                    v-for="(ele, idx) in item.props?.options"
+                    :key="idx"
+                    :label="ele.value"
+                  >
                     {{ ele.label }}
                   </component>
                 </template>
-                <template v-else-if="item.componentName==='el-select' && item.props?.options">
-                  <component v-for="(ele, idx) in item.props?.options" :key="idx"  :is="item.props?.childElement"
-                    v-bind="ele"></component>
+                <template v-else-if="item.componentName === 'el-select' && item.props?.options">
+                  <component
+                    :is="item.props?.childElement"
+                    v-for="(ele, idx) in item.props?.options"
+                    :key="idx"
+                    v-bind="ele"
+                  ></component>
                 </template>
               </component>
             </el-col>
@@ -36,56 +45,59 @@ const tabsList = ref<any>([])
 const fieldStore = useFieldsStore()
 const { updateComponent } = fieldStore
 const { currentNode, currentDesignerSchema, fields } = storeToRefs(fieldStore)
-watch(() => currentNode.value?.id, () => {
-  nextTick(() => {
-    activeName.value = '属性'
-    const { propsTab, styleTab, controllerTab, dataTab } = currentDesignerSchema.value
-    tabsList.value = [
-      {
-        label: '属性',
-        name: 'props',
-        children: propsTab || []
-      },
-      {
-        label: '样式',
-        name: 'style',
-        children: styleTab || []
-      },
-      {
-        label: '控制器',
-        name: 'controller',
-        children: controllerTab || []
-      },
-      {
-        label: '数据',
-        name: 'data',
-        children: dataTab || []
-      }
-    ]
-    //@ts-ignore
-    const { props = {}, style = {}, controller = {}, data = {} } = currentNode.value
+watch(
+  () => currentNode.value?.id,
+  () => {
+    nextTick(() => {
+      activeName.value = '属性'
+      const { propsTab, styleTab, controllerTab, dataTab } = currentDesignerSchema.value
+      tabsList.value = [
+        {
+          label: '属性',
+          name: 'props',
+          children: propsTab || [],
+        },
+        {
+          label: '样式',
+          name: 'style',
+          children: styleTab || [],
+        },
+        {
+          label: '控制器',
+          name: 'controller',
+          children: controllerTab || [],
+        },
+        {
+          label: '数据',
+          name: 'data',
+          children: dataTab || [],
+        },
+      ]
+      //@ts-ignore
+      const { props = {}, style = {}, controller = {}, data = {} } = currentNode.value
 
-    const propsData = bindFormValue(propsTab)
-    const styleData = bindFormValue(styleTab)
-    const controllerData = bindFormValue(controllerTab)
-    const dataData = bindFormValue(dataTab)
-    fields.value = {
-      props: { ...propsData, ...props },
-      style: { ...styleData, ...style },
-      controller: { ...controllerData, ...controller },
-      data: { ...dataData, ...data }
-    }
-    updateComponent()
-  })
-})
+      const propsData = bindFormValue(propsTab)
+      const styleData = bindFormValue(styleTab)
+      const controllerData = bindFormValue(controllerTab)
+      const dataData = bindFormValue(dataTab)
+      fields.value = {
+        props: { ...propsData, ...props },
+        style: { ...styleData, ...style },
+        controller: { ...controllerData, ...controller },
+        data: { ...dataData, ...data },
+      }
+      updateComponent()
+    })
+  }
+)
 
 const eles = ['el-radio-group', 'el-checkbox-group']
 
 // 表单绑定值
 const bindFormValue = (schema: any[]) => {
-  let props: { [x: string]: any } = {}
+  const props: { [x: string]: any } = {}
   if (schema) {
-    schema.forEach(item => {
+    schema.forEach((item) => {
       const key: string = item['x-field']?.name || ''
       const defaultValue = item['x-field']?.defaultValue
       const value = defaultValue !== 'undefined' ? defaultValue : ''
@@ -97,7 +109,7 @@ const bindFormValue = (schema: any[]) => {
   return props
 }
 </script>
-<style lang='scss'>
+<style lang="scss">
 .field-tabs {
   padding: 0 16px;
 

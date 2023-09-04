@@ -1,6 +1,5 @@
 import { ITreeSchema } from '@/core/interfaces/component'
 import { DndTypes } from '@/core/interfaces/dndTypes'
-import { INode } from '@/types'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
@@ -62,7 +61,7 @@ export const useDndActionStore = defineStore('dndActionStore', () => {
 })
 
 // 根据id寻找节点
-function findIndex(id: string, list: INode[], callback: (list: INode[], index: number) => void) {
+function findIndex(id: string, list: ITreeSchema[], callback: (list: ITreeSchema[], index: number) => void) {
   if (!list) {
     return
   }
@@ -72,7 +71,7 @@ function findIndex(id: string, list: INode[], callback: (list: INode[], index: n
       callback(list, i)
       break
     } else if (item.slots?.length) {
-      item.slots.forEach((slotObj: { [key: string]: INode[] }) => {
+      item.slots.forEach((slotObj: { [key: string]: ITreeSchema[] }) => {
         for (const [, slots] of Object.entries(slotObj)) {
           findIndex(id, slots, callback)
         }

@@ -22,7 +22,7 @@
           <CenterContent>
             <DocumentView />
           </CenterContent>
-          <ToggleAblePane width="280px"> 
+          <ToggleAblePane width="280px">
             <FieldRender />
           </ToggleAblePane>
         </Workbench>

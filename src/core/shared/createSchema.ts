@@ -6,7 +6,7 @@ export function createSchema(options: any = {}): any {
     propsTab,
     styleTab,
     controllerTab: [],
-    dataTab: []
+    dataTab: [],
   }
 }
 

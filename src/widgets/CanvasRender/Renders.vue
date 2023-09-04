@@ -3,13 +3,16 @@
     <Shell v-if="item?.componentName" :item="item" @click="handleClick">
       <component :is="item.componentName" v-if="item.slots?.length" v-bind="item.props!" :style="toCss(item?.style)">
         <template v-for="(slot, i) in item?.slots" :key="i" #[slotName(slot)]>
-          <Renders v-if="slot[slotName(slot)]?.length" :parent-id="item.id" :slot-name="slotName(slot)"
-            :data="slot[slotName(slot)]"></Renders>
+          <Renders
+            v-if="slot[slotName(slot)]?.length"
+            :parent-id="item.id"
+            :slot-name="slotName(slot)"
+            :data="slot[slotName(slot)]"
+          ></Renders>
           <SlotPalcehodler v-else :parent-id="item.id" :slot-name="slotName(slot)" :item-schema="item" />
         </template>
       </component>
-      <component :is="item.componentName" v-bind="item.props!" :style="toCss(item?.style)" v-else>{{ item.compoentsTitle
-      }}</component>
+      <component :is="item.componentName" v-bind="item.props!" v-else :style="toCss(item?.style)"></component>
     </Shell>
   </template>
 </template>
@@ -35,13 +38,11 @@ const slotName = (slot: string | Object): string => {
   return slot as string
 }
 
-
 // 点击组件
 const handleClick = (item: ITreeSchema) => {
   // console.log(item);
   fieldStore.setCurNode(item)
 }
-
 </script>
 <script lang="ts">
 export default {

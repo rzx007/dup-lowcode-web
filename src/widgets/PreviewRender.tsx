@@ -1,5 +1,5 @@
 import { PropType, defineComponent, h, resolveComponent } from 'vue'
-import { isObject } from '@/utils'
+import { isObject, toCss } from '@/utils'
 import { ITreeSchema } from '@/core/interfaces/component'
 export const PreviewRender = defineComponent({
   name: 'PreviewRender',
@@ -33,12 +33,16 @@ export const PreviewRender = defineComponent({
             return h(
               // @ts-ignore
               resolveComponent(item.componentName),
-              { ...item.props },
+              { ...item.props, style: toCss(item?.style) },
               reduceSlot(item)
             )
           }
           // return <component is={item.componentName} {...item.props} key={item.id}></component>
-          return h(resolveComponent(item.componentName), { ...item.props }, () => item.compoentsTitle)
+          return h(
+            resolveComponent(item.componentName),
+            { ...item.props, style: toCss(item?.style) },
+            () => item.compoentsTitle
+          )
         })}
       </>
     )
