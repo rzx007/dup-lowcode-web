@@ -22,3 +22,19 @@ export const isObject = (value: any) => {
 //   find(id, list)
 //   return parent
 // }
+
+// 对象转换为css
+
+export const toCss = (obj: any) => {
+  if (!obj) {
+    return ''
+  }
+  return Object.keys(obj)
+    .map((key) => `${key}:${obj[key]}`)
+    .join(';')
+}
+
+// 判断字符串是否是数字
+export const isNumber = (value: string) => {
+  return /^\d+$/.test(value)
+}

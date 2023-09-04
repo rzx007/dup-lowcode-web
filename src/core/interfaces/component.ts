@@ -14,6 +14,15 @@ export interface IComponentMaterial {
   props?: {
     [key: string]: unknown
   }
+  style?: {
+    [key: string]: unknown
+  }
+  controller?: {
+    [key: string]: unknown
+  }
+  data?: {
+    [key: string]: unknown
+  }
   slots?: { [key: string]: IComponentMaterial[] }[]
 }
 

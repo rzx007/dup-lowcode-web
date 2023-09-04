@@ -5,6 +5,8 @@ export function createSchema(options: any = {}): any {
   return {
     propsTab,
     styleTab,
+    controllerTab: [],
+    dataTab: []
   }
 }
 
@@ -16,7 +18,7 @@ const styleTab = [
       label: '宽度',
     },
     props: {
-      type: 'number',
+      type: 'text',
     },
   },
   {
@@ -26,7 +28,7 @@ const styleTab = [
       label: '高度',
     },
     props: {
-      type: 'number',
+      type: 'text',
     },
   },
 ]

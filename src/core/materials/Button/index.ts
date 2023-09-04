@@ -6,7 +6,7 @@ const name = '按钮'
 export const ButtonMaterial: IComponentMaterial = {
   componentName: 'el-button',
   compoentsTitle: name,
-  designerSchema: [],
+  designerSchema: buttonSchema,
   props: {
     // 初始化属性
     type: 'primary',

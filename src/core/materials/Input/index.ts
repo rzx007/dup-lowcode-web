@@ -6,7 +6,7 @@ const name = '输入框'
 export const InputMaterial: IComponentMaterial = {
   componentName: 'el-input',
   compoentsTitle: name,
-  designerSchema: [],
+  designerSchema: {},
   props: {
     type: 'text',
     placeholder: '请输入内容',

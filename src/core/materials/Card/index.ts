@@ -5,7 +5,7 @@ const name = '卡片'
 export const CardMaterial: IComponentMaterial = {
   componentName: 'el-card',
   compoentsTitle: name,
-  designerSchema: [],
+  designerSchema: {},
   slots: [{ default: [] }, { header: [] }],
   props: {
     'body-style': '',

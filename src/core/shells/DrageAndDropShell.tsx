@@ -77,11 +77,6 @@ export const DnDShell = defineComponent({
       }
     })
 
-    // const clickHnadle = (e: MouseEvent) => {
-    //   e.stopPropagation()
-    //   e.preventDefault()
-    //   console.log('选中组件', props.item)
-    // }
     const paddingLineClass = computed(() => {
       return props.paddingLine ? 'zth-shell-padding-line' : ''
     })

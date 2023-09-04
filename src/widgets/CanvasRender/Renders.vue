@@ -1,18 +1,15 @@
 <template>
   <template v-for="item in data" :key="item?.id">
     <Shell v-if="item?.componentName" :item="item" @click="handleClick">
-      <component :is="item.componentName" v-if="item.slots?.length">
+      <component :is="item.componentName" v-if="item.slots?.length" v-bind="item.props!" :style="toCss(item?.style)">
         <template v-for="(slot, i) in item?.slots" :key="i" #[slotName(slot)]>
-          <Renders
-            v-if="slot[slotName(slot)]?.length"
-            :parent-id="item.id"
-            :slot-name="slotName(slot)"
-            :data="slot[slotName(slot)]"
-          ></Renders>
+          <Renders v-if="slot[slotName(slot)]?.length" :parent-id="item.id" :slot-name="slotName(slot)"
+            :data="slot[slotName(slot)]"></Renders>
           <SlotPalcehodler v-else :parent-id="item.id" :slot-name="slotName(slot)" :item-schema="item" />
         </template>
       </component>
-      <component :is="item.componentName" v-bind="item.props!" v-else>{{ item.compoentsTitle }}</component>
+      <component :is="item.componentName" v-bind="item.props!" :style="toCss(item?.style)" v-else>{{ item.compoentsTitle
+      }}</component>
     </Shell>
   </template>
 </template>
@@ -20,8 +17,11 @@
 import { Shell } from './Shell'
 import { ITreeSchema } from '@/core/interfaces/component'
 import { SlotPalcehodler } from './SlotPalcehodler'
-import { isObject } from '@/utils'
+import { useFieldsStore } from '@/store/fields-view'
+import { isObject, toCss } from '@/utils'
 import './style.scss'
+
+const fieldStore = useFieldsStore()
 
 defineProps<{
   data: ITreeSchema[]
@@ -34,10 +34,14 @@ const slotName = (slot: string | Object): string => {
   }
   return slot as string
 }
+
+
+// 点击组件
 const handleClick = (item: ITreeSchema) => {
-  console.log(item);
-  
+  // console.log(item);
+  fieldStore.setCurNode(item)
 }
+
 </script>
 <script lang="ts">
 export default {

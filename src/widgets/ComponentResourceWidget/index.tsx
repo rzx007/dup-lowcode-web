@@ -18,6 +18,7 @@ export const ComponentResourceWidget = defineComponent({
     const meterial = computed(() => {
       const obj = clone(props.meterial, true)
       delete obj['resource']
+      delete obj['designerSchema']
       return obj
     })
     const colorStyle = {
