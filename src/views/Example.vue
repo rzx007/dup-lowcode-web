@@ -6,6 +6,7 @@
       <MultipleTargets />
       <Indicator />
       <DropTargets />
+      <Frame />
     </div>
   </DndProvider>
 </template>
@@ -16,6 +17,7 @@ import MultipleTargets from '@/examples/multiple-targets'
 import Simple from '@/examples/simple/index.vue'
 import Dustbin from '@/examples/dustbin'
 import DropTargets from '@/examples/drop-targets'
+import Frame from '@/examples/frame'
 import { DndProvider } from 'vue3-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 </script>

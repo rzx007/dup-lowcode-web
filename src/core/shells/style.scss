@@ -21,3 +21,17 @@
 .zth-shell-padding-line {
   padding: 8px;
 }
+.zth-shell-select {
+  position: relative;
+  &::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    display: block;
+    border: 1px solid #1677ff;
+  } 
+}

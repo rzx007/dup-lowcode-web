@@ -14,6 +14,11 @@ const routes: Array<RouteRecordRaw> = [
     component: Example,
   },
   {
+    path: '/canvas',
+    name: 'canvas',
+    component: () => import('../views/Canvas.vue'),
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting

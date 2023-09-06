@@ -1,6 +1,6 @@
-import { CSSProperties, computed, defineComponent } from 'vue'
+import { CSSProperties, defineComponent } from 'vue'
 import { Viewport } from './Viewport'
-import CanvasRebder from '@/widgets/CanvasRender/index.vue'
+import CanvasRender from '@/widgets/CanvasRender/index.vue'
 import { JsonView } from '@/widgets/JsonView'
 import { PreviewRender } from '../PreviewRender'
 import { CanvasToolbar } from '@/layouts/CanvasToolbar'
@@ -39,7 +39,7 @@ export const DocumentView = defineComponent({
       <>
         <CanvasToolbar v-slots={slots}></CanvasToolbar>
         <Viewport>
-          {store.documentType === DocumentType.DESIGN && <CanvasRebder />}
+          {store.documentType === DocumentType.DESIGN && <CanvasRender />}
           {store.documentType === DocumentType.JSON && <JsonView />}
           {store.documentType === DocumentType.PREVIEW && (
             <div style={style}>

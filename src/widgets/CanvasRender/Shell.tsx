@@ -1,4 +1,4 @@
-import { PropType, defineComponent, inject } from 'vue'
+import { PropType, defineComponent } from 'vue'
 import { DnDShell } from '@/core/shells/DrageAndDropShell'
 import { DndTypes, IDragItems } from '@/core/interfaces/dndTypes'
 import { ITreeSchema } from '@/core/interfaces/component'
