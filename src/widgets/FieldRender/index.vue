@@ -8,22 +8,14 @@
             <el-col :span="17">
               <component :is="item.componentName" v-bind="item.props" v-model="fields[tab.name][item['x-field']?.name]">
                 <template v-if="eles.includes(item.componentName) && item.props?.options">
-                  <component
-                    :is="item.props?.childElement"
-                    v-for="(ele, idx) in item.props?.options"
-                    :key="idx"
-                    :label="ele.value"
-                  >
+                  <component :is="item.props?.childElement" v-for="(ele, idx) in item.props?.options" :key="idx"
+                    :label="ele.value">
                     {{ ele.label }}
                   </component>
                 </template>
                 <template v-else-if="item.componentName === 'el-select' && item.props?.options">
-                  <component
-                    :is="item.props?.childElement"
-                    v-for="(ele, idx) in item.props?.options"
-                    :key="idx"
-                    v-bind="ele"
-                  ></component>
+                  <component :is="item.props?.childElement" v-for="(ele, idx) in item.props?.options" :key="idx"
+                    v-bind="ele"></component>
                 </template>
               </component>
             </el-col>
@@ -31,17 +23,23 @@
         </el-row>
       </el-tab-pane>
     </template>
+    <template v-if="controllerList.length" v-for="(tab, index) in controllerList" :key="index">
+      <el-tab-pane :label="tab.label" :name="tab.label">
+        <ControllerPanel :data="tab.children"></ControllerPanel>
+      </el-tab-pane>
+    </template>
   </el-tabs>
 </template>
 
 <script setup lang="ts">
 import { useFieldsStore } from '@/store/fields-view'
+import { ControllerPanel } from '@/widgets/ControllerWidgets'
 import { storeToRefs } from 'pinia'
 import { nextTick, ref, watch } from 'vue'
 
 const activeName = ref('属性')
 const tabsList = ref<any>([])
-
+const controllerList = ref<any>([])
 const fieldStore = useFieldsStore()
 const { updateComponent } = fieldStore
 const { currentNode, currentDesignerSchema, fields } = storeToRefs(fieldStore)
@@ -51,6 +49,8 @@ watch(
     nextTick(() => {
       activeName.value = '属性'
       const { propsTab, styleTab, controllerTab, dataTab } = currentDesignerSchema.value
+      console.log(controllerTab);
+
       tabsList.value = [
         {
           label: '属性',
@@ -63,16 +63,18 @@ watch(
           children: styleTab || [],
         },
         {
-          label: '控制器',
-          name: 'controller',
-          children: controllerTab || [],
-        },
-        {
           label: '数据',
           name: 'data',
           children: dataTab || [],
         },
       ]
+      if (controllerTab.length) {
+        controllerList.value = [{
+          label: '事件',
+          name: 'controller',
+          children: controllerTab || [],
+        }]
+      }
       //@ts-ignore
       const { props = {}, style = {}, controller = {}, data = {} } = currentNode.value
 

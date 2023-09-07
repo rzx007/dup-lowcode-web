@@ -130,6 +130,20 @@ const options = {
       },
     },
   ],
+  controllerSchemas: [
+    {
+      label: '点击',
+      value: 'click',
+    },
+    {
+      label: '鼠标移入',
+      value: 'mounseenter',
+    },
+    {
+      label: '鼠标移出',
+      value: 'mounseleave',
+    },
+  ],
   styleSchemas: {},
 }
 

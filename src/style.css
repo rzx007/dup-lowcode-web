@@ -33,7 +33,7 @@ html, body, #app {
   height: 100%;
 }
 html.dark {
-  background-color: #000 !important;
+  background-color: #141414 !important;
 }
 a {
   font-weight: 500;
