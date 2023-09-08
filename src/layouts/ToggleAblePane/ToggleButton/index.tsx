@@ -1,6 +1,6 @@
 import { ArrowLeft, ArrowRight } from '@element-plus/icons-vue'
 import './style.scss'
-import { defineComponent, toRefs } from 'vue'
+import { PropType, defineComponent, toRefs } from 'vue'
 
 export enum ToggleType {
   left = 'left',
@@ -19,8 +19,8 @@ export const ToggleButton = defineComponent({
       default: false,
     },
     onClick: {
-      type: Function,
-      default: () => {},
+      type: Function as PropType<(e: MouseEvent) => void>,
+      default: () => null,
     },
   },
   setup(props) {
@@ -30,7 +30,7 @@ export const ToggleButton = defineComponent({
     const typeClass = toggleType.value === ToggleType.left ? 'right-style' : 'left-style'
     return () => (
       <div class={['toggle-button', typeClass]} onClick={props.onClick}>
-        <el-icon>{toggled ? rightIcon : lefIcon}</el-icon>
+        <el-icon>{toggled.value ? rightIcon : lefIcon}</el-icon>
       </div>
     )
   },

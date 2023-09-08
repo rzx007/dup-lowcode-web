@@ -4,5 +4,5 @@ export class Actions {
   public executeAction(action: { componentId: string; actionType: string }) {
     this.currentId = action.componentId
   }
-  public updateComponent () {
+  public updateComponent() {}
 }

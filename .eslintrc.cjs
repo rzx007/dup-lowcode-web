@@ -1,31 +1,49 @@
-// eslint 解决代码质量问题，prettier解决代码风格格式问题
 module.exports = {
-  root: true,
   env: {
     browser: true,
-    node: true,
+    commonjs: true,
     es2021: true,
+    node: true,
   },
-  parser: 'vue-eslint-parser',
   extends: [
     'eslint:recommended',
-    'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:vue/vue3-recommended',
     'plugin:prettier/recommended',
-    // eslint-config-prettier 的缩写
-    'prettier',
   ],
+  overrides: [
+    {
+      env: {
+        node: true,
+      },
+      files: ['.eslintrc.{js,cjs}'],
+      parserOptions: {
+        sourceType: 'script',
+      },
+    },
+  ],
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    ecmaVersion: 12,
+    ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
-    sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
     },
   },
-  // eslint-plugin-vue @typescript-eslint/eslint-plugin eslint-plugin-prettier的缩写
-  plugins: ['vue', '@typescript-eslint', 'prettier'],
+  plugins: ['@typescript-eslint', 'vue', 'prettier'],
   rules: {
+    'prettier/prettier': [
+      'error',
+      {
+        tabWidth: 2,
+        semi: false,
+        printWidth: 120,
+        singleQuote: true,
+        endOfLine: 'auto',
+        jsxSingleQuote: true,
+        jsxBracketSameLine: true,
+      },
+    ],
     '@typescript-eslint/no-this-alias': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
@@ -44,9 +62,9 @@ module.exports = {
     'vue/require-component-is': 'off',
     'vue/no-v-html': 'off',
     'vue/no-mutating-props': 'off',
+    'vue/no-use-v-if-with-v-for': 'off',
     'no-var': 'error',
     'no-undef': 0,
-    'prettier/prettier': ['error', { semi: false, printWidth: 120, singleQuote: true, endOfLine: 'auto' }],
     // 禁止出现console
     'no-console': 'off',
     // 禁用debugger
@@ -115,10 +133,6 @@ module.exports = {
     'max-nested-callbacks': ['warn', 5],
     // 强制函数定义中最多允许的参数数量
     'max-params': ['warn', 5],
-    // 强制每一行中所允许的最大语句数量
-    'max-statements-per-line': ['warn', { max: 2 }],
-    // 要求方法链中每个调用都有一个换行符
-    'newline-per-chained-call': ['warn', { ignoreChainWithDepth: 3 }],
     // 禁止 if 作为唯一的语句出现在 else 语句中
     'no-lonely-if': 'warn',
     // 禁止空格和 tab 的混合缩进

@@ -11,8 +11,14 @@ import { SelectedOutline } from '../auxwidgets/outlines/SelectedOutline'
 export const DnDShell = defineComponent({
   props: {
     item: { type: Object as PropType<ITreeSchema>, required: true },
-    drop: { type: Function as PropType<(arg0: any, monitor: DropTargetMonitor) => any>, required: false },
-    hover: { type: Function as PropType<(item: any, monitor: DropTargetMonitor) => void>, required: false },
+    drop: {
+      type: Function as PropType<(arg0: any, monitor: DropTargetMonitor) => any>,
+      required: false,
+    },
+    hover: {
+      type: Function as PropType<(item: any, monitor: DropTargetMonitor) => void>,
+      required: false,
+    },
     accept: { type: String, default: DndTypes.ITEM, required: false },
     outline: { type: Boolean, default: false, required: false },
     paddingLine: { type: Boolean, default: false, required: false },
