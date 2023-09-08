@@ -89,6 +89,5 @@ const dndStore = useDndActionStore()
 const dragType = computed(() => {
   return dndStore.dragType
 })
-
 </script>
 <style></style>

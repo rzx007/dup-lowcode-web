@@ -20,7 +20,7 @@ const style = {
 const [collect, drop] = useDrop(() => ({
   accept: ItemTypes.BOX,
   drop: () => ({ name: 'Dustbin' }),
-  collect: monitor => ({
+  collect: (monitor) => ({
     isOver: monitor.isOver(),
     canDrop: monitor.canDrop(),
   }),
@@ -38,6 +38,6 @@ const backgroundColor = computed(() => {
 </script>
 <template>
   <div :ref="drop" class="target-box" :style="{ ...style, backgroundColor }">
-    {{ isActive ? 'Release to drop' : 'Drag a box here' }} {{  isOver }}
+    {{ isActive ? 'Release to drop' : 'Drag a box here' }} {{ isOver }}
   </div>
 </template>

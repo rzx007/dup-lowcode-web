@@ -17,6 +17,7 @@ export const ComponentResourceWidget = defineComponent({
     const color: string = props.meterial?.resource?.color || '#409EFF'
     const meterial = computed(() => {
       const obj = clone(props.meterial, true)
+      // 删除不需要的属性
       delete obj['resource']
       delete obj['designerSchema']
       return obj

@@ -3,7 +3,7 @@ import { ActionItem } from './controllerActions'
 import './style.scss'
 
 export type TeventType = {
-  value: string;
+  value: string
   label: string
 }
 export const ControllerPanel = defineComponent({
@@ -11,8 +11,8 @@ export const ControllerPanel = defineComponent({
   props: {
     data: {
       type: Array as PropType<TeventType[]>,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
   setup(props) {
     const eventTypes = ref<TeventType[]>([])
@@ -27,10 +27,10 @@ export const ControllerPanel = defineComponent({
     return () => (
       <>
         <div class='con-dropdown-wrap'>
-          <el-dropdown onCommand={handleCommand} trigger="click">
+          <el-dropdown onCommand={handleCommand} trigger='click'>
             {{
               default: () => (
-                <el-button type="primary" plain={true} style='width: 240px'>
+                <el-button type='primary' plain={true} style='width: 240px'>
                   添加事件
                 </el-button>
               ),
@@ -40,14 +40,14 @@ export const ControllerPanel = defineComponent({
                     return <el-dropdown-item command={{ label, value }}>{label}</el-dropdown-item>
                   })}
                 </el-dropdown-menu>
-              )
+              ),
             }}
           </el-dropdown>
         </div>
-        {
-          eventTypes.value.map((item) => <ActionItem data={item} delEvent={delEvent} />)
-        }
+        {eventTypes.value.map((item, i) => (
+          <ActionItem data={item} delEvent={delEvent} key={i} />
+        ))}
       </>
     )
-  }
+  },
 })

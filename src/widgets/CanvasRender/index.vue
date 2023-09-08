@@ -4,7 +4,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import Renders from './Renders.vue'
+import { Renders } from './Renders'
 import { useDrop } from 'vue3-dnd'
 import { DndTypes, IDragItems } from '@/core/interfaces/dndTypes'
 import { useDndActionStore } from '@/store/dnd-action'

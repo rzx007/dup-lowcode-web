@@ -1,11 +1,19 @@
 <template>
   <template v-for="item in data" :key="item?.id">
     <Shell v-if="item?.componentName" :item="item" @click="handleClick">
-      <component :is="item.componentName" v-if="item.slots?.length" v-bind="{ ...item.props!, ...$attrs }"
-        :style="toCss(item?.style)">
+      <component
+        :is="item.componentName"
+        v-if="item.slots?.length"
+        v-bind="{ ...item.props!, ...$attrs }"
+        :style="toCss(item?.style)"
+      >
         <template v-for="(slot, i) in item?.slots" :key="i" #[slotName(slot)]="slotData">
-          <Renders v-if="slot[slotName(slot)]?.length" :parent-id="item.id" :slot-name="slotName(slot)"
-            :data="slot[slotName(slot)]" v-bind="slotData || {}"></Renders>
+          <Renders
+            v-if="slot[slotName(slot)]?.length"
+            :parent-id="item.id"
+            :data="slot[slotName(slot)]"
+            v-bind="slotData || {}"
+          ></Renders>
           <SlotPalcehodler v-else :parent-id="item.id" :slot-name="slotName(slot)" :item-schema="item" />
         </template>
       </component>

@@ -1,5 +1,5 @@
-import { PropType, defineComponent, h, resolveComponent } from 'vue'
-import { isObject, toCss } from '@/utils'
+import { PropType, defineComponent, h, resolveComponent, useAttrs } from 'vue'
+import { capitalizeFirstLetter, isObject, toCss } from '@/utils'
 import { ITreeSchema } from '@/core/interfaces/component'
 export const PreviewRender = defineComponent({
   name: 'PreviewRender',
@@ -11,11 +11,32 @@ export const PreviewRender = defineComponent({
     },
   },
   setup(props) {
+    const attrs = useAttrs()
     const slotName = (slot: string | Object): string => {
       if (isObject(slot)) {
         return Object.keys(slot)[0] as string
       }
       return slot as string
+    }
+    // 处理ITreeSchema的controller属性
+    const handleController = (item: ITreeSchema) => {
+      const eventArr: { [x: string]: any } = {}
+      const controller = item.controller
+      if (controller) {
+        const keys = Object.keys(controller)
+        if (keys) {
+          for (let index = 0; index < keys.length; index++) {
+            const key = keys[index]
+            const eventName = 'on' + capitalizeFirstLetter(key)
+            const actions = controller[key] as Array<any>
+            const list = actions.map((action) => action)
+            eventArr[eventName] = () => {
+              console.log(eventName, list)
+            }
+          }
+        }
+      }
+      return eventArr
     }
     const reduceSlot = (item: ITreeSchema) => {
       const slots: { [key: string]: any } = {}
@@ -33,16 +54,22 @@ export const PreviewRender = defineComponent({
             return h(
               // @ts-ignore
               resolveComponent(item.componentName),
-              { ...item.props, style: toCss(item?.style) },
+              {
+                ...item.props,
+                ...handleController(item),
+                ...attrs,
+                style: toCss(item?.style),
+              },
               reduceSlot(item)
             )
           }
           // return <component is={item.componentName} {...item.props} key={item.id}></component>
-          return h(
-            resolveComponent(item.componentName),
-            { ...item.props, style: toCss(item?.style) },
-            () => item.compoentsTitle
-          )
+          return h(resolveComponent(item.componentName), {
+            ...item.props,
+            ...handleController(item),
+            ...attrs,
+            style: toCss(item?.style),
+          })
         })}
       </>
     )

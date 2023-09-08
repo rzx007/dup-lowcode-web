@@ -9,10 +9,10 @@ export const LayoutMaterial: IComponentMaterial = {
   compoentsTitle: name,
   designerSchema: layoutSchema,
   slots: [{ default: [] }, { header: [] }, { aside: [] }, { footer: [] }],
-  props: { },
+  props: {},
   style: {
     width: '100%',
-    height: '100vh'
+    height: '100vh',
   },
   resource: {
     name: name,

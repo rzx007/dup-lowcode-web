@@ -1,27 +1,7 @@
-import { INode } from '@/types'
-
 // 判断是对象还是字符串
 export const isObject = (value: any) => {
   return Object.prototype.toString.call(value) === '[object Object]'
 }
-
-// 树形数据，根据id寻找父节点
-// const findParent = (id: string, list: INode[]): INode | undefined => {
-//   let parent: INode | undefined
-//   const find = (id: string, list: INode[]) => {
-//     for (let i = 0; i < list.length; i++) {
-//       const item = list[i]
-//       if (item.id === id) {
-//         parent = item
-//         break
-//       } else if (item.slots?.length) {
-//         find(id, item.slots)
-//       }
-//     }
-//   }
-//   find(id, list)
-//   return parent
-// }
 
 // 对象转换为css
 
@@ -40,16 +20,87 @@ export const isNumber = (value: string) => {
 }
 
 export const parseJsStrToLte = (code: string): string => {
-
   // 匹配 {{}} 的内容
-  const regex = /\{\{(.+?)\}\}/g;
-  
+  const regex = /\{\{(.+?)\}\}/g
+
   // {{}} -> ${}
-  const result = code.replace(regex, '${$1}');
+  const result = code.replace(regex, '${$1}')
 
   // 转换成为模板字符串`${a1} ${a2}`格式
-  
-  return `\`${result}\``;
-  
+
+  return `\`${result}\``
+}
+// 树结构根据id查找父级链
+export const findParent = (tree: any[], id: string) => {
+  const result: any[] = []
+  const find = (tree: any[], id: string) => {
+    for (let i = 0; i < tree.length; i++) {
+      const item = tree[i]
+      if (item.id === id) {
+        result.push(item)
+        return true
+      }
+      if (item.children && item.children.length > 0) {
+        if (find(item.children, id)) {
+          // 找到了，把父级添加进去
+          result.push(item)
+          return true
+        }
+      }
+    }
+    return false
+  }
+  find(tree, id)
+  return result
+}
+// 示例
+// const tree = [
+//   {
+//     id: '1',
+//     children: [
+//       {
+//         id: '1-1',
+//         children: [
+//           {
+//             id: '1-1-1',
+//           },
+//         ],
+//       },
+//       {
+//         id: '1-2',
+//       },
+//     ],
+//   },
+//   {
+//     id: '2',
+//     children: [
+//       {
+//         id: '2-1',
+//       },
+//     ],
+//   },
+// ]
+// console.log(findParent(tree, '1-1-1'))
+// console.log(findParent(tree, '1-2'))
+
+// 多维数组转一维数组
+export const flatten = (arr: any[]): string | any[] => {
+  return arr.reduce((prev, next) => {
+    return prev.concat(Array.isArray(next) ? flatten(next) : next)
+  }, [])
 }
 
+export function isEmptyObj(obj: any) {
+  if (isObject(obj)) {
+    return Object.keys(obj).length === 0 && obj.constructor === Object
+  }
+  return false
+}
+
+// 首字母大写
+export function capitalizeFirstLetter(str: string) {
+  if (!str) {
+    return ''
+  }
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}

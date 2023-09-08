@@ -1,18 +1,23 @@
-import { PropType, defineComponent, ref } from 'vue'
+import { PropType, computed, defineComponent, ref } from 'vue'
 import { addIcon, delIcon, downIcon, upIcon, editIcon, del2Icon, dragIcon } from './icons'
 import { TeventType } from '.'
 export const ActionItem = defineComponent({
   name: 'ActionItem',
   props: {
     data: {
-      type: Object as PropType<TeventType>
+      type: Object as PropType<TeventType>,
     },
     delEvent: {
-      type: Function as PropType<(arg: string | undefined) => void>
-    }
+      type: Function as PropType<(arg: string | undefined) => void>,
+    },
   },
   setup(props) {
     const open = ref(false)
+    const clickHandler = () => {
+      open.value = !open.value
+    }
+    const arrowIcon = computed(() => (open.value ? downIcon : upIcon))
+
     return () => (
       <div class='event-item'>
         <div class='event-item-header'>
@@ -20,11 +25,11 @@ export const ActionItem = defineComponent({
           <div class='header-toolbar'>
             <span>{addIcon}</span>
             <span onClick={() => props?.delEvent?.(props.data?.value)}>{delIcon}</span>
-            <span onClick={() => open.value = !open.value}>{open.value ? downIcon : upIcon}</span>
+            <span onClick={clickHandler}>{arrowIcon.value}</span>
           </div>
         </div>
-        {
-          open.value && <ul class='item-content'>
+        {open.value && (
+          <ul class='item-content'>
             {[1, 2].map((item) => {
               return (
                 <li class='action-item'>
@@ -45,8 +50,8 @@ export const ActionItem = defineComponent({
               )
             })}
           </ul>
-        }
+        )}
       </div>
     )
-  }
+  },
 })

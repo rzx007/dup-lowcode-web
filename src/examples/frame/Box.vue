@@ -31,7 +31,7 @@ const [collect, drag] = useDrag(() => ({
       alert(`You dropped ${item.name} into ${dropResult.name}!`)
     }
   },
-  collect: monitor => ({
+  collect: (monitor) => ({
     isDragging: monitor.isDragging(),
   }),
 }))

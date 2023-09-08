@@ -14,6 +14,20 @@ export const ButtonMaterial: IComponentMaterial = {
     size: 'default',
     round: true,
   },
+  controller: {
+    click: [
+      {
+        componentId: '23432432',
+        actionType: 'hidden',
+      },
+    ],
+    mouseenter: [
+      {
+        componentId: '23432432',
+        actionType: 'hidden',
+      },
+    ],
+  },
   resource: {
     name: name,
     icon: buttonIcon,

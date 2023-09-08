@@ -6,7 +6,7 @@ export class SelectedOutline {
   private outline: HTMLElement | null = null
   private currentId: string | null = null
   constructor() {
-    this.resizeObserver = new ResizeObserver(() => { })
+    this.resizeObserver = new ResizeObserver(() => {})
   }
   handleSelectChange = (activedId: string | undefined | null): void => {
     this.resizeObserver.disconnect()

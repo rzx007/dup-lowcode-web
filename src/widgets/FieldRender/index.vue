@@ -8,14 +8,22 @@
             <el-col :span="17">
               <component :is="item.componentName" v-bind="item.props" v-model="fields[tab.name][item['x-field']?.name]">
                 <template v-if="eles.includes(item.componentName) && item.props?.options">
-                  <component :is="item.props?.childElement" v-for="(ele, idx) in item.props?.options" :key="idx"
-                    :label="ele.value">
+                  <component
+                    :is="item.props?.childElement"
+                    v-for="(ele, idx) in item.props?.options"
+                    :key="idx"
+                    :label="ele.value"
+                  >
                     {{ ele.label }}
                   </component>
                 </template>
                 <template v-else-if="item.componentName === 'el-select' && item.props?.options">
-                  <component :is="item.props?.childElement" v-for="(ele, idx) in item.props?.options" :key="idx"
-                    v-bind="ele"></component>
+                  <component
+                    :is="item.props?.childElement"
+                    v-for="(ele, idx) in item.props?.options"
+                    :key="idx"
+                    v-bind="ele"
+                  ></component>
                 </template>
               </component>
             </el-col>
@@ -23,7 +31,7 @@
         </el-row>
       </el-tab-pane>
     </template>
-    <template v-if="controllerList.length" v-for="(tab, index) in controllerList" :key="index">
+    <template v-for="(tab, index) in controllerList" v-if="controllerList.length" :key="index">
       <el-tab-pane :label="tab.label" :name="tab.label">
         <ControllerPanel :data="tab.children"></ControllerPanel>
       </el-tab-pane>
@@ -49,7 +57,7 @@ watch(
     nextTick(() => {
       activeName.value = '属性'
       const { propsTab, styleTab, controllerTab, dataTab } = currentDesignerSchema.value
-      console.log(controllerTab);
+      console.log(controllerTab)
 
       tabsList.value = [
         {
@@ -69,23 +77,31 @@ watch(
         },
       ]
       if (controllerTab.length) {
-        controllerList.value = [{
-          label: '事件',
-          name: 'controller',
-          children: controllerTab || [],
-        }]
+        controllerList.value = [
+          {
+            label: '事件',
+            name: 'controller',
+            children: controllerTab || [],
+          },
+        ]
       }
       //@ts-ignore
       const { props = {}, style = {}, controller = {}, data = {} } = currentNode.value
 
       const propsData = bindFormValue(propsTab)
       const styleData = bindFormValue(styleTab)
-      const controllerData = bindFormValue(controllerTab)
       const dataData = bindFormValue(dataTab)
       fields.value = {
-        props: { ...propsData, ...props },
+        props: {
+          ...propsData,
+          ...props,
+          ...{
+            onClick: (value: any) => {
+              console.log('ZthButton.ts ~ changeMyInput ~ value', value)
+            },
+          },
+        },
         style: { ...styleData, ...style },
-        controller: { ...controllerData, ...controller },
         data: { ...dataData, ...data },
       }
       updateComponent()

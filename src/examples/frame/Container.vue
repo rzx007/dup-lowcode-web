@@ -4,7 +4,6 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 import Dustbin from './Dustbin.vue'
 import Box from './Box.vue'
 import Frame from './Frame.vue'
-
 </script>
 
 <template>

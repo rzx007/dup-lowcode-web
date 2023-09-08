@@ -1,13 +1,5 @@
 <script lang="ts">
-import {
-  createApp,
-  ref,
-  getCurrentInstance,
-  h,
-  onBeforeUpdate,
-  defineComponent,
-  App,
-} from 'vue'
+import { createApp, ref, getCurrentInstance, h, onBeforeUpdate, defineComponent, App } from 'vue'
 
 export default defineComponent({
   name: 'Frame',
@@ -15,7 +7,7 @@ export default defineComponent({
     const iframeAppRef = ref<App>()
     const frame = ref()
     const vueInstance = getCurrentInstance()
-    const renderChildren = event => {
+    const renderChildren = (event) => {
       const frameEl = vueInstance?.proxy?.$el || frame.value || event.target
       if (!frameEl) {
         return null
@@ -55,9 +47,7 @@ export default defineComponent({
       if (iframeAppRef.value) {
         const frameEl = vueInstance?.proxy?.$el || frame.value
         const win = frameEl.contentWindow
-        ;(iframeAppRef.value as any).children = slots
-          .default?.({ window: win })
-          ?.slice()
+        ;(iframeAppRef.value as any).children = slots.default?.({ window: win })?.slice()
       }
     })
 

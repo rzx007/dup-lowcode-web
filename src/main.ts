@@ -20,10 +20,10 @@ import { browserRuntimeVM } from '@/core/JsRuntime'
 const value = '执行的代码: {{props.size}}'
 const props = {
   size: 'small',
-  title: "{{props.size}}"
+  title: '{{props.size}}',
 }
 
-if (value && typeof value === "string" && isExpression(value)) {
+if (value && typeof value === 'string' && isExpression(value)) {
   console.log(`执行代码： ${value}`)
-  console.log(browserRuntimeVM.execute(parseJsStrToLte(value), { props })); 
+  console.log(browserRuntimeVM.execute(parseJsStrToLte(value), { props }))
 }
