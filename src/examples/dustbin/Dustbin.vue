@@ -14,20 +14,22 @@ const style = {
   textAlign: 'center',
   fontSize: '1rem',
   lineHeight: 'normal',
-  float: 'left',
+  float: 'left'
 }
 
 const [collect, drop] = useDrop(() => ({
   accept: ItemTypes.BOX,
   drop: () => ({ name: 'Dustbin' }),
-  collect: (monitor) => ({
+  collect: monitor => ({
     isOver: monitor.isOver(),
-    canDrop: monitor.canDrop(),
-  }),
+    canDrop: monitor.canDrop()
+  })
 }))
 const { canDrop, isOver } = toRefs(collect)
 const isActive = computed(() => unref(canDrop) && unref(isOver))
-const backgroundColor = computed(() => (unref(isActive) ? 'darkgreen' : unref(canDrop) ? '#999' : '#222'))
+const backgroundColor = computed(() =>
+  unref(isActive) ? 'darkgreen' : unref(canDrop) ? '#999' : '#222'
+)
 </script>
 
 <template>

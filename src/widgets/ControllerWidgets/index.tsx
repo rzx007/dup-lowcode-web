@@ -11,26 +11,26 @@ export const ControllerPanel = defineComponent({
   props: {
     data: {
       type: Array as PropType<TeventType[]>,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
   setup(props) {
     const eventTypes = ref<TeventType[]>([])
     const handleCommand = (eventItem: TeventType) => {
-      const isEexit = eventTypes.value.filter((item) => item.label === eventItem.label).length
+      const isEexit = eventTypes.value.filter(item => item.label === eventItem.label).length
       !isEexit && eventTypes.value.push(eventItem)
     }
     const delEvent = (value: string | undefined) => {
-      const index = eventTypes.value.findIndex((item) => item.value === value)
+      const index = eventTypes.value.findIndex(item => item.value === value)
       index > -1 && eventTypes.value.splice(index, 1)
     }
     return () => (
       <>
-        <div class='con-dropdown-wrap'>
-          <el-dropdown onCommand={handleCommand} trigger='click'>
+        <div class="con-dropdown-wrap">
+          <el-dropdown onCommand={handleCommand} trigger="click">
             {{
               default: () => (
-                <el-button type='primary' plain={true} style='width: 240px'>
+                <el-button type="primary" plain={true} style="width: 240px">
                   添加事件
                 </el-button>
               ),
@@ -40,7 +40,7 @@ export const ControllerPanel = defineComponent({
                     return <el-dropdown-item command={{ label, value }}>{label}</el-dropdown-item>
                   })}
                 </el-dropdown-menu>
-              ),
+              )
             }}
           </el-dropdown>
         </div>
@@ -49,5 +49,5 @@ export const ControllerPanel = defineComponent({
         ))}
       </>
     )
-  },
+  }
 })

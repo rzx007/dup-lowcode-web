@@ -12,11 +12,11 @@ export const LayoutMaterial: IComponentMaterial = {
   props: {},
   style: {
     width: '100%',
-    height: '100vh',
+    height: '100vh'
   },
   resource: {
     name: name,
     icon: colIcon,
-    color: '#dfa324',
-  },
+    color: '#dfa324'
+  }
 }

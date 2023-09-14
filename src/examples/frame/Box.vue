@@ -19,7 +19,7 @@ const style = {
   marginRight: '1.5rem',
   marginBottom: '1.5rem',
   cursor: 'move',
-  float: 'left',
+  float: 'left'
 }
 
 const [collect, drag] = useDrag(() => ({
@@ -31,9 +31,9 @@ const [collect, drag] = useDrag(() => ({
       alert(`You dropped ${item.name} into ${dropResult.name}!`)
     }
   },
-  collect: (monitor) => ({
-    isDragging: monitor.isDragging(),
-  }),
+  collect: monitor => ({
+    isDragging: monitor.isDragging()
+  })
 }))
 
 const { isDragging } = toRefs(collect)

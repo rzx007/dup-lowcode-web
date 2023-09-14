@@ -9,7 +9,7 @@ export const AuxButtions = defineComponent({
     const iconStyle = {
       padding: '5px',
       fontSize: '16px',
-      cursor: 'pointer',
+      cursor: 'pointer'
     }
     const handleLine = () => {
       store.switchOutline()
@@ -19,30 +19,32 @@ export const AuxButtions = defineComponent({
     }
     return () => (
       <el-space>
-        <el-tooltip effect='dark' content='辅助线' placement='top-start'>
+        <el-tooltip effect="dark" content="辅助线" placement="top-start">
           {/* <i style={iconStyle} onClick={handleLine}>{lineIcon}</i> */}
           <el-button
             style={iconStyle}
             text
-            size='small'
+            size="small"
             type={store.outline ? 'primary' : ''}
             bg={store.outline}
-            onClick={handleLine}>
+            onClick={handleLine}
+          >
             {lineIcon}
           </el-button>
         </el-tooltip>
-        <el-tooltip effect='dark' content='辅助边框' placement='top-start'>
+        <el-tooltip effect="dark" content="辅助边框" placement="top-start">
           <el-button
             style={iconStyle}
             text
-            size='small'
+            size="small"
             type={store.paddingLine ? 'primary' : ''}
             bg={store.paddingLine}
-            onClick={handleMargin}>
+            onClick={handleMargin}
+          >
             {marginIcon}
           </el-button>
         </el-tooltip>
       </el-space>
     )
-  },
+  }
 })

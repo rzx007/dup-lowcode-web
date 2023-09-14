@@ -7,7 +7,7 @@ const viewportStyle: CSSProperties = {
   width: '100%',
   display: 'flex',
   flexFlow: 'column',
-  boxSizing: 'border-box',
+  boxSizing: 'border-box'
 }
 
 export const Viewport = defineComponent({
@@ -16,5 +16,5 @@ export const Viewport = defineComponent({
     return () => {
       return <div style={viewportStyle}>{slots.default!()}</div>
     }
-  },
+  }
 })

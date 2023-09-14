@@ -14,7 +14,7 @@ const style: CSSProperties = {
   width: '100%',
   flex: 1,
   transition: 'width 0.3s',
-  boxSizing: 'border-box',
+  boxSizing: 'border-box'
 }
 export const DocumentView = defineComponent({
   name: 'DocumentView',
@@ -25,7 +25,7 @@ export const DocumentView = defineComponent({
       left: () => (
         <>
           <UndoRedoButtons />
-          <el-divider direction='vertical' />
+          <el-divider direction="vertical" />
           <AuxButtions />
         </>
       ),
@@ -33,7 +33,7 @@ export const DocumentView = defineComponent({
         <>
           <ViewButton />
         </>
-      ),
+      )
     }
     return () => (
       <>
@@ -49,5 +49,5 @@ export const DocumentView = defineComponent({
         </Viewport>
       </>
     )
-  },
+  }
 })

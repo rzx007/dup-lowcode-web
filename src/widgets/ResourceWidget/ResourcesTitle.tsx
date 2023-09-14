@@ -3,7 +3,7 @@ import { Close } from '@element-plus/icons-vue'
 export const ResourcesTitle = defineComponent({
   name: 'ResourcesTitle',
   props: {
-    title: { type: String, default: '组件' },
+    title: { type: String, default: '组件' }
   },
   setup(props, { slots }) {
     const { title } = props
@@ -11,7 +11,7 @@ export const ResourcesTitle = defineComponent({
       console.log('close')
     }
     return () => (
-      <div class='rx-toggle-pane-title'>
+      <div class="rx-toggle-pane-title">
         <div>{title || ''}</div>
         {slots.default?.() || (
           <el-text onClick={handleCloseClick}>
@@ -22,5 +22,5 @@ export const ResourcesTitle = defineComponent({
         )}
       </div>
     )
-  },
+  }
 })

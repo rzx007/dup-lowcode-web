@@ -16,7 +16,7 @@ function getStyle(backgroundColor: string): CSSProperties {
     margin: '1rem',
     textAlign: 'center',
     float: 'left',
-    fontSize: '1rem',
+    fontSize: '1rem'
   }
 }
 
@@ -38,10 +38,10 @@ const [collect, drop] = useDrop(() => ({
     hasDropped.value = true
     hasDroppedOnChild.value = didDrop
   },
-  collect: (monitor) => ({
+  collect: monitor => ({
     isOver: monitor.isOver(),
-    isOverCurrent: monitor.isOver({ shallow: true }),
-  }),
+    isOverCurrent: monitor.isOver({ shallow: true })
+  })
 }))
 const { isOver, isOverCurrent } = toRefs(collect)
 const text = computed(() => (props.greedy ? 'greedy' : 'not greedy'))
@@ -59,7 +59,9 @@ const backgroundColor = computed(() => {
   <div :ref="drop" :style="getStyle(backgroundColor)">
     {{ text }}
     <br />
-    <span v-if="hasDropped">{{ hasDroppedOnChild }}dropped {{ hasDroppedOnChild ? ' on child' : '' }}</span>
+    <span v-if="hasDropped"
+      >{{ hasDroppedOnChild }}dropped {{ hasDroppedOnChild ? ' on child' : '' }}</span
+    >
     <div><slot></slot></div>
   </div>
 </template>

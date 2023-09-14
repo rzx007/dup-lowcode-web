@@ -20,16 +20,16 @@
   --content-background: #ffffff;
   --font-color: #1a1919;
   --border-color: #e4e7ed;
-
 }
 [class='dark'] {
- 
   --color-primary: #0052d9;
   --background: #1e1e1e;
   --content-background: #222226;
   --border-color: rgb(66, 66, 66);
 }
-html, body, #app {
+html,
+body,
+#app {
   height: 100%;
 }
 html.dark {
@@ -73,7 +73,6 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
 
 @media (prefers-color-scheme: light) {
   :root {

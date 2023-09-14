@@ -14,7 +14,7 @@ const style: CSSProperties = {
   textAlign: 'center',
   fontSize: '1rem',
   lineHeight: 'normal',
-  float: 'left',
+  float: 'left'
 }
 
 // 获取drop的列表
@@ -38,13 +38,15 @@ const [collect, drop] = useDrop({
   },
   collect: (monitor: any) => ({
     isOver: monitor.isOver(),
-    canDrop: monitor.canDrop(),
-  }),
+    canDrop: monitor.canDrop()
+  })
 })
 
 const { canDrop, isOver } = toRefs(collect)
 const isActive = computed(() => unref(canDrop) && unref(isOver))
-const backgroundColor = computed(() => (unref(isActive) ? 'darkgreen' : unref(canDrop) ? 'darkkhaki' : '#222'))
+const backgroundColor = computed(() =>
+  unref(isActive) ? 'darkgreen' : unref(canDrop) ? 'darkkhaki' : '#222'
+)
 </script>
 
 <template>

@@ -10,14 +10,14 @@ export const InputMaterial: IComponentMaterial = {
   props: {
     type: 'text',
     placeholder: '请输入内容',
-    clearable: true,
+    clearable: true
   },
   style: {
-    width: '200px',
+    width: '200px'
   },
   resource: {
     name: name,
     icon: inputIcon,
-    color: '#dfa324',
-  },
+    color: '#dfa324'
+  }
 }

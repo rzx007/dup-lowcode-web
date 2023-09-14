@@ -7,25 +7,25 @@ export const borderSetter = {
         type: 'fragment',
         fragmentFields: [
           {
-            name: 'borderTop',
+            name: 'borderTop'
           },
           {
-            name: 'borderRight',
+            name: 'borderRight'
           },
           {
-            name: 'borderBottom',
+            name: 'borderBottom'
           },
           {
-            name: 'borderLeft',
-          },
+            name: 'borderLeft'
+          }
         ],
         params: {
-          withBind: true,
-        },
+          withBind: true
+        }
       },
       props: {
-        title: '$border',
-      },
-    },
-  ],
+        title: '$border'
+      }
+    }
+  ]
 }

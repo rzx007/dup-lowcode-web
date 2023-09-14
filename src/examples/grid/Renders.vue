@@ -10,7 +10,12 @@
             :drop-items="slot[slotName(slot)]"
             :sort-items="() => {}"
           ></Renders>
-          <SlotPalcehodler v-else :parent-id="item.id" :slot-name="slotName(slot)" :item-schema="item" />
+          <SlotPalcehodler
+            v-else
+            :parent-id="item.id"
+            :slot-name="slotName(slot)"
+            :item-schema="item"
+          />
         </template>
       </component>
       <component :is="item.componentName" v-else :item="item">{{ item.componentName }}</component>

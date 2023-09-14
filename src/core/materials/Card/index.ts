@@ -10,11 +10,11 @@ export const CardMaterial: IComponentMaterial = {
   slots: [{ default: [] }, { header: [] }],
   props: {
     'body-style': '',
-    shadow: 'hover',
+    shadow: 'hover'
   },
   resource: {
     name: name,
     icon: icon,
-    color: '#dfa324',
-  },
+    color: '#dfa324'
+  }
 }

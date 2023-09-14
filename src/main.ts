@@ -20,7 +20,7 @@ import { browserRuntimeVM } from '@/core/JsRuntime'
 const value = '执行的代码: {{props.size}}'
 const props = {
   size: 'small',
-  title: '{{props.size}}',
+  title: '{{props.size}}'
 }
 
 if (value && typeof value === 'string' && isExpression(value)) {

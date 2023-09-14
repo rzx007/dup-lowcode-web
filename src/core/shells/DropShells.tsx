@@ -11,7 +11,7 @@ export const DrageShell = defineComponent({
   props: {
     drop: { type: Function as PropType<(arg0: any, monitor: DropTargetMonitor) => any> },
     hover: { type: Function as PropType<(item: any, monitor: DropTargetMonitor) => void> },
-    accept: { type: String, default: DndTypes.SHELL },
+    accept: { type: String, default: DndTypes.SHELL }
   },
   setup(props, { slots }) {
     const [, drop] = useDrop(() => ({
@@ -22,11 +22,11 @@ export const DrageShell = defineComponent({
       hover: (item: any, monitor: DropTargetMonitor) => {
         props.hover?.(item, monitor)
       },
-      collect: (monitor) => ({
+      collect: monitor => ({
         isOver: monitor.isOver(),
-        canDrop: monitor.canDrop(),
-      }),
+        canDrop: monitor.canDrop()
+      })
     }))
     return () => <div ref={drop}>{slots.default?.()}</div>
-  },
+  }
 })

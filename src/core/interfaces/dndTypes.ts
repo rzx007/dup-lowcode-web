@@ -2,7 +2,7 @@ import { ITreeSchema } from './component'
 
 export const DndTypes = {
   ITEM: 'item',
-  SHELL: 'shell',
+  SHELL: 'shell'
 }
 
 export interface IDragItems {

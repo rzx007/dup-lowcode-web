@@ -5,20 +5,22 @@ import { computed, unref } from 'vue'
 const [dropCollect, drop] = useDrop(() => ({
   accept: 'Box',
   drop: () => ({ name: 'Dustbin' }),
-  collect: (monitor) => ({
+  collect: monitor => ({
     isOver: monitor.isOver(),
-    canDrop: monitor.canDrop(),
-  }),
+    canDrop: monitor.canDrop()
+  })
 }))
 const canDrop = computed(() => unref(dropCollect).canDrop)
 const isOver = computed(() => unref(dropCollect).isOver)
 const isActive = computed(() => unref(canDrop) && unref(isOver))
-const backgroundColor = computed(() => (unref(isActive) ? 'darkgreen' : unref(canDrop) ? 'darkkhaki' : '#222'))
+const backgroundColor = computed(() =>
+  unref(isActive) ? 'darkgreen' : unref(canDrop) ? 'darkkhaki' : '#222'
+)
 
 const [collect, drag] = useDrag(() => ({
   type: 'Box',
   item: () => ({
-    name: 'Box',
+    name: 'Box'
   }),
   end: (item, monitor) => {
     const dropResult = monitor.getDropResult<{ name: string }>()
@@ -26,10 +28,10 @@ const [collect, drag] = useDrag(() => ({
       alert(`You dropped ${item.name} into ${dropResult.name}!`)
     }
   },
-  collect: (monitor) => ({
+  collect: monitor => ({
     isDragging: monitor.isDragging(),
-    handlerId: monitor.getHandlerId(),
-  }),
+    handlerId: monitor.getHandlerId()
+  })
 }))
 const isDragging = computed(() => collect.value.isDragging)
 

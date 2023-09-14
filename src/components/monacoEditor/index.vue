@@ -35,24 +35,24 @@ export default defineComponent({
           return new tsWorker()
         }
         return new EditorWorker()
-      },
+      }
     }
     let editor: monaco.editor.IStandaloneCodeEditor
     const codeEditBox = ref()
     const init = () => {
       monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({
         noSemanticValidation: true,
-        noSyntaxValidation: false,
+        noSyntaxValidation: false
       })
       monaco.languages.typescript.javascriptDefaults.setCompilerOptions({
         target: monaco.languages.typescript.ScriptTarget.ES2020,
-        allowNonTsExtensions: true,
+        allowNonTsExtensions: true
       })
       editor = monaco.editor.create(codeEditBox.value, {
         value: props.modelValue,
         language: props.language,
         theme: props.theme,
-        ...props.options,
+        ...props.options
       })
       editor.onDidChangeModelContent(() => {
         const value = editor.getValue()
@@ -63,7 +63,7 @@ export default defineComponent({
     }
     watch(
       () => props.modelValue,
-      (newValue) => {
+      newValue => {
         if (editor) {
           const value = editor.getValue()
           if (newValue !== value) {
@@ -74,14 +74,14 @@ export default defineComponent({
     )
     watch(
       () => props.options,
-      (newValue) => {
+      newValue => {
         editor.updateOptions(newValue)
       },
       { deep: true }
     )
     watch(
       () => props.language,
-      (newValue) => {
+      newValue => {
         monaco.editor.setModelLanguage(editor.getModel()!, newValue)
       }
     )
@@ -92,7 +92,7 @@ export default defineComponent({
       init()
     })
     return { codeEditBox }
-  },
+  }
 })
 </script>
 <style lang="scss" scoped>

@@ -1,7 +1,12 @@
 <template>
   <div class="grid-container">
     <div class="grid-left">
-      <Element v-for="item in list" :key="item.componentName" :drag-type="dragType" :node-schema="item" />
+      <Element
+        v-for="item in list"
+        :key="item.componentName"
+        :drag-type="dragType"
+        :node-schema="item"
+      />
       {{ list }}
     </div>
     <div class="grid-right">
@@ -35,7 +40,7 @@ provide('grid-provide', {
     findIndex(dropItem.id, dropItems.value, (list, index) => {
       const item = list[index]
       item.slots = item.slots || [{ default: [] }]
-      item.slots.forEach((slotItem) => {
+      item.slots.forEach(slotItem => {
         if (Object.keys(slotItem)[0] === slotName) {
           slotItem[slotName].push(dragItem)
         }
@@ -64,7 +69,7 @@ provide('grid-provide', {
     const itemSchema = { ...dragItem }
     dropItems.value.push(itemSchema)
     return itemSchema
-  },
+  }
 })
 
 const dragType = computed(() => {
@@ -77,8 +82,8 @@ const list = ref<INodeSchema[]>([
   { componentName: 'el-input' },
   {
     componentName: 'el-card',
-    slots: [{ default: [] }, { header: [] }],
-  },
+    slots: [{ default: [] }, { header: [] }]
+  }
 ])
 
 // 根据id寻找节点

@@ -4,9 +4,9 @@ export const SaveButton = defineComponent({
   name: 'SaveButton',
   setup(_props) {
     return () => (
-      <el-button type='primary' size='small'>
+      <el-button type="primary" size="small">
         保存
       </el-button>
     )
-  },
+  }
 })

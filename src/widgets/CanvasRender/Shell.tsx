@@ -9,7 +9,7 @@ import { useDndActionStore } from '@/store/dnd-action'
 export const Shell = defineComponent({
   name: 'Shell',
   props: {
-    item: { type: Object as PropType<ITreeSchema>, required: true },
+    item: { type: Object as PropType<ITreeSchema>, required: true }
   },
   setup(props, { slots, attrs }) {
     const store = useOutlineStore()
@@ -33,9 +33,10 @@ export const Shell = defineComponent({
         drop={dropHandle}
         accept={DndTypes.ITEM}
         outline={store.outline}
-        paddingLine={store.paddingLine}>
+        paddingLine={store.paddingLine}
+      >
         {slots.default?.()}
       </DnDShell>
     )
-  },
+  }
 })

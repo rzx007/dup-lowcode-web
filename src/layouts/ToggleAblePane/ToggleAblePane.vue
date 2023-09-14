@@ -15,7 +15,7 @@ import { ref } from 'vue'
 
 withDefaults(defineProps<{ toggleType?: ToggleType; width?: string }>(), {
   toggleType: ToggleType.left,
-  width: '260px',
+  width: '260px'
 })
 const toggled = ref<boolean>(false)
 const handleToggle = () => {

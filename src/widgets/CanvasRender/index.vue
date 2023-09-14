@@ -20,10 +20,10 @@ const [collect, drop] = useDrop(() => ({
     const itemSchema = addItems(dragItem.schema)
     return itemSchema
   },
-  collect: (monitor) => ({
+  collect: monitor => ({
     isOver: monitor.isOver(),
-    canDrop: monitor.canDrop(),
-  }),
+    canDrop: monitor.canDrop()
+  })
 }))
 const { isOver, canDrop } = toRefs(collect)
 </script>

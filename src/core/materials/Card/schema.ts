@@ -7,7 +7,7 @@ const options = {
       'x-field': {
         name: 'shadow',
         label: '卡片阴影',
-        defaultValue: 'never',
+        defaultValue: 'never'
       },
       props: {
         optionType: 'button',
@@ -16,20 +16,20 @@ const options = {
         options: [
           {
             label: '总是',
-            value: 'always',
+            value: 'always'
           },
           {
             label: '绝不',
-            value: 'never',
+            value: 'never'
           },
           {
             label: '悬浮',
-            value: 'hover',
-          },
-        ],
-      },
-    },
-  ],
+            value: 'hover'
+          }
+        ]
+      }
+    }
+  ]
 }
 
 export const cardSchema = createSchema(options)

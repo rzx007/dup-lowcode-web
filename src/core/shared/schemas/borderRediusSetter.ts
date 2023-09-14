@@ -7,29 +7,29 @@ export const borderRediusSetter = {
         type: 'fragment',
         fragmentFields: [
           {
-            name: 'borderTopLeftRadius',
+            name: 'borderTopLeftRadius'
           },
           {
-            name: 'borderTopRightRadius',
+            name: 'borderTopRightRadius'
           },
           {
-            name: 'borderBottomRightRadius',
+            name: 'borderBottomRightRadius'
           },
           {
-            name: 'borderBottomLeftRadius',
-          },
+            name: 'borderBottomLeftRadius'
+          }
         ],
         params: {
-          withBind: true,
-        },
+          withBind: true
+        }
       },
       props: {
         title: '$borderRadius',
         leftTopTitle: '$borderTopLeftRadius',
         rightTopTitle: '$borderTopRightRadius',
         leftBottomTitle: '$borderBottomLeftRadius',
-        rightBottomTitle: '$borderBottomRightRadius',
-      },
-    },
-  ],
+        rightBottomTitle: '$borderBottomRightRadius'
+      }
+    }
+  ]
 }

@@ -42,10 +42,10 @@ const [collect, drop] = useDrop(() => ({
   hover: (item: any, monitor) => {
     console.log('hover slot')
   },
-  collect: (monitor) => ({
+  collect: monitor => ({
     isOver: monitor.isOver(),
-    canDrop: monitor.canDrop(),
-  }),
+    canDrop: monitor.canDrop()
+  })
 }))
 const { canDrop, isOver } = toRefs(collect)
 </script>

@@ -14,7 +14,7 @@ export const LeftNav = defineComponent({
     activedKey: { type: String },
     defaultActivedKey: { type: String },
     items: { type: Array as PropType<ButtonItem[]> },
-    onActive: { type: Function },
+    onActive: { type: Function }
   },
   setup(props) {
     const actived = ref(props.defaultActivedKey)
@@ -27,10 +27,17 @@ export const LeftNav = defineComponent({
     }
     return () => (
       <>
-        {unref(items)?.map((item) => {
-          return <NavItem actived={actived.value === item.key} key={item.key} item={item} onSelect={handleSelect} />
+        {unref(items)?.map(item => {
+          return (
+            <NavItem
+              actived={actived.value === item.key}
+              key={item.key}
+              item={item}
+              onSelect={handleSelect}
+            />
+          )
         })}
       </>
     )
-  },
+  }
 })

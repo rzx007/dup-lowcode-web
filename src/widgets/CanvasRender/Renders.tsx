@@ -11,12 +11,12 @@ export const Renders = defineComponent({
   props: {
     data: {
       type: Array as PropType<ITreeSchema[]>,
-      default: () => [],
+      default: () => []
     },
     parentId: {
       type: String,
-      default: '',
-    },
+      default: ''
+    }
   },
   setup(props, _context) {
     const attrs = useAttrs()
@@ -38,7 +38,7 @@ export const Renders = defineComponent({
             const key = keys[index]
             const eventName = 'on' + capitalizeFirstLetter(key)
             const actions = controller[key] as Array<any>
-            const list = actions.map((action) => action)
+            const list = actions.map(action => action)
             eventArr[eventName] = (params?: any) => {
               console.log(eventName, list, params)
             }
@@ -53,18 +53,20 @@ export const Renders = defineComponent({
     }
     const reduceSlot = (item: ITreeSchema) => {
       const slots: { [key: string]: any } = {}
-      item.slots!.forEach((ele) => {
+      item.slots!.forEach(ele => {
         const name = slotName(ele)
         const children = ele![name] as ITreeSchema[]
         children.length
           ? (slots[name] = () => <Renders data={children} parentId={item.id} key={item.id} />)
-          : (slots[name] = () => <SlotPalcehodler parentId={item.id} slotName={name} itemSchema={item} key={item.id} />)
+          : (slots[name] = () => (
+              <SlotPalcehodler parentId={item.id} slotName={name} itemSchema={item} key={item.id} />
+            ))
       })
       return slots
     }
     return () => (
       <>
-        {props.data.map((item) => {
+        {props.data.map(item => {
           return (
             item?.componentName &&
             h(
@@ -80,7 +82,7 @@ export const Renders = defineComponent({
                         ...item.props!,
                         ...handleController(item),
                         ...attrs,
-                        style: toCss(item.style),
+                        style: toCss(item.style)
                       },
                       reduceSlot(item)
                     )
@@ -89,14 +91,14 @@ export const Renders = defineComponent({
                     ...item.props!,
                     ...handleController(item),
                     ...attrs,
-                    style: toCss(item.style),
+                    style: toCss(item.style)
                   })
-                },
+                }
               }
             )
           )
         })}
       </>
     )
-  },
+  }
 })

@@ -24,7 +24,7 @@ const [dropCollect, drop] = useDrop<DragItem, void, { handlerId: any; isShallowO
   collect(monitor) {
     return {
       handlerId: monitor.getHandlerId(),
-      isShallowOver: monitor.isOver({ shallow: true }),
+      isShallowOver: monitor.isOver({ shallow: true })
     }
   },
   hover: (item: any, monitor) => {
@@ -40,7 +40,7 @@ const [dropCollect, drop] = useDrop<DragItem, void, { handlerId: any; isShallowO
     // 被放置的组件
     console.log(dragItem, dropItem, item.source)
     insertItems(dropItem, dragItem, item.source)
-  },
+  }
 })
 
 const [collect, drag] = useDrag({
@@ -58,8 +58,8 @@ const [collect, drag] = useDrag({
   },
   collect: (monitor: any) => ({
     isDragging: monitor.isDragging(),
-    item: monitor.getItem(),
-  }),
+    item: monitor.getItem()
+  })
 })
 
 const { handlerId, isShallowOver } = toRefs(dropCollect)
@@ -94,7 +94,13 @@ const clickHnadle = (e: MouseEvent) => {
 </script>
 
 <template>
-  <div :ref="setRef" class="shell-container" :style="{ opacity }" :data-handler-id="handlerId" @click="clickHnadle">
+  <div
+    :ref="setRef"
+    class="shell-container"
+    :style="{ opacity }"
+    :data-handler-id="handlerId"
+    @click="clickHnadle"
+  >
     <slot />
     <div v-if="isShallowOver && !isDragging" :class="['indicator']"></div>
   </div>

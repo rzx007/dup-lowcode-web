@@ -5,11 +5,11 @@ export const ActionItem = defineComponent({
   name: 'ActionItem',
   props: {
     data: {
-      type: Object as PropType<TeventType>,
+      type: Object as PropType<TeventType>
     },
     delEvent: {
-      type: Function as PropType<(arg: string | undefined) => void>,
-    },
+      type: Function as PropType<(arg: string | undefined) => void>
+    }
   },
   setup(props) {
     const open = ref(false)
@@ -19,31 +19,31 @@ export const ActionItem = defineComponent({
     const arrowIcon = computed(() => (open.value ? downIcon : upIcon))
 
     return () => (
-      <div class='event-item'>
-        <div class='event-item-header'>
+      <div class="event-item">
+        <div class="event-item-header">
           <div>{props.data?.label}</div>
-          <div class='header-toolbar'>
+          <div class="header-toolbar">
             <span>{addIcon}</span>
             <span onClick={() => props?.delEvent?.(props.data?.value)}>{delIcon}</span>
             <span onClick={clickHandler}>{arrowIcon.value}</span>
           </div>
         </div>
         {open.value && (
-          <ul class='item-content'>
-            {[1, 2].map((item) => {
+          <ul class="item-content">
+            {[1, 2].map(item => {
               return (
-                <li class='action-item'>
-                  <div class='action-header'>
-                    <div class='header-left'>
+                <li class="action-item">
+                  <div class="action-header">
+                    <div class="header-left">
                       <div>{dragIcon}</div>
                       <div>组件可见性</div>
                     </div>
-                    <div class='header-right'>
+                    <div class="header-right">
                       <span>{editIcon}</span>
                       <span>{del2Icon}</span>
                     </div>
                   </div>
-                  <div class='action-content'>
+                  <div class="action-content">
                     <div>隐藏文本框文本组件</div>
                   </div>
                 </li>
@@ -53,5 +53,5 @@ export const ActionItem = defineComponent({
         )}
       </div>
     )
-  },
+  }
 })

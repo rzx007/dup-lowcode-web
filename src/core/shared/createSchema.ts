@@ -7,7 +7,7 @@ export function createSchema(options: any = {}): any {
     propsTab,
     styleTab,
     controllerTab,
-    dataTab: [],
+    dataTab: []
   }
 }
 
@@ -16,20 +16,20 @@ const styleTab = [
     componentName: 'el-input',
     'x-field': {
       name: 'width',
-      label: '宽度',
+      label: '宽度'
     },
     props: {
-      type: 'text',
-    },
+      type: 'text'
+    }
   },
   {
     componentName: 'el-input',
     'x-field': {
       name: 'height',
-      label: '高度',
+      label: '高度'
     },
     props: {
-      type: 'text',
-    },
-  },
+      type: 'text'
+    }
+  }
 ]

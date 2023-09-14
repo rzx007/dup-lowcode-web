@@ -1,5 +1,10 @@
 <template>
-  <div :ref="drag" role="Box" :style="{ ...style, opacity }" :data-testid="`box-${nodeSchema.componentName}`">
+  <div
+    :ref="drag"
+    role="Box"
+    :style="{ ...style, opacity }"
+    :data-testid="`box-${nodeSchema.componentName}`"
+  >
     {{ nodeSchema.componentName }}
   </div>
 </template>
@@ -25,14 +30,14 @@ const style: CSSProperties = {
   padding: '0.5rem 1rem',
   marginRight: '1.5rem',
   marginBottom: '1.5rem',
-  cursor: 'move',
+  cursor: 'move'
 }
 
 const [collect, drag] = useDrag(() => ({
   type: props.dragType || ItemTypes.ITEM,
   item: () => ({
     source: 'tree',
-    schema: { id: uuidv4(), ...clone(props.nodeSchema, true) },
+    schema: { id: uuidv4(), ...clone(props.nodeSchema, true) }
   }),
   end: (item, monitor) => {
     const dropResult = monitor.getDropResult<DropResult>()
@@ -41,10 +46,10 @@ const [collect, drag] = useDrag(() => ({
       // alert(`You dropped ${item.name} into ${dropResult.name}!`)
     }
   },
-  collect: (monitor) => ({
+  collect: monitor => ({
     isDragging: monitor.isDragging(),
-    handlerId: monitor.getHandlerId(),
-  }),
+    handlerId: monitor.getHandlerId()
+  })
 }))
 
 const { isDragging } = toRefs(collect)

@@ -10,7 +10,7 @@ const style: CSSProperties = {
   marginRight: '1.5rem',
   marginBottom: '1.5rem',
   cursor: 'move',
-  float: 'left',
+  float: 'left'
 }
 
 const props = defineProps<{
@@ -22,9 +22,9 @@ const props = defineProps<{
 const [collect, drag] = useDrag(() => ({
   type: props.type,
   item: { name: props.name, type: props.type, ele: 'button' },
-  collect: (monitor) => ({
-    opacity: monitor.isDragging() ? 0.4 : 1,
-  }),
+  collect: monitor => ({
+    opacity: monitor.isDragging() ? 0.4 : 1
+  })
 }))
 const { opacity } = toRefs(collect)
 </script>
@@ -34,7 +34,7 @@ const { opacity } = toRefs(collect)
     role="Box"
     :style="{
       ...style,
-      opacity,
+      opacity
     }"
     data-testid="box"
   >

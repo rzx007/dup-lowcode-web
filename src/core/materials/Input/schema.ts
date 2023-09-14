@@ -7,83 +7,83 @@ const options = {
       'x-field': {
         name: 'type',
         label: '类型',
-        defaultValue: 'text',
+        defaultValue: 'text'
       },
       props: {
         childElement: 'el-option',
         options: [
           {
             value: 'text',
-            label: '输入框',
+            label: '输入框'
           },
           {
             value: 'textarea',
-            label: '文本框',
+            label: '文本框'
           },
           {
             value: 'file',
-            label: '文件',
+            label: '文件'
           },
           {
             value: 'number',
-            label: '数字',
+            label: '数字'
           },
           {
             value: 'password',
-            label: '密码',
-          },
-        ],
-      },
+            label: '密码'
+          }
+        ]
+      }
     },
     {
       componentName: 'el-input',
       'x-field': {
         name: 'placeholder',
-        label: '占位符',
-      },
+        label: '占位符'
+      }
     },
     {
       componentName: 'el-input',
       'x-field': {
         name: 'maxlength',
-        label: '最大长度',
+        label: '最大长度'
       },
       props: {
-        type: 'number',
-      },
+        type: 'number'
+      }
     },
     {
       componentName: 'el-input',
       'x-field': {
         name: 'minlength',
-        label: '最小长度',
+        label: '最小长度'
       },
       props: {
-        type: 'number',
-      },
+        type: 'number'
+      }
     },
     {
       componentName: 'el-switch',
       'x-field': {
         name: 'disabled',
         label: '禁用',
-        defaultValue: false,
-      },
+        defaultValue: false
+      }
     },
     {
       componentName: 'el-switch',
       'x-field': {
         name: 'clearable',
         label: '可清除',
-        defaultValue: false,
-      },
+        defaultValue: false
+      }
     },
     {
       componentName: 'el-radio-group',
       'x-field': {
         name: 'size',
         label: '尺寸',
-        defaultValue: 'default',
+        defaultValue: 'default'
       },
       props: {
         optionType: 'button',
@@ -92,20 +92,20 @@ const options = {
         options: [
           {
             label: '大',
-            value: 'large',
+            value: 'large'
           },
           {
             label: '中',
-            value: 'default',
+            value: 'default'
           },
           {
             label: '小',
-            value: 'small',
-          },
-        ],
-      },
-    },
-  ],
+            value: 'small'
+          }
+        ]
+      }
+    }
+  ]
 }
 
 export const inputSchema = createSchema(options)

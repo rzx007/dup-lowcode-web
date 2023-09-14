@@ -6,7 +6,11 @@
           <template v-for="(item, i) in tab?.children" :key="i">
             <el-col :span="7">{{ item['x-field']?.label }}</el-col>
             <el-col :span="17">
-              <component :is="item.componentName" v-bind="item.props" v-model="fields[tab.name][item['x-field']?.name]">
+              <component
+                :is="item.componentName"
+                v-bind="item.props"
+                v-model="fields[tab.name][item['x-field']?.name]"
+              >
                 <template v-if="eles.includes(item.componentName) && item.props?.options">
                   <component
                     :is="item.props?.childElement"
@@ -63,26 +67,26 @@ watch(
         {
           label: '属性',
           name: 'props',
-          children: propsTab || [],
+          children: propsTab || []
         },
         {
           label: '样式',
           name: 'style',
-          children: styleTab || [],
+          children: styleTab || []
         },
         {
           label: '数据',
           name: 'data',
-          children: dataTab || [],
-        },
+          children: dataTab || []
+        }
       ]
       if (controllerTab.length) {
         controllerList.value = [
           {
             label: '事件',
             name: 'controller',
-            children: controllerTab || [],
-          },
+            children: controllerTab || []
+          }
         ]
       }
       //@ts-ignore
@@ -98,11 +102,11 @@ watch(
           ...{
             onClick: (value: any) => {
               console.log('ZthButton.ts ~ changeMyInput ~ value', value)
-            },
-          },
+            }
+          }
         },
         style: { ...styleData, ...style },
-        data: { ...dataData, ...data },
+        data: { ...dataData, ...data }
       }
       updateComponent()
     })
@@ -115,7 +119,7 @@ const eles = ['el-radio-group', 'el-checkbox-group']
 const bindFormValue = (schema: any[]) => {
   const props: { [x: string]: any } = {}
   if (schema) {
-    schema.forEach((item) => {
+    schema.forEach(item => {
       const key: string = item['x-field']?.name || ''
       const defaultValue = item['x-field']?.defaultValue
       const value = defaultValue !== 'undefined' ? defaultValue : ''

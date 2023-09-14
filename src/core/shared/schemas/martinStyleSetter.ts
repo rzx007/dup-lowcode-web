@@ -7,29 +7,29 @@ export const martinStyleSetter = {
         type: 'fragment',
         fragmentFields: [
           {
-            name: 'marginTop',
+            name: 'marginTop'
           },
           {
-            name: 'marginRight',
+            name: 'marginRight'
           },
           {
-            name: 'marginBottom',
+            name: 'marginBottom'
           },
           {
-            name: 'marginLeft',
-          },
+            name: 'marginLeft'
+          }
         ],
         params: {
-          withBind: true,
-        },
+          withBind: true
+        }
       },
       props: {
         title: '$margin',
         topTitle: '$marginTop',
         rightTitle: '$marginRight',
         leftTitle: '$marginLeft',
-        bottomTitle: '$marginBottom',
-      },
-    },
-  ],
+        bottomTitle: '$marginBottom'
+      }
+    }
+  ]
 }

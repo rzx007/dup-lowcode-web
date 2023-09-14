@@ -13,14 +13,14 @@ export const SlotPalcehodler = defineComponent({
   name: 'SlotPalcehodler',
   props: {
     parentId: {
-      type: String,
+      type: String
     },
     slotName: {
-      type: String,
+      type: String
     },
     itemSchema: {
-      type: Object as PropType<ITreeSchema>,
-    },
+      type: Object as PropType<ITreeSchema>
+    }
   },
   setup(props) {
     const store = useDndActionStore()
@@ -47,10 +47,10 @@ export const SlotPalcehodler = defineComponent({
       // hover: (item: any, monitor) => {
       //   console.log('hover slot')
       // },
-      collect: (monitor) => ({
+      collect: monitor => ({
         isOver: monitor.isOver(),
-        canDrop: monitor.canDrop(),
-      }),
+        canDrop: monitor.canDrop()
+      })
     }))
     const { isOver } = toRefs(collect)
 
@@ -61,5 +61,5 @@ export const SlotPalcehodler = defineComponent({
         </div>
       )
     }
-  },
+  }
 })

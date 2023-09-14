@@ -7,8 +7,8 @@ export const PreviewRender = defineComponent({
     parentId: { type: String, required: false },
     data: {
       type: Array as PropType<ITreeSchema[]>,
-      required: true,
-    },
+      required: true
+    }
   },
   setup(props) {
     const attrs = useAttrs()
@@ -29,7 +29,7 @@ export const PreviewRender = defineComponent({
             const key = keys[index]
             const eventName = 'on' + capitalizeFirstLetter(key)
             const actions = controller[key] as Array<any>
-            const list = actions.map((action) => action)
+            const list = actions.map(action => action)
             eventArr[eventName] = () => {
               console.log(eventName, list)
             }
@@ -40,7 +40,7 @@ export const PreviewRender = defineComponent({
     }
     const reduceSlot = (item: ITreeSchema) => {
       const slots: { [key: string]: any } = {}
-      item.slots!.forEach((ele) => {
+      item.slots!.forEach(ele => {
         const name = slotName(ele)
         const children = ele![name] as ITreeSchema[]
         slots[name] = () => <PreviewRender data={children} parentId={item?.id}></PreviewRender>
@@ -49,7 +49,7 @@ export const PreviewRender = defineComponent({
     }
     return () => (
       <>
-        {props.data.map((item) => {
+        {props.data.map(item => {
           if (item.slots?.length) {
             return h(
               // @ts-ignore
@@ -58,7 +58,7 @@ export const PreviewRender = defineComponent({
                 ...item.props,
                 ...handleController(item),
                 ...attrs,
-                style: toCss(item?.style),
+                style: toCss(item?.style)
               },
               reduceSlot(item)
             )
@@ -68,10 +68,10 @@ export const PreviewRender = defineComponent({
             ...item.props,
             ...handleController(item),
             ...attrs,
-            style: toCss(item?.style),
+            style: toCss(item?.style)
           })
         })}
       </>
     )
-  },
+  }
 })

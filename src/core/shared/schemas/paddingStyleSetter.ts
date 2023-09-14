@@ -7,29 +7,29 @@ export const paddingStyleSetter = {
         type: 'fragment',
         fragmentFields: [
           {
-            name: 'paddingTop',
+            name: 'paddingTop'
           },
           {
-            name: 'paddingRight',
+            name: 'paddingRight'
           },
           {
-            name: 'paddingBottom',
+            name: 'paddingBottom'
           },
           {
-            name: 'paddingLeft',
-          },
+            name: 'paddingLeft'
+          }
         ],
         params: {
-          withBind: true,
-        },
+          withBind: true
+        }
       },
       props: {
         title: '$padding',
         topTitle: '$paddingTop',
         rightTitle: '$paddingRight',
         leftTitle: '$paddingLeft',
-        bottomTitle: '$paddingBottom',
-      },
-    },
-  ],
+        bottomTitle: '$paddingBottom'
+      }
+    }
+  ]
 }

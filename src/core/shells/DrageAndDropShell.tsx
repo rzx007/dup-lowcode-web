@@ -1,4 +1,14 @@
-import { defineComponent, computed, onMounted, ref, unref, PropType, CSSProperties, inject, watch } from 'vue'
+import {
+  defineComponent,
+  computed,
+  onMounted,
+  ref,
+  unref,
+  PropType,
+  CSSProperties,
+  inject,
+  watch
+} from 'vue'
 import { DragSourceMonitor, DropTargetMonitor, useDrag, useDrop } from 'vue3-dnd'
 import { toRefs } from '@vueuse/core'
 import { DndTypes, IDragItems } from '@/core/interfaces/dndTypes'
@@ -13,24 +23,28 @@ export const DnDShell = defineComponent({
     item: { type: Object as PropType<ITreeSchema>, required: true },
     drop: {
       type: Function as PropType<(arg0: any, monitor: DropTargetMonitor) => any>,
-      required: false,
+      required: false
     },
     hover: {
       type: Function as PropType<(item: any, monitor: DropTargetMonitor) => void>,
-      required: false,
+      required: false
     },
     accept: { type: String, default: DndTypes.ITEM, required: false },
     outline: { type: Boolean, default: false, required: false },
-    paddingLine: { type: Boolean, default: false, required: false },
+    paddingLine: { type: Boolean, default: false, required: false }
   },
   emits: ['click'],
   setup(props, { slots, emit }) {
-    const [dropCollect, drop] = useDrop<IDragItems, void, { handlerId: any; isShallowOver: boolean }>({
+    const [dropCollect, drop] = useDrop<
+      IDragItems,
+      void,
+      { handlerId: any; isShallowOver: boolean }
+    >({
       accept: DndTypes.SHELL,
       collect(monitor) {
         return {
           handlerId: monitor.getHandlerId(),
-          isShallowOver: monitor.isOver({ shallow: true }),
+          isShallowOver: monitor.isOver({ shallow: true })
         }
       },
       hover: (item: any, monitor: DropTargetMonitor) => {
@@ -39,7 +53,7 @@ export const DnDShell = defineComponent({
       drop(item: IDragItems, monitor: DropTargetMonitor) {
         return props.drop?.(item, monitor)
         // 被放置的组件
-      },
+      }
     })
 
     const [dragCollect, drag] = useDrag({
@@ -55,8 +69,8 @@ export const DnDShell = defineComponent({
       },
       collect: (monitor: DragSourceMonitor) => ({
         isDragging: monitor.isDragging(),
-        item: monitor.getItem(),
-      }),
+        item: monitor.getItem()
+      })
     })
 
     const { handlerId, isShallowOver } = toRefs(dropCollect)
@@ -87,7 +101,8 @@ export const DnDShell = defineComponent({
       return props.paddingLine ? 'zth-shell-padding-line' : ''
     })
 
-    const [activedOutline, selectedOutline] = inject<[ActivedOutline, SelectedOutline]>(DESIGER_PROVIDE)!
+    const [activedOutline, selectedOutline] =
+      inject<[ActivedOutline, SelectedOutline]>(DESIGER_PROVIDE)!
     const mounseoverHnadle = (e: MouseEvent) => {
       e.preventDefault()
       e.stopPropagation()
@@ -101,7 +116,7 @@ export const DnDShell = defineComponent({
       emit('click', props.item)
     }
     // 拖拽时移除选中
-    watch(isDragging, (val) => {
+    watch(isDragging, val => {
       if (val) {
         selectedOutline!.handleOutNode()
       }
@@ -114,10 +129,11 @@ export const DnDShell = defineComponent({
         data-handler-id={handlerId.value}
         onMouseover={mounseoverHnadle}
         onMouseleave={activedOutline!.handleOutNode}
-        onClick={clickHandle}>
+        onClick={clickHandle}
+      >
         {slots.default?.()}
-        {isShallowOver.value && !isDragging.value ? <div class='indicator'></div> : null}
+        {isShallowOver.value && !isDragging.value ? <div class="indicator"></div> : null}
       </div>
     )
-  },
+  }
 })

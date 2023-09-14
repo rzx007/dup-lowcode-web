@@ -5,7 +5,10 @@ export const DESIGER_PROVIDE = Symbol('DESIGER_PROVIDE')
 export const Designer = defineComponent({
   name: 'Designer',
   setup(_props, { slots }) {
-    provide<[ActivedOutline, SelectedOutline]>(DESIGER_PROVIDE, [new ActivedOutline(), new SelectedOutline()])
+    provide<[ActivedOutline, SelectedOutline]>(DESIGER_PROVIDE, [
+      new ActivedOutline(),
+      new SelectedOutline()
+    ])
     return () => <>{slots.default?.()}</>
-  },
+  }
 })

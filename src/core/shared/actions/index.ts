@@ -10,7 +10,7 @@ export class Actions {
   public executeAction(action: Taction) {
     this.currentId = action.componentId
   }
-  public updateComponent() { }
+  public updateComponent() {}
   public use(actionFn: TactionFn) {
     this.actions.push(actionFn)
   }

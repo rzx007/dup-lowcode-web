@@ -7,10 +7,10 @@ export default (slots: any) => {
       const [defaultSlot] = slots.default()
       // expose ref
       context.expose({
-        slotRef,
+        slotRef
       })
       return () => h(defaultSlot, { ref: slotRef })
-    },
+    }
   })
 }
 // https://www.zhihu.com/question/520024036

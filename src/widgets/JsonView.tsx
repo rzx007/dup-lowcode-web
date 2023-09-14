@@ -12,7 +12,7 @@ export const JsonView = defineComponent({
       get: () => JSON.stringify(dndStore.data, null, 2),
       set: (codeStr: string) => {
         dndStore.data = JSON.parse(codeStr)
-      },
+      }
     })
     const language = ref('json')
     const editorMounted = (editor: monaco.editor.IStandaloneCodeEditor) => {
@@ -23,10 +23,11 @@ export const JsonView = defineComponent({
         <monacoEditor
           v-model={code.value}
           language={language.value}
-          width='100%'
-          height='100%'
-          onEditorMounted={editorMounted}></monacoEditor>
+          width="100%"
+          height="100%"
+          onEditorMounted={editorMounted}
+        ></monacoEditor>
       )
     }
-  },
+  }
 })

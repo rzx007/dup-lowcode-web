@@ -7,31 +7,31 @@ export const displaySetter = {
         type: 'fragment',
         fragmentFields: [
           {
-            name: 'display',
+            name: 'display'
           },
           {
-            name: 'flexDirection',
+            name: 'flexDirection'
           },
           {
-            name: 'flexWrap',
+            name: 'flexWrap'
           },
           {
-            name: 'alignContent',
+            name: 'alignContent'
           },
           {
-            name: 'justifyContent',
+            name: 'justifyContent'
           },
           {
-            name: 'alignItems',
-          },
+            name: 'alignItems'
+          }
         ],
         params: {
-          withBind: true,
-        },
+          withBind: true
+        }
       },
       props: {
-        title: '$display',
-      },
-    },
-  ],
+        title: '$display'
+      }
+    }
+  ]
 }

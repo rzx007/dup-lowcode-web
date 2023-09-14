@@ -17,9 +17,9 @@ export const useFieldsStore = defineStore('fieldsStore', () => {
 
   // 当前组件的设计schema
   const setCurDesignerSchema = () => {
-    materials.forEach((eles) => {
+    materials.forEach(eles => {
       if (eles.items) {
-        eles.items.forEach((item) => {
+        eles.items.forEach(item => {
           if (item.componentName === currentNode.value?.componentName) {
             currentDesignerSchema.value = item.designerSchema
           }
@@ -60,7 +60,7 @@ export const useFieldsStore = defineStore('fieldsStore', () => {
           break
         }
         if (item?.slots?.length) {
-          item.slots.forEach((slotItem) => {
+          item.slots.forEach(slotItem => {
             const slots = slotName(slotItem)
             findComponent(slotItem[slots])
           })

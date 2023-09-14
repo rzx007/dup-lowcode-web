@@ -4,7 +4,7 @@ export const fontStyleSetter = {
     {
       componentName: 'FoldBase',
       props: {
-        title: '$font',
+        title: '$font'
       },
       children: [
         {
@@ -12,11 +12,11 @@ export const fontStyleSetter = {
           'x-field': {
             name: 'fontFamily',
             params: {
-              withBind: true,
-            },
-          },
-        },
-      ],
+              withBind: true
+            }
+          }
+        }
+      ]
     },
     {
       componentName: 'FoldExtra',
@@ -24,91 +24,91 @@ export const fontStyleSetter = {
         {
           componentName: 'FontWeightInput',
           props: {
-            title: '$fontWeight',
+            title: '$fontWeight'
           },
           'x-field': {
             name: 'fontWeight',
             params: {
-              withBind: true,
-            },
-          },
+              withBind: true
+            }
+          }
         },
         {
           componentName: 'FontStyleSelect',
           props: {
-            title: '$fontStyle',
+            title: '$fontStyle'
           },
           'x-field': {
             name: 'fontStyle',
             params: {
-              withBind: true,
-            },
-          },
+              withBind: true
+            }
+          }
         },
         {
           componentName: 'FontColorInput',
           props: {
             title: '$fontColor',
-            span: 24,
+            span: 24
           },
           'x-field': {
             name: 'color',
             params: {
-              withBind: true,
-            },
-          },
+              withBind: true
+            }
+          }
         },
         {
           componentName: 'FontSizeInput',
           props: {
             title: '$fontSize',
-            span: 12,
+            span: 12
           },
           'x-field': {
             name: 'fontSize',
             params: {
-              withBind: true,
-            },
-          },
+              withBind: true
+            }
+          }
         },
         {
           componentName: 'FontLineHeightInput',
           props: {
             title: '$fontLineHeight',
-            span: 12,
+            span: 12
           },
           'x-field': {
             name: 'lineHeight',
             params: {
-              withBind: true,
-            },
-          },
+              withBind: true
+            }
+          }
         },
         {
           componentName: 'TextAlignSelect',
           props: {
-            title: '$textAlign',
+            title: '$textAlign'
           },
           'x-field': {
             name: 'textAlign',
             params: {
-              withBind: true,
-            },
-          },
+              withBind: true
+            }
+          }
         },
         {
           componentName: 'FontDecorationSelect',
           props: {
-            title: '$fontDecoration',
+            title: '$fontDecoration'
           },
           'x-field': {
             name: 'textDecoration',
             params: {
-              withBind: true,
-            },
-          },
-        },
-      ],
-    },
-  ],
+              withBind: true
+            }
+          }
+        }
+      ]
+    }
+  ]
 }

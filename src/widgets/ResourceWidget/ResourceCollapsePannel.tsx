@@ -4,7 +4,7 @@ import { CSSProperties, computed, defineComponent, ref } from 'vue'
 export const ResourceCollapsePannel = defineComponent({
   name: 'ResourceCollapsePannel',
   props: {
-    title: { type: String, required: true },
+    title: { type: String, required: true }
   },
   setup(props, { slots }) {
     const collapse = ref(true)
@@ -14,19 +14,21 @@ export const ResourceCollapsePannel = defineComponent({
     }
     const style = computed<CSSProperties>(() => {
       return {
-        display: collapse.value ? 'block' : 'none',
+        display: collapse.value ? 'block' : 'none'
       }
     })
     return () => (
-      <div class='component-collapse'>
-        <div class='title' onClick={handleCollapseClick}>
-          <el-icon style='margin-right: 6px;'>{collapse.value ? <ArrowDown /> : <ArrowRight />}</el-icon>
+      <div class="component-collapse">
+        <div class="title" onClick={handleCollapseClick}>
+          <el-icon style="margin-right: 6px;">
+            {collapse.value ? <ArrowDown /> : <ArrowRight />}
+          </el-icon>
           {props.title}
         </div>
-        <div class='collapse-content' style={style.value}>
+        <div class="collapse-content" style={style.value}>
           <el-row gutter={0}>{slots.default?.()}</el-row>
         </div>
       </div>
     )
-  },
+  }
 })

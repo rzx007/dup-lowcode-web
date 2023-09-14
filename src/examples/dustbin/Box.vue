@@ -23,13 +23,13 @@ const style = {
   marginRight: '1.5rem',
   marginBottom: '1.5rem',
   cursor: 'move',
-  float: 'left',
+  float: 'left'
 }
 
 const [collect, drag] = useDrag(() => ({
   type: ItemTypes.BOX,
   item: () => ({
-    name: props.name,
+    name: props.name
   }),
   end: (item, monitor) => {
     const dropResult = monitor.getDropResult<DropResult>()
@@ -37,10 +37,10 @@ const [collect, drag] = useDrag(() => ({
       alert(`You dropped ${item.name} into ${dropResult.name}!`)
     }
   },
-  collect: (monitor) => ({
+  collect: monitor => ({
     isDragging: monitor.isDragging(),
-    handlerId: monitor.getHandlerId(),
-  }),
+    handlerId: monitor.getHandlerId()
+  })
 }))
 
 const { isDragging } = toRefs(collect)

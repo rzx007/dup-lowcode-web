@@ -6,14 +6,14 @@ export const CenterContent = defineComponent({
   props: {
     style: {
       type: Object as () => CSSProperties,
-      default: () => ({}),
-    },
+      default: () => ({})
+    }
   },
   setup(props, { slots }) {
     return () => (
-      <div class='zth-center-content' style={props.style}>
+      <div class="zth-center-content" style={props.style}>
         {slots.default?.()}
       </div>
     )
-  },
+  }
 })

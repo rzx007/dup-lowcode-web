@@ -10,14 +10,14 @@ export type MaterialGroup = {
 export const materials: MaterialGroup[] = [
   {
     titleKey: '基础组件',
-    items: [ButtonMaterial, InputMaterial, CardMaterial],
+    items: [ButtonMaterial, InputMaterial, CardMaterial]
   },
   {
     titleKey: '表单组件',
-    items: [],
+    items: []
   },
   {
     titleKey: '布局控件',
-    items: [LayoutMaterial],
-  },
+    items: [LayoutMaterial]
+  }
 ]

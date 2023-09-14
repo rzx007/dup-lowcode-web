@@ -29,15 +29,15 @@ const dustbins = ref<DustbinState[]>([
   { accepts: [ItemTypes.FOOD], lastDroppedItem: null },
   {
     accepts: [ItemTypes.PAPER, ItemTypes.GLASS, NativeTypes.URL],
-    lastDroppedItem: null,
+    lastDroppedItem: null
   },
-  { accepts: [ItemTypes.PAPER, NativeTypes.FILE], lastDroppedItem: null },
+  { accepts: [ItemTypes.PAPER, NativeTypes.FILE], lastDroppedItem: null }
 ])
 
 const boxes = ref<BoxState[]>([
   { name: 'Bottle', type: ItemTypes.GLASS },
   { name: 'Banana', type: ItemTypes.FOOD },
-  { name: 'Magazine', type: ItemTypes.PAPER },
+  { name: 'Magazine', type: ItemTypes.PAPER }
 ])
 
 const droppedBoxNames = ref<string[]>([])

@@ -19,12 +19,16 @@ interface DragItem {
 }
 
 const card = ref<HTMLDivElement>()
-const [dropCollect, drop] = useDrop<DragItem, void, { handlerId: Identifier | null; isShallowOver: boolean }>({
+const [dropCollect, drop] = useDrop<
+  DragItem,
+  void,
+  { handlerId: Identifier | null; isShallowOver: boolean }
+>({
   accept: ItemTypes.CARD,
   collect(monitor) {
     return {
       handlerId: monitor.getHandlerId(),
-      isShallowOver: monitor.isOver({ shallow: true }),
+      isShallowOver: monitor.isOver({ shallow: true })
     }
   },
   drop(item: DragItem, monitor) {
@@ -43,7 +47,7 @@ const [dropCollect, drop] = useDrop<DragItem, void, { handlerId: Identifier | nu
     // but it's good here for the sake of performance
     // to avoid expensive index searches.
     item.index = hoverIndex
-  },
+  }
 })
 
 const [collect, drag] = useDrag({
@@ -52,8 +56,8 @@ const [collect, drag] = useDrag({
     return { id: props.id, index: props.index }
   },
   collect: (monitor: any) => ({
-    isDragging: monitor.isDragging(),
-  }),
+    isDragging: monitor.isDragging()
+  })
 })
 
 const { handlerId, isShallowOver } = toRefs(dropCollect)
@@ -68,7 +72,10 @@ const setRef = (el: any) => drag(drop(el))
     <div :ref="setRef" class="card" :style="{ opacity }" :data-handler-id="handlerId">
       {{ text }}
     </div>
-    <div v-if="isShallowOver && !isDragging" :class="['indicator', { first: props.index === 0 }]"></div>
+    <div
+      v-if="isShallowOver && !isDragging"
+      :class="['indicator', { first: props.index === 0 }]"
+    ></div>
   </div>
 </template>
 

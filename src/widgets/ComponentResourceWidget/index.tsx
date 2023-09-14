@@ -11,7 +11,7 @@ export interface DropResult {
 export const ComponentResourceWidget = defineComponent({
   props: {
     meterial: { type: Object as PropType<IComponentMaterial>, required: true },
-    accept: { type: String, default: DndTypes.SHELL },
+    accept: { type: String, default: DndTypes.SHELL }
   },
   setup(props) {
     const color: string = props.meterial?.resource?.color || '#409EFF'
@@ -23,19 +23,19 @@ export const ComponentResourceWidget = defineComponent({
       return obj
     })
     const colorStyle = {
-      color,
+      color
     }
     return () => (
       <el-col span={8}>
         <DrageShell accept={props.accept} meterial={meterial.value}>
-          <div class='resource-widget'>
-            <div class='resource-icon' style={colorStyle}>
+          <div class="resource-widget">
+            <div class="resource-icon" style={colorStyle}>
               {props.meterial?.resource?.icon}
             </div>
-            <div class='resource-text'>{props.meterial?.resource?.name}</div>
+            <div class="resource-text">{props.meterial?.resource?.name}</div>
           </div>
         </DrageShell>
       </el-col>
     )
-  },
+  }
 })

@@ -4,7 +4,7 @@ import { h, defineComponent, useAttrs } from 'vue'
 export const ZthButton = defineComponent({
   name: 'ZthButton',
   props: {
-    title: { type: String, default: '按钮' },
+    title: { type: String, default: '按钮' }
   },
   setup(props, _context) {
     const attr = useAttrs()
@@ -17,13 +17,13 @@ export const ZthButton = defineComponent({
             // onClick: (value: any) => {
             //   console.log('ZthButton.ts ~ changeMyInput ~ value', value)
             // }
-          },
+          }
         },
         {
-          default: () => props.title,
+          default: () => props.title
         }
       )
-  },
+  }
 })
 // {
 //   "controller": {

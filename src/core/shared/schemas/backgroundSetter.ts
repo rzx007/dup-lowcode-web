@@ -4,7 +4,7 @@ export const backgroundSetter: any = {
     {
       componentName: 'FoldBase',
       props: {
-        title: '$background',
+        title: '$background'
       },
       children: [
         {
@@ -12,11 +12,11 @@ export const backgroundSetter: any = {
           'x-field': {
             name: 'backgroundColor',
             params: {
-              withBind: true,
-            },
-          },
-        },
-      ],
+              withBind: true
+            }
+          }
+        }
+      ]
     },
     {
       componentName: 'FoldExtra',
@@ -24,52 +24,52 @@ export const backgroundSetter: any = {
         {
           componentName: 'BackgroundImageInput',
           props: {
-            title: '$image',
+            title: '$image'
           },
           'x-field': {
             name: 'backgroundImage',
             params: {
-              withBind: true,
-            },
-          },
+              withBind: true
+            }
+          }
         },
         {
           componentName: 'BackgroundSizeInput',
           props: {
-            title: '$imageSize',
+            title: '$imageSize'
           },
           'x-field': {
             name: 'backgroundSize',
             params: {
-              withBind: true,
-            },
-          },
+              withBind: true
+            }
+          }
         },
         {
           componentName: 'BackgroundRepeatInput',
           props: {
-            title: '$repeat',
+            title: '$repeat'
           },
           'x-field': {
             name: 'backgroundRepeat',
             params: {
-              withBind: true,
-            },
-          },
+              withBind: true
+            }
+          }
         },
         {
           componentName: 'BackgroundPositionInput',
           props: {
-            title: '$position',
+            title: '$position'
           },
           'x-field': {
             name: 'backgroundPosition',
             params: {
-              withBind: true,
-            },
-          },
-        },
-      ],
-    },
-  ],
+              withBind: true
+            }
+          }
+        }
+      ]
+    }
+  ]
 }

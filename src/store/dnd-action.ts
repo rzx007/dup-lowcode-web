@@ -22,7 +22,7 @@ export const useDndActionStore = defineStore('dndActionStore', () => {
     findIndex(dropItem.id, data.value, (list, index) => {
       const item = list[index]
       item.slots = item.slots || [{ default: [] }]
-      item.slots.forEach((slotItem) => {
+      item.slots.forEach(slotItem => {
         if (Object.keys(slotItem)[0] === slotName) {
           slotItem[slotName].push(dragItem)
         }
@@ -61,7 +61,11 @@ export const useDndActionStore = defineStore('dndActionStore', () => {
 })
 
 // 根据id寻找节点
-function findIndex(id: string, list: ITreeSchema[], callback: (list: ITreeSchema[], index: number) => void) {
+function findIndex(
+  id: string,
+  list: ITreeSchema[],
+  callback: (list: ITreeSchema[], index: number) => void
+) {
   if (!list) {
     return
   }

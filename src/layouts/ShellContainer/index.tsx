@@ -4,6 +4,6 @@ import './style.scss'
 export const ShellContainer = defineComponent({
   name: 'ShellContainer',
   setup(_props, { slots }) {
-    return () => <div class='zth-shell-container'>{slots.default?.()}</div>
-  },
+    return () => <div class="zth-shell-container">{slots.default?.()}</div>
+  }
 })

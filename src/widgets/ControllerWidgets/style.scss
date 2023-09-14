@@ -44,18 +44,18 @@
     justify-content: flex-start;
     list-style-type: none;
     margin: 0;
-    padding-left: .75rem;
-    padding-right: .75rem;
-    padding-top: .75rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.75rem;
     box-sizing: border-box;
     font-size: 0.75rem;
     .action-item {
       background: var(--el-color-info-light-9);
       border: 1 solid transparent;
       box-sizing: border-box;
-      border-radius: .25rem;
-      margin-bottom: .75rem;
-      padding: .5rem;
+      border-radius: 0.25rem;
+      margin-bottom: 0.75rem;
+      padding: 0.5rem;
       width: 100%;
       .action-header {
         display: flex;
@@ -76,7 +76,7 @@
         font-weight: 400;
         letter-spacing: 0;
         line-height: 1.25rem;
-        margin-top: .25rem;
+        margin-top: 0.25rem;
         max-width: 14rem;
         overflow: hidden;
         padding-left: 1.25rem;

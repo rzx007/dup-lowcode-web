@@ -10,32 +10,32 @@ interface Item {
 const cards = ref<Item[]>([
   {
     id: 1,
-    text: 'Write a cool JS library',
+    text: 'Write a cool JS library'
   },
   {
     id: 2,
-    text: 'Make it generic enough',
+    text: 'Make it generic enough'
   },
   {
     id: 3,
-    text: 'Write README',
+    text: 'Write README'
   },
   {
     id: 4,
-    text: 'Create some examples',
+    text: 'Create some examples'
   },
   {
     id: 5,
-    text: 'Spam in Twitter and IRC to promote it (note that this element is taller than the others)',
+    text: 'Spam in Twitter and IRC to promote it (note that this element is taller than the others)'
   },
   {
     id: 6,
-    text: '???',
+    text: '???'
   },
   {
     id: 7,
-    text: 'PROFIT',
-  },
+    text: 'PROFIT'
+  }
 ])
 
 const moveCard = (dragIndex: number, hoverIndex: number) => {

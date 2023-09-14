@@ -10,14 +10,14 @@ export const DrageShell = defineComponent({
   name: 'DrageShell',
   props: {
     meterial: { type: Object as PropType<IComponentMaterial>, required: true },
-    accept: { type: String, default: DndTypes.SHELL },
+    accept: { type: String, default: DndTypes.SHELL }
   },
   setup(props, { slots }) {
     const [collect, drag] = useDrag(() => ({
       type: props.accept || DndTypes.SHELL,
       item: () => ({
         source: 'tree',
-        schema: { id: uuidv4(), ...clone(props.meterial, true) } as ITreeSchema,
+        schema: { id: uuidv4(), ...clone(props.meterial, true) } as ITreeSchema
       }),
       end: (item, monitor) => {
         const dropResult = monitor.getDropResult<IDragItems | undefined>()
@@ -25,10 +25,10 @@ export const DrageShell = defineComponent({
           console.log(dropResult)
         }
       },
-      collect: (monitor) => ({
+      collect: monitor => ({
         isDragging: monitor.isDragging(),
-        handlerId: monitor.getHandlerId(),
-      }),
+        handlerId: monitor.getHandlerId()
+      })
     }))
 
     const { isDragging } = toRefs(collect)
@@ -39,5 +39,5 @@ export const DrageShell = defineComponent({
         {slots.default?.()}
       </div>
     )
-  },
+  }
 })

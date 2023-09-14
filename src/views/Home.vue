@@ -15,7 +15,10 @@
           </LeftSidebar>
           <ToggleAblePane :toggle-type="ToggleType.right">
             <PagesWidget v-show="activedKey === LeftNavType.pages"></PagesWidget>
-            <ResourceWidget v-show="activedKey === LeftNavType.compoents" :accept="dragType"></ResourceWidget>
+            <ResourceWidget
+              v-show="activedKey === LeftNavType.compoents"
+              :accept="dragType"
+            ></ResourceWidget>
             <HistoryWidget v-show="activedKey === LeftNavType.history"></HistoryWidget>
             <OutlineWidget v-show="activedKey === LeftNavType.outline"></OutlineWidget>
           </ToggleAblePane>
@@ -37,7 +40,15 @@ import { SaveButton } from '@/widgets/SaveButton'
 import { LeftNav } from '@/widgets/LeftNav'
 import { Logo } from '@/widgets/Logo'
 import { componentsIcon, historyIcon, outlineIcon, document } from '@/icons'
-import { Workbench, ShellContainer, Topbar, ToggleAblePane, ToggleType, LeftSidebar, CenterContent } from '@/layouts'
+import {
+  Workbench,
+  ShellContainer,
+  Topbar,
+  ToggleAblePane,
+  ToggleType,
+  LeftSidebar,
+  CenterContent
+} from '@/layouts'
 import { DocumentView } from '@/widgets/DocumentView'
 import { ButtonItem } from '@/widgets/LeftNav/NavItem'
 import { ResourceWidget } from '@/widgets/ResourceWidget'
@@ -54,30 +65,30 @@ enum LeftNavType {
   pages = 'pages',
   compoents = 'components',
   outline = 'outline',
-  history = 'history',
+  history = 'history'
 }
 
 const navList: ButtonItem[] = [
   {
     key: 'pages',
     title: '页面',
-    icon: document,
+    icon: document
   },
   {
     key: 'components',
     title: '组件',
-    icon: componentsIcon,
+    icon: componentsIcon
   },
   {
     key: 'outline',
     title: '大纲树',
-    icon: outlineIcon,
+    icon: outlineIcon
   },
   {
     key: 'history',
     title: '历史',
-    icon: historyIcon,
-  },
+    icon: historyIcon
+  }
 ]
 
 const activedKey = ref(LeftNavType.compoents)

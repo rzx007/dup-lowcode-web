@@ -4,7 +4,7 @@ import { PropType, defineComponent, toRefs } from 'vue'
 
 export enum ToggleType {
   left = 'left',
-  right = 'right',
+  right = 'right'
 }
 
 export const ToggleButton = defineComponent({
@@ -12,16 +12,16 @@ export const ToggleButton = defineComponent({
   props: {
     toggleType: {
       type: String,
-      default: ToggleType.left,
+      default: ToggleType.left
     },
     toggled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     onClick: {
       type: Function as PropType<(e: MouseEvent) => void>,
-      default: () => null,
-    },
+      default: () => null
+    }
   },
   setup(props) {
     const { toggleType, toggled } = toRefs(props)
@@ -33,5 +33,5 @@ export const ToggleButton = defineComponent({
         <el-icon>{toggled.value ? rightIcon : lefIcon}</el-icon>
       </div>
     )
-  },
+  }
 })

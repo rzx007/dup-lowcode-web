@@ -4,8 +4,8 @@ import { App } from 'vue'
 const components = [ZthLayout, ZthButton]
 export default {
   install(app: App, options: any) {
-    components.forEach((component) => {
+    components.forEach(component => {
       app.component(component.name, component)
     })
-  },
+  }
 }

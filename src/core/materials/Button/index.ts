@@ -12,25 +12,25 @@ export const ButtonMaterial: IComponentMaterial = {
     // 初始化属性
     type: 'primary',
     size: 'default',
-    round: true,
+    round: true
   },
   controller: {
     click: [
       {
         componentId: '23432432',
-        actionType: 'hidden',
-      },
+        actionType: 'hidden'
+      }
     ],
     mouseenter: [
       {
         componentId: '23432432',
-        actionType: 'hidden',
-      },
-    ],
+        actionType: 'hidden'
+      }
+    ]
   },
   resource: {
     name: name,
     icon: buttonIcon,
-    color: '#dfa324',
-  },
+    color: '#dfa324'
+  }
 }

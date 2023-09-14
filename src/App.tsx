@@ -6,5 +6,5 @@ export const App = defineComponent({
     return () => {
       return <RouterView />
     }
-  },
+  }
 })

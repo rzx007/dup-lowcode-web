@@ -5,5 +5,5 @@ export const ThemeButton = defineComponent({
   name: 'ThemeButton',
   setup() {
     return () => <SwitchIcon />
-  },
+  }
 })

@@ -7,7 +7,7 @@ export default defineComponent({
     const iframeAppRef = ref<App>()
     const frame = ref()
     const vueInstance = getCurrentInstance()
-    const renderChildren = (event) => {
+    const renderChildren = event => {
       const frameEl = vueInstance?.proxy?.$el || frame.value || event.target
       if (!frameEl) {
         return null
@@ -25,17 +25,17 @@ export default defineComponent({
         provide() {
           return {
             window: win,
-            document: doc,
+            document: doc
           }
         },
         data() {
           return {
-            children: children?.slice(0),
+            children: children?.slice(0)
           }
         },
         render() {
           return h('div', this.children)
-        },
+        }
       })
 
       iframeApp.mount(el)
@@ -54,6 +54,6 @@ export default defineComponent({
     return () => {
       return h('iframe', { onload: renderChildren, ref: frame })
     }
-  },
+  }
 })
 </script>
