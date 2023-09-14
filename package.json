@@ -8,8 +8,10 @@
     "build": "vite build",
     "build:lint": "vue-tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
-    "prettier": "prettier --write ."
+    "eslint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
+    "prettier": "prettier --write .",
+    "prepare": "husky install",
+    "lint": "lint-staged --allow-empty --config ./lintstagedrc.json"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
@@ -27,6 +29,8 @@
     "xe-utils": "^3.5.12"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
     "@types/node": "^20.5.6",
     "@types/uuid": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "^6.7.0",
