@@ -25,5 +25,6 @@ const props = {
 
 if (value && typeof value === 'string' && isExpression(value)) {
   console.log(`执行代码： ${value}`)
+  console.log(parseJsStrToLte(value))
   console.log(browserRuntimeVM.execute(parseJsStrToLte(value), { props }))
 }

@@ -40,7 +40,7 @@ export class ActivedOutline {
       htmlDiv.style.top = numbToPx(rect.top)
       htmlDiv.style.height = numbToPx(rect.height - 2)
       htmlDiv.style.width = numbToPx(rect.width - 2)
-      htmlDiv.style.zIndex = (getMaxZIndex(element) + 1).toString()
+      htmlDiv.style.zIndex = (getMaxZIndex(element) + 10).toString()
       canvas?.appendChild(htmlDiv)
       this.outline = htmlDiv
       this.resizeObserver.observe(element)

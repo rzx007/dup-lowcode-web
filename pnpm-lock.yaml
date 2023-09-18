@@ -10,6 +10,7 @@ specifiers:
   '@typescript-eslint/parser': ^6.7.0
   '@vitejs/plugin-vue': ^4.2.3
   '@vitejs/plugin-vue-jsx': ^3.0.2
+  '@vue/compiler-sfc': ^3.3.4
   '@vueuse/core': ^9.13.0
   element-plus: ^2.3.9
   eslint: ^8.49.0
@@ -37,6 +38,7 @@ specifiers:
 
 dependencies:
   '@element-plus/icons-vue': 2.1.0_vue@3.3.4
+  '@vue/compiler-sfc': 3.3.4
   '@vueuse/core': 9.13.0_vue@3.3.4
   element-plus: 2.3.12_vue@3.3.4
   localforage: 1.10.0

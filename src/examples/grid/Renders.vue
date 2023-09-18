@@ -1,5 +1,5 @@
 <template>
-  <template v-for="(item, index) in dropItems" :key="item?.id">
+  <template v-for="item in dropItems" :key="item?.id">
     <Shell v-if="item?.componentName" :id="item?.id" :index="item?.id" :item-schema="item">
       <component :is="item.componentName" v-if="item.slots?.length" :item="item">
         <template v-for="(slot, i) in item?.slots" :key="i" #[slotName(slot)]>

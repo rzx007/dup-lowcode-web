@@ -58,7 +58,8 @@ export const PreviewRender = defineComponent({
                 ...item.props,
                 ...handleController(item),
                 ...attrs,
-                style: toCss(item?.style)
+                style: toCss(item?.style),
+                key: item.id
               },
               reduceSlot(item)
             )
@@ -68,7 +69,8 @@ export const PreviewRender = defineComponent({
             ...item.props,
             ...handleController(item),
             ...attrs,
-            style: toCss(item?.style)
+            style: toCss(item?.style),
+            key: item.id
           })
         })}
       </>

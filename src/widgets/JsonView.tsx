@@ -25,8 +25,7 @@ export const JsonView = defineComponent({
           language={language.value}
           width="100%"
           height="100%"
-          onEditorMounted={editorMounted}
-        ></monacoEditor>
+          onEditorMounted={editorMounted}></monacoEditor>
       )
     }
   }

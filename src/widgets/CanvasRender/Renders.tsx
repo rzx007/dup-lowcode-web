@@ -8,6 +8,7 @@ import './style.scss'
 
 export const Renders = defineComponent({
   name: 'Renders',
+  inheritAttrs: true,
   props: {
     data: {
       type: Array as PropType<ITreeSchema[]>,
@@ -57,9 +58,18 @@ export const Renders = defineComponent({
         const name = slotName(ele)
         const children = ele![name] as ITreeSchema[]
         children.length
-          ? (slots[name] = () => <Renders data={children} parentId={item.id} key={item.id} />)
-          : (slots[name] = () => (
-              <SlotPalcehodler parentId={item.id} slotName={name} itemSchema={item} key={item.id} />
+          ? (slots[name] = (params: any) => {
+              console.log({ ...params })
+              return <Renders data={children} parentId={item.id} key={item.id} slotScope={params} />
+            })
+          : (slots[name] = (params: any) => (
+              <SlotPalcehodler
+                parentId={item.id}
+                slotName={name}
+                itemSchema={item}
+                key={item.id}
+                slotScope={params}
+              />
             ))
       })
       return slots
@@ -82,7 +92,8 @@ export const Renders = defineComponent({
                         ...item.props!,
                         ...handleController(item),
                         ...attrs,
-                        style: toCss(item.style)
+                        style: toCss(item.style),
+                        key: item.id
                       },
                       reduceSlot(item)
                     )
@@ -91,7 +102,8 @@ export const Renders = defineComponent({
                     ...item.props!,
                     ...handleController(item),
                     ...attrs,
-                    style: toCss(item.style)
+                    style: toCss(item.style),
+                    key: item.id
                   })
                 }
               }
