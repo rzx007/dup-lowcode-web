@@ -23,8 +23,7 @@ export const ViewButton = defineComponent({
             size="small"
             type={type.value === DocumentType.DESIGN ? 'primary' : ''}
             bg={type.value === DocumentType.DESIGN}
-            onClick={() => changeDocumentType(DocumentType.DESIGN)}
-          >
+            onClick={() => changeDocumentType(DocumentType.DESIGN)}>
             {designIcon}
           </el-button>
         </el-tooltip>
@@ -35,8 +34,7 @@ export const ViewButton = defineComponent({
             size="small"
             type={type.value === DocumentType.JSON ? 'primary' : ''}
             bg={type.value === DocumentType.JSON}
-            onClick={() => changeDocumentType(DocumentType.JSON)}
-          >
+            onClick={() => changeDocumentType(DocumentType.JSON)}>
             {jsonIcon}
           </el-button>
         </el-tooltip>
@@ -47,8 +45,7 @@ export const ViewButton = defineComponent({
             size="small"
             type={type.value === DocumentType.PREVIEW ? 'primary' : ''}
             bg={type.value === DocumentType.PREVIEW}
-            onClick={() => changeDocumentType(DocumentType.PREVIEW)}
-          >
+            onClick={() => changeDocumentType(DocumentType.PREVIEW)}>
             {playIcon}
           </el-button>
         </el-tooltip>

@@ -27,8 +27,7 @@ export const AuxButtions = defineComponent({
             size="small"
             type={store.outline ? 'primary' : ''}
             bg={store.outline}
-            onClick={handleLine}
-          >
+            onClick={handleLine}>
             {lineIcon}
           </el-button>
         </el-tooltip>
@@ -39,8 +38,7 @@ export const AuxButtions = defineComponent({
             size="small"
             type={store.paddingLine ? 'primary' : ''}
             bg={store.paddingLine}
-            onClick={handleMargin}
-          >
+            onClick={handleMargin}>
             {marginIcon}
           </el-button>
         </el-tooltip>

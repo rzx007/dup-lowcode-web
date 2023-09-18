@@ -20,8 +20,7 @@ export const NavItem = defineComponent({
       <el-tooltip class="box-item" effect="dark" content={title} placement="right-start">
         <div
           class={['zth-left-nav-item', actived.value ? 'nav-item-active' : '']}
-          onClick={() => onSelect.value!(key)}
-        >
+          onClick={() => onSelect.value!(key)}>
           {icon}
           {/* {actived.value} */}
         </div>

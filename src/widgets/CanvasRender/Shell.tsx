@@ -33,8 +33,7 @@ export const Shell = defineComponent({
         drop={dropHandle}
         accept={DndTypes.ITEM}
         outline={store.outline}
-        paddingLine={store.paddingLine}
-      >
+        paddingLine={store.paddingLine}>
         {slots.default?.()}
       </DnDShell>
     )

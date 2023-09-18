@@ -129,8 +129,7 @@ export const DnDShell = defineComponent({
         data-handler-id={handlerId.value}
         onMouseover={mounseoverHnadle}
         onMouseleave={activedOutline!.handleOutNode}
-        onClick={clickHandle}
-      >
+        onClick={clickHandle}>
         {slots.default?.()}
         {isShallowOver.value && !isDragging.value ? <div class="indicator"></div> : null}
       </div>
