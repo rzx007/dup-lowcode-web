@@ -4,8 +4,7 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
 export const useDndActionStore = defineStore('dndActionStore', () => {
-  // 辅助线
-  const data = ref<ITreeSchema[]>([])
+  const data = ref<ITreeSchema[]>([]) // JSONschema
   const addItems = (item: any) => {
     const itemSchema = { ...item }
     data.value.push(itemSchema)

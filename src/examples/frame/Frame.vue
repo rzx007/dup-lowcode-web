@@ -1,13 +1,14 @@
 <script lang="ts">
 import { createApp, ref, getCurrentInstance, h, onBeforeUpdate, defineComponent, App } from 'vue'
 
+// eslint-disable-next-line vue/one-component-per-file
 export default defineComponent({
-  name: 'Frame',
-  setup(props, { slots }) {
+  name: 'Framer',
+  setup(_props, { slots }) {
     const iframeAppRef = ref<App>()
     const frame = ref()
     const vueInstance = getCurrentInstance()
-    const renderChildren = event => {
+    const renderChildren = (event: Event) => {
       const frameEl = vueInstance?.proxy?.$el || frame.value || event.target
       if (!frameEl) {
         return null
@@ -20,6 +21,7 @@ export default defineComponent({
 
       body.append(el)
 
+      // eslint-disable-next-line vue/one-component-per-file
       const iframeApp = createApp({
         name: 'IframeApp',
         provide() {

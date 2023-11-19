@@ -52,6 +52,7 @@ export const Renders = defineComponent({
     const handleClick = (item: ITreeSchema) => {
       fieldStore.setCurNode(item)
     }
+    // 遍历循环
     const reduceSlot = (item: ITreeSchema) => {
       const slots: { [key: string]: any } = {}
       item.slots!.forEach(ele => {
