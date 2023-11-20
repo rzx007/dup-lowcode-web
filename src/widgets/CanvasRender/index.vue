@@ -25,7 +25,7 @@ const [collect, drop] = useDrop(() => ({
     canDrop: monitor.canDrop()
   })
 }))
-const { isOver, canDrop } = toRefs(collect)
+const { isOver: _isOver, canDrop: _canDrop } = toRefs(collect)
 </script>
 <style lang="scss" scoped>
 .canvas-shell {
