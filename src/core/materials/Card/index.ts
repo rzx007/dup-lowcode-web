@@ -7,7 +7,7 @@ export const CardMaterial: IComponentMaterial = {
   componentName: 'el-card',
   compoentsTitle: name,
   designerSchema: cardSchema,
-  slots: [{ default: [] }, { header: [] }],
+  slots: [{ header: [] }, { default: [] }],
   props: {
     'body-style': '',
     shadow: 'hover'

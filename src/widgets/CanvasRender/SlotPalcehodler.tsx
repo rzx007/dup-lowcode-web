@@ -36,6 +36,7 @@ export const SlotPalcehodler = defineComponent({
         const dropItem = props.itemSchema
         // 被放置的组件
         console.log(dragItem, dropItem, item.source)
+        console.log('拖入的插槽名称：', props.slotName!)
         if (item.source) {
           // 从组件树中拖拽
           insertSlotItems(dropItem, dragItem, props.slotName!, item.source)

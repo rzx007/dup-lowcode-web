@@ -33,6 +33,7 @@ specifiers:
   vite: ^4.4.5
   vue: ^3.3.4
   vue-dark-switch: ^1.0.5
+  vue-error-boundary: ^2.0.1
   vue-router: ^4.0.0-0
   vue-tsc: ^1.8.5
   vue3-dnd: ^2.0.3
@@ -51,6 +52,7 @@ dependencies:
   uuid: 9.0.0
   vue: 3.3.4
   vue-dark-switch: 1.0.5_vite@4.4.9+vue@3.3.4
+  vue-error-boundary: 2.0.1
   vue-router: 4.2.4_vue@3.3.4
   vue3-dnd: 2.0.3_vue@3.3.4
   xe-utils: 3.5.12
@@ -3630,6 +3632,12 @@ packages:
     peerDependenciesMeta:
       '@vue/composition-api':
         optional: true
+    dependencies:
+      vue: 3.3.4
+    dev: false
+
+  /vue-error-boundary/2.0.1:
+    resolution: {integrity: sha512-qjHFsu2atHhD5FDscbiVL3gxAR8YltZi+soIXxpC6iZp7dlXyaz5COCnaFPQSIEg9rORc4uXsh3E/fdOowcAmw==}
     dependencies:
       vue: 3.3.4
     dev: false

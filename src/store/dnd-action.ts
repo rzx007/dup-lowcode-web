@@ -20,12 +20,13 @@ export const useDndActionStore = defineStore('dndActionStore', () => {
     }
     findIndex(dropItem.id, data.value, (list, index) => {
       const item = list[index]
-      item.slots = item.slots || [{ default: [] }]
-      item.slots.forEach(slotItem => {
-        if (Object.keys(slotItem)[0] === slotName) {
-          slotItem[slotName].push(dragItem)
-        }
-      })
+      if (item.slots) {
+        item.slots.forEach(slotItem => {
+          if (Object.keys(slotItem)[0] === slotName) {
+            slotItem[slotName].push(dragItem)
+          }
+        })
+      }
     })
   }
   // 添加dragItem

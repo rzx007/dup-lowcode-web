@@ -1,6 +1,6 @@
-import { h, defineComponent, useAttrs, PropType, resolveComponent } from 'vue'
+import { h, defineComponent, useAttrs, PropType } from 'vue'
 import { Shell } from './Shell'
-import ErrorBoundary from '@/core/wrapComponent/ErrorBoundary.vue'
+import WrapComponent from '@/core/wrapComponent/index.vue'
 import { ITreeSchema } from '@/core/interfaces/component'
 import { SlotPalcehodler } from './SlotPalcehodler'
 import { useFieldsStore } from '@/store/fields-view'
@@ -56,7 +56,7 @@ export const Renders = defineComponent({
     // 遍历循环
     const reduceSlot = (item: ITreeSchema) => {
       const slots: { [key: string]: any } = {}
-      item.slots?.forEach(ele => {
+      item.slots!.forEach(ele => {
         const name = slotName(ele)
         const children = ele![name] as ITreeSchema[]
         children.length
@@ -72,38 +72,33 @@ export const Renders = defineComponent({
     return () => (
       <>
         {props.data.map(item => {
+          const componentProps = {
+            ...item.props!,
+            ...handleController(item),
+            ...attrs,
+            style: toCss(item.style),
+            key: item.id
+          }
           return (
             item?.componentName &&
             h(
               Shell,
               { item, key: item.id, onClick: () => handleClick(item) },
               {
-                default: () =>
-                  h(ErrorBoundary, null, {
-                    default: () => {
-                      if (item.slots?.length) {
-                        return h(
-                          //@ts-ignore
-                          resolveComponent(item.componentName),
-                          {
-                            ...item.props!,
-                            ...handleController(item),
-                            ...attrs,
-                            style: toCss(item.style),
-                            key: item.id
-                          },
-                          reduceSlot(item)
-                        )
-                      }
-                      return h(resolveComponent(item.componentName), {
-                        ...item.props!,
-                        ...handleController(item),
-                        ...attrs,
-                        style: toCss(item.style),
-                        key: item.id
-                      })
-                    }
-                  })
+                default: () => {
+                  if (item.slots?.length) {
+                    return (
+                      <WrapComponent componentName={item.componentName} {...componentProps}>
+                        {reduceSlot(item)}
+                      </WrapComponent>
+                    )
+                  }
+                  return (
+                    <WrapComponent
+                      componentName={item.componentName}
+                      {...componentProps}></WrapComponent>
+                  )
+                }
               }
             )
           )
