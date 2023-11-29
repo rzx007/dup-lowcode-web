@@ -13,12 +13,8 @@ export interface IComponentMaterial {
   compoentsTitle?: string // 组件标题
   designerSchema: any // 组件设计器配置
   resource?: IResource // 组件展示资源
-  props?: {
-    [key: string]: unknown
-  }
-  style?: {
-    [key: string]: unknown
-  }
+  props?: Record<string, any>
+  style?: Record<string, any>
   controller?: {
     [key: string]: unknown
   }

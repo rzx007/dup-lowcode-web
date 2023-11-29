@@ -10,9 +10,10 @@ export const ButtonMaterial: IComponentMaterial = {
   designerSchema: buttonSchema,
   props: {
     // 初始化属性
-    type: 'primary',
+    type: '{{type}}',
     size: 'default',
-    round: true
+    round: true,
+    disabled: "{{type==='success'}}"
   },
   controller: {
     click: [

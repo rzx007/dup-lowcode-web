@@ -69,11 +69,12 @@ export const Renders = defineComponent({
       })
       return slots
     }
+
     return () => (
       <>
         {props.data?.map(item => {
           const componentProps = {
-            ...item.props!,
+            // ...item.props!,
             ...handleController(item),
             ...attrs,
             style: toCss(item.style),
@@ -88,7 +89,10 @@ export const Renders = defineComponent({
                 default: () => {
                   if (item.slots?.length) {
                     return (
-                      <WrapComponent componentName={item.componentName} {...componentProps}>
+                      <WrapComponent
+                        componentName={item.componentName}
+                        nodeProps={item.props!}
+                        {...componentProps}>
                         {reduceSlot(item)}
                       </WrapComponent>
                     )
@@ -96,6 +100,7 @@ export const Renders = defineComponent({
                   return (
                     <WrapComponent
                       componentName={item.componentName}
+                      nodeProps={item.props!}
                       {...componentProps}></WrapComponent>
                   )
                 }
