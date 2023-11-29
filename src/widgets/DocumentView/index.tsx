@@ -1,6 +1,6 @@
 import { CSSProperties, defineComponent } from 'vue'
 import { Viewport } from './Viewport'
-import CanvasRender from '@/widgets/CanvasRender/index.vue'
+import { CanvasRender } from '@/widgets/CanvasRender'
 import { JsonView } from '@/widgets/JsonView'
 import { PreviewRender } from '../PreviewRender'
 import { CanvasToolbar } from '@/layouts/CanvasToolbar'

@@ -35,8 +35,13 @@
         </el-row>
       </el-tab-pane>
     </template>
-    <template v-for="(tab, index) in controllerList" v-if="controllerList.length" :key="index">
-      <el-tab-pane :label="tab.label" :name="tab.label">
+    <template v-if="controllerList.length">
+      <el-tab-pane
+        v-for="(tab, index) in controllerList"
+        :key="index"
+        :label="tab.label"
+        :name="tab.label"
+      >
         <ControllerPanel :data="tab.children"></ControllerPanel>
       </el-tab-pane>
     </template>

@@ -56,7 +56,7 @@ export const Renders = defineComponent({
     // 遍历循环
     const reduceSlot = (item: ITreeSchema) => {
       const slots: { [key: string]: any } = {}
-      item.slots!.forEach(ele => {
+      item.slots?.forEach(ele => {
         const name = slotName(ele)
         const children = ele![name] as ITreeSchema[]
         children.length
@@ -71,7 +71,7 @@ export const Renders = defineComponent({
     }
     return () => (
       <>
-        {props.data.map(item => {
+        {props.data?.map(item => {
           const componentProps = {
             ...item.props!,
             ...handleController(item),
