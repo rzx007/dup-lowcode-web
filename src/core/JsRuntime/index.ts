@@ -6,6 +6,24 @@ export interface ExecuteResult {
 
 export type InjectVMVarsType = Record<string, unknown>
 
+// 判断一个对象的值是否是函数字符串
+export function isFunctionString(value: any) {
+  return typeof value === 'string' && (value.startsWith('function') || value.startsWith('()'))
+}
+
+// 判断是否是函数调用
+export function isFunctionCall(value: any) {
+  return typeof value === 'string' && value.includes('(') && value.includes(')')
+}
+// 截取字符串一对小括号
+export function getBracketContent(value: string) {
+  const reg = /\((.+)\)/
+  const result = reg.exec(value)
+  if (result) {
+    return [result[0], result[1]]
+  }
+  return [null, null]
+}
 interface IBrowserRuntimeVMWindow extends Window {
   __INJECT_VARS__?: InjectVMVarsType
   eval: typeof window.eval
@@ -39,14 +57,27 @@ class BrowserRuntimeVM {
     }
     const sandbox = this.iframe.contentWindow as IBrowserRuntimeVMWindow
     sandbox.__INJECT_VARS__ = globalScope
-
+    console.log('执行的代码', code)
+    // 判断是否是函数调用
+    // 简单判断链式函数调用, 如 dayjs().format("YYYY-MM-DD")
+    const [bracket, params] = getBracketContent(code)
+    if (bracket && !code.includes('.')) {
+      code = code.replace(bracket, '')
+    }
     return sandbox.eval(`
       (() => {
         with (window.__INJECT_VARS__) { 
-          return (${code})
+          const fn  = ${code}
+          // console.log('fn', fn)
+          if(fn.startsWith('function') || fn.startsWith('(')) {
+           return eval(fn)(${params})
+          }
+          return (fn)
         }
       })()
     `)
+    // const fn = ${code}
+    // return eval(fn)()
   }
 
   public execute(code: string, globalScope: InjectVMVarsType) {

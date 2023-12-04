@@ -16,9 +16,8 @@ export const useParseBinding = (props: Ref<Record<string, any>>, _id?: string) =
     for (const key in conleProps.value) {
       if (isExpression(unref(conleProps)[key])) {
         const code = parseJsStrToLte(unref(conleProps)[key])
-        const result = browserRuntimeVM.execute(code, { ...unref(provide) })
+        const result = browserRuntimeVM.execute(code, { ...window, ...unref(provide) })
         console.log('执行结果', result)
-
         const value =
           result?.value === 'true' ? true : result?.value === 'false' ? false : result?.value
         unref(conleProps)[key] = value

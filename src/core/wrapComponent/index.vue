@@ -26,7 +26,7 @@ const nodePropsRef = toRef(props, 'nodeProps')
 watch(
   () => nodePropsRef.value,
   () => {
-    console.log('nodePropsRef', nodePropsRef.value)
+    // console.log('nodePropsRef', nodePropsRef.value)
   },
   { immediate: true }
 )

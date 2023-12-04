@@ -11,9 +11,10 @@ export const ButtonMaterial: IComponentMaterial = {
   props: {
     // 初始化属性
     type: '{{type}}',
-    size: 'default',
+    // size: `{{size(change('large'))}}`,
+    size: `{{size(disbaled)}}`,
     round: true,
-    disabled: "{{type==='success'}}"
+    disabled: false
   },
   controller: {
     click: [
