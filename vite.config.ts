@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import vue from '@vitejs/plugin-vue'
+import VueDevTools from 'vite-plugin-vue-devtools'
 import path from 'path'
 const resolve = (dir: string) => path.join(__dirname, dir)
 const prefix = `monaco-editor/esm/vs`
@@ -8,6 +9,7 @@ const prefix = `monaco-editor/esm/vs`
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    VueDevTools(),
     vue({
       script: {
         defineModel: true, // 开启defineModel功能
