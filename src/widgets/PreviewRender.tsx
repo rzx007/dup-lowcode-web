@@ -1,6 +1,7 @@
 import { PropType, defineComponent, h, resolveComponent, useAttrs } from 'vue'
 import { capitalizeFirstLetter, isObject, toCss } from '@/utils'
 import { ITreeSchema } from '@/core/interfaces/component'
+import WrapComponent from '@/core/wrapComponent/index.vue'
 export const PreviewRender = defineComponent({
   name: 'PreviewRender',
   props: {
@@ -50,28 +51,30 @@ export const PreviewRender = defineComponent({
     return () => (
       <>
         {props.data.map(item => {
+          const componentProps = {
+            // ...item.props!,
+            ...handleController(item),
+            ...attrs,
+            style: toCss(item.style),
+            key: item.id
+          }
           if (item.slots?.length) {
-            return h(
-              // @ts-ignore
-              resolveComponent(item.componentName),
-              {
-                ...item.props,
-                ...handleController(item),
-                ...attrs,
-                style: toCss(item?.style),
-                key: item.id
-              },
-              reduceSlot(item)
+            return (
+              <WrapComponent
+                componentName={item.componentName}
+                nodeProps={item.props!}
+                {...componentProps}>
+                {reduceSlot(item)}
+              </WrapComponent>
             )
           }
           // return <component is={item.componentName} {...item.props} key={item.id}></component>
-          return h(resolveComponent(item.componentName), {
-            ...item.props,
-            ...handleController(item),
-            ...attrs,
-            style: toCss(item?.style),
-            key: item.id
-          })
+          return (
+            <WrapComponent
+              componentName={item.componentName}
+              nodeProps={item.props!}
+              {...componentProps}></WrapComponent>
+          )
         })}
       </>
     )
