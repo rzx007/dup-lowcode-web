@@ -3,6 +3,13 @@ import { createSchema } from '@/core/shared/createSchema'
 const options = {
   propsSchemas: [
     {
+      componentName: 'el-input',
+      'x-field': {
+        name: 'modelValue',
+        label: '绑定值'
+      }
+    },
+    {
       componentName: 'el-select',
       'x-field': {
         name: 'type',

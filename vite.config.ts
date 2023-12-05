@@ -23,6 +23,11 @@ export default defineConfig({
       '@': resolve('src')
     }
   },
+  server: {
+    port: 3456,
+    host: '0.0.0.0',
+    open: true
+  },
   build: {
     rollupOptions: {
       output: {

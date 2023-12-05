@@ -8,6 +8,7 @@ import { storeToRefs } from 'pinia'
 export const useParseBinding = (props: Ref<Record<string, any>>, _id?: string) => {
   const stateStore = useStateStore()
   const { provide } = storeToRefs(stateStore)
+  // 组件动态props运行的结果集
   const conleProps = ref<Record<string, any>>({})
   const execute = (props: Record<string, any>) => {
     conleProps.value = _.cloneDeep(props)
