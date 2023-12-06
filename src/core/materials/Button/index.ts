@@ -13,6 +13,7 @@ export const ButtonMaterial: IComponentMaterial = {
     type: '{{type}}',
     // size: `{{size(change('large'))}}`,
     size: `{{size(disbaled)}}`,
+    color: `{{slotScope?.row?.color||''}}`,
     round: true,
     disabled: false
   },

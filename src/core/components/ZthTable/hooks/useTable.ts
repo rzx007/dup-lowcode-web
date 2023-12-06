@@ -17,8 +17,8 @@ export const useTable = (
   const state = reactive<TableStateProps>({
     // 表格数据
     tableData: [
-      { id: 1, status: 1 },
-      { id: 2, status: 2 }
+      { id: 1, base: 'javascript', color: 'red' },
+      { id: 2, base: 'rust', color: 'green' }
     ],
     // 分页参数
     pageParams: {

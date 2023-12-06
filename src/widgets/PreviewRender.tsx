@@ -1,4 +1,4 @@
-import { PropType, defineComponent, h, resolveComponent, useAttrs } from 'vue'
+import { PropType, defineComponent, useAttrs } from 'vue'
 import { capitalizeFirstLetter, isObject, toCss } from '@/utils'
 import { ITreeSchema } from '@/core/interfaces/component'
 import WrapComponent from '@/core/wrapComponent/index.vue'
@@ -6,6 +6,7 @@ export const PreviewRender = defineComponent({
   name: 'PreviewRender',
   props: {
     parentId: { type: String, required: false },
+    slotScopeParams: { type: Object, required: false, default: () => ({}) },
     data: {
       type: Array as PropType<ITreeSchema[]>,
       required: true
@@ -44,7 +45,14 @@ export const PreviewRender = defineComponent({
       item.slots!.forEach(ele => {
         const name = slotName(ele)
         const children = ele![name] as ITreeSchema[]
-        slots[name] = () => <PreviewRender data={children} parentId={item?.id}></PreviewRender>
+        slots[name] = (scopeParams: Record<string, any>) => {
+          return (
+            <PreviewRender
+              data={children}
+              parentId={item?.id}
+              slotScopeParams={scopeParams}></PreviewRender>
+          )
+        }
       })
       return slots
     }
@@ -63,6 +71,7 @@ export const PreviewRender = defineComponent({
               <WrapComponent
                 componentName={item.componentName}
                 nodeProps={item.props!}
+                slotScopeParams={props.slotScopeParams}
                 {...componentProps}>
                 {reduceSlot(item)}
               </WrapComponent>
@@ -72,6 +81,7 @@ export const PreviewRender = defineComponent({
           return (
             <WrapComponent
               componentName={item.componentName}
+              slotScopeParams={props.slotScopeParams}
               nodeProps={item.props!}
               {...componentProps}></WrapComponent>
           )

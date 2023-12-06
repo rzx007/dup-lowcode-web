@@ -5,7 +5,11 @@ import { Ref, computed, ref, unref, watch } from 'vue'
 import { useStateStore } from '@/store/state-store'
 import { storeToRefs } from 'pinia'
 
-export const useParseBinding = (props: Ref<Record<string, any>>, _id?: string) => {
+export const useParseBinding = (
+  props: Ref<Record<string, any>>,
+  slotScope: Ref<Record<string, any>>,
+  _id?: string
+) => {
   const stateStore = useStateStore()
   const { provide } = storeToRefs(stateStore)
   // 组件动态props运行的结果集
@@ -17,7 +21,11 @@ export const useParseBinding = (props: Ref<Record<string, any>>, _id?: string) =
     for (const key in conleProps.value) {
       if (isExpression(unref(conleProps)[key])) {
         const code = parseJsStrToLte(unref(conleProps)[key])
-        const result = browserRuntimeVM.execute(code, { ...window, ...unref(provide) })
+        const result = browserRuntimeVM.execute(code, {
+          ...window,
+          ...unref(provide),
+          ...{ slotScope: unref(slotScope) || {} }
+        })
         console.log('执行结果', result)
         const value =
           result?.value === 'true' ? true : result?.value === 'false' ? false : result?.value

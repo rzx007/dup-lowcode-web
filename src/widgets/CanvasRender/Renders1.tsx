@@ -15,6 +15,7 @@ export const Renders = defineComponent({
       type: Array as PropType<ITreeSchema[]>,
       default: () => []
     },
+    slotScopeParams: { type: Object, required: false, default: () => ({}) },
     parentId: {
       type: String,
       default: ''
@@ -60,8 +61,15 @@ export const Renders = defineComponent({
         const name = slotName(ele)
         const children = ele![name] as ITreeSchema[]
         children.length
-          ? (slots[name] = () => {
-              return <Renders data={children} parentId={item.id} key={item.id} />
+          ? (slots[name] = (scopeParams: Record<string, any>) => {
+              return (
+                <Renders
+                  data={children}
+                  parentId={item.id}
+                  key={item.id}
+                  slotScopeParams={scopeParams}
+                />
+              )
             })
           : (slots[name] = () => (
               <SlotPalcehodler parentId={item.id} slotName={name} itemSchema={item} key={item.id} />
@@ -92,6 +100,7 @@ export const Renders = defineComponent({
                       <WrapComponent
                         componentName={item.componentName}
                         nodeProps={item.props!}
+                        slotScopeParams={props.slotScopeParams}
                         {...componentProps}>
                         {reduceSlot(item)}
                       </WrapComponent>
@@ -100,6 +109,7 @@ export const Renders = defineComponent({
                   return (
                     <WrapComponent
                       componentName={item.componentName}
+                      slotScopeParams={props.slotScopeParams}
                       nodeProps={item.props!}
                       {...componentProps}></WrapComponent>
                   )

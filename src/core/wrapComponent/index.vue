@@ -15,11 +15,13 @@
           : {})
       }"
     >
-      <template v-for="k in Object.keys(slots)" #[k] :key="k">
-        <slot :name="k"></slot>
+      <!-- 渲染(作用域)插槽 -->
+      <template v-for="k in Object.keys(slots)" #[k]="scope" :key="k">
+        <slot :name="k" v-bind="scope"></slot>
       </template>
     </component>
     <!-- {{ isControlledComponent }} -->
+    <!-- {{ slotScopeParams?.row }} -->
     <!-- <el-input v-model="modelValue"></el-input> -->
   </ErrorBoundary>
 </template>
@@ -38,13 +40,13 @@ const attrs = useAttrs()
 const props = defineProps<{
   componentName: string
   nodeProps: Record<string, any>
+  slotScopeParams: Record<string, any> // 作用域插槽参数, 没有则为{}
 }>()
 
 // 绑定组件props
 const nodePropsRef = toRef(props, 'nodeProps')
-
-// 动态props结果集
-const { memoizedProps } = useParseBinding(nodePropsRef)
+const slotScopeParamsRef = toRef(props, 'slotScopeParams')
+const { memoizedProps } = useParseBinding(nodePropsRef, slotScopeParamsRef)
 
 const modelValue = computed({
   get: () => memoizedProps.value?.modelValue ?? '',
@@ -53,7 +55,6 @@ const modelValue = computed({
     // todo: 更新store-state对应的值
   }
 })
-
 // --------------分割线----------------
 const componentRef = ref<ComponentPublicInstance | null>(null)
 // 判断组件是否是受控组件
