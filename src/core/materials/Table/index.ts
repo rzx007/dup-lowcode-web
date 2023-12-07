@@ -23,7 +23,7 @@ export const TableMaterial: IComponentMaterial = {
     sizes: 'small',
     size: 'small'
   },
-  controller: {
+  events: {
     click: [
       {
         componentId: '23432432',

@@ -20,17 +20,17 @@ export const PreviewRender = defineComponent({
       }
       return slot as string
     }
-    // 处理ITreeSchema的controller属性
-    const handleController = (item: ITreeSchema) => {
+    // 处理ITreeSchema的events属性
+    const handleEvents = (item: ITreeSchema) => {
       const eventArr: { [x: string]: any } = {}
-      const controller = item.controller
-      if (controller) {
-        const keys = Object.keys(controller)
+      const events = item.events
+      if (events) {
+        const keys = Object.keys(events)
         if (keys) {
           for (let index = 0; index < keys.length; index++) {
             const key = keys[index]
             const eventName = 'on' + capitalizeFirstLetter(key)
-            const actions = controller[key] as Array<any>
+            const actions = events[key] as Array<any>
             const list = actions.map(action => action)
             eventArr[eventName] = () => {
               console.log(eventName, list)
@@ -61,7 +61,7 @@ export const PreviewRender = defineComponent({
         {props.data.map(item => {
           const componentProps = {
             // ...item.props!,
-            ...handleController(item),
+            ...handleEvents(item),
             ...attrs,
             style: toCss(item.style),
             key: item.id

@@ -26,7 +26,7 @@ export const ZthButton = defineComponent({
   }
 })
 // {
-//   "controller": {
+//   "events": {
 //       "click": {
 //           "actions": [
 //               {

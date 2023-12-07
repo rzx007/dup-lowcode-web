@@ -130,7 +130,7 @@ const options = {
       }
     }
   ],
-  controllerSchemas: [
+  eventsSchemas: [
     {
       label: '点击',
       value: 'click'

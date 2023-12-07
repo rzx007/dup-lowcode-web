@@ -1,12 +1,12 @@
 // import { displaySetter, backgroundSetter, fontStyleSetter, martinStyleSetter, paddingStyleSetter, borderRediusSetter, borderSetter } from "./schemas";
 export function createSchema(options: any = {}): any {
-  const { propsSchemas, controllerSchemas } = options
+  const { propsSchemas, eventsSchemas } = options
   const propsTab = propsSchemas ? propsSchemas : []
-  const controllerTab = controllerSchemas ? controllerSchemas : []
+  const eventsTab = eventsSchemas ? eventsSchemas : []
   return {
     propsTab,
     styleTab,
-    controllerTab,
+    eventsTab,
     dataTab: []
   }
 }

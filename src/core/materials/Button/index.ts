@@ -17,7 +17,7 @@ export const ButtonMaterial: IComponentMaterial = {
     round: true,
     disabled: false
   },
-  controller: {
+  events: {
     click: [
       {
         componentId: '23432432',

@@ -1,13 +1,13 @@
 import { PropType, defineComponent, ref } from 'vue'
-import { ActionItem } from './controllerActions'
+import { ActionItem } from './eventsActions'
 import './style.scss'
 
 export type TeventType = {
   value: string
   label: string
 }
-export const ControllerPanel = defineComponent({
-  name: 'ControllerPanel',
+export const EventsPanel = defineComponent({
+  name: 'EventsPanel',
   props: {
     data: {
       type: Array as PropType<TeventType[]>,

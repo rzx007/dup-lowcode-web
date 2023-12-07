@@ -35,14 +35,14 @@
         </el-row>
       </el-tab-pane>
     </template>
-    <template v-if="controllerList.length">
+    <template v-if="eventsList.length">
       <el-tab-pane
-        v-for="(tab, index) in controllerList"
+        v-for="(tab, index) in eventsList"
         :key="index"
         :label="tab.label"
         :name="tab.label"
       >
-        <ControllerPanel :data="tab.children"></ControllerPanel>
+        <EventsPanel :data="tab.children"></EventsPanel>
       </el-tab-pane>
     </template>
   </el-tabs>
@@ -50,13 +50,13 @@
 
 <script setup lang="ts">
 import { useFieldsStore } from '@/store/fields-view'
-import { ControllerPanel } from '@/widgets/ControllerWidgets'
+import { EventsPanel } from '@/widgets/EventsWidgets'
 import { storeToRefs } from 'pinia'
 import { nextTick, ref, watch } from 'vue'
 
 const activeName = ref('属性')
 const tabsList = ref<any>([])
-const controllerList = ref<any>([])
+const eventsList = ref<any>([])
 const fieldStore = useFieldsStore()
 const { updateComponent } = fieldStore
 const { currentNode, currentDesignerSchema, fields } = storeToRefs(fieldStore)
@@ -65,8 +65,8 @@ watch(
   () => {
     nextTick(() => {
       activeName.value = '属性'
-      const { propsTab, styleTab, controllerTab, dataTab } = currentDesignerSchema.value
-      console.log(controllerTab)
+      const { propsTab, styleTab, eventsTab, dataTab } = currentDesignerSchema.value
+      console.log(eventsTab)
 
       tabsList.value = [
         {
@@ -85,17 +85,17 @@ watch(
           children: dataTab || []
         }
       ]
-      if (controllerTab.length) {
-        controllerList.value = [
+      if (eventsTab.length) {
+        eventsList.value = [
           {
             label: '事件',
-            name: 'controller',
-            children: controllerTab || []
+            name: 'events',
+            children: eventsTab || []
           }
         ]
       }
       //@ts-ignore
-      const { props = {}, style = {}, controller = {}, data = {} } = currentNode.value
+      const { props = {}, style = {}, events = {}, data = {} } = currentNode.value
 
       const propsData = bindFormValue(propsTab)
       const styleData = bindFormValue(styleTab)
@@ -105,9 +105,9 @@ watch(
           ...propsData,
           ...props,
           ...{
-            onClick: (value: any) => {
-              console.log('ZthButton.ts ~ changeMyInput ~ value', value)
-            }
+            // onClick: (value: any) => {
+            //   console.log('ZthButton.ts ~ changeMyInput ~ value', value)
+            // }
           }
         },
         style: { ...styleData, ...style },

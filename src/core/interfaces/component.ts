@@ -15,7 +15,7 @@ export interface IComponentMaterial {
   resource?: IResource // 组件展示资源
   props?: Record<string, any>
   style?: Record<string, any>
-  controller?: {
+  events?: {
     [key: string]: unknown
   }
   data?: {
