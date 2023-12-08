@@ -10,10 +10,10 @@ export const ButtonMaterial: IComponentMaterial = {
   designerSchema: buttonSchema,
   props: {
     // 初始化属性
-    type: '{{type}}',
     // size: `{{size(change('large'))}}`,
+    type: '{{type}}',
     size: `{{size(disbaled)}}`,
-    color: `{{slotScope?.row?.color||''}}`,
+    // color: `{{slotScope?.row?.color||''}}`,
     round: true,
     disabled: false
   },

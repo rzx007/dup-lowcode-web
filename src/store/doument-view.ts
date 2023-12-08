@@ -4,7 +4,8 @@ import { ref } from 'vue'
 export enum DocumentType {
   DESIGN,
   JSON,
-  PREVIEW
+  PREVIEW,
+  STORE
 }
 
 export const useDocmentStore = defineStore('docmentStore', () => {

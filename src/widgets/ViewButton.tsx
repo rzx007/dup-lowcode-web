@@ -1,5 +1,5 @@
 import { defineComponent, ref } from 'vue'
-import { designIcon, jsonIcon, playIcon } from '@/icons'
+import { designIcon, jsonIcon, playIcon, storeIcon } from '@/icons'
 import { useDocmentStore, DocumentType } from '@/store/doument-view'
 export const ViewButton = defineComponent({
   name: 'ViewButton',
@@ -36,6 +36,17 @@ export const ViewButton = defineComponent({
             bg={type.value === DocumentType.JSON}
             onClick={() => changeDocumentType(DocumentType.JSON)}>
             {jsonIcon}
+          </el-button>
+        </el-tooltip>
+        <el-tooltip effect="dark" content="状态" placement="top-start">
+          <el-button
+            style={iconStyle}
+            text
+            size="small"
+            type={type.value === DocumentType.STORE ? 'primary' : ''}
+            bg={type.value === DocumentType.STORE}
+            onClick={() => changeDocumentType(DocumentType.STORE)}>
+            {storeIcon}
           </el-button>
         </el-tooltip>
         <el-tooltip effect="dark" content="预览" placement="top-start">

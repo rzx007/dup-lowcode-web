@@ -2,6 +2,7 @@ import { CSSProperties, defineComponent } from 'vue'
 import { Viewport } from './Viewport'
 import { CanvasRender } from '@/widgets/CanvasRender'
 import { JsonView } from '@/widgets/JsonView'
+import { StoreView } from '@/widgets/StoreView'
 import { PreviewRender } from '../PreviewRender'
 import { CanvasToolbar } from '@/layouts/CanvasToolbar'
 import { UndoRedoButtons } from '../UndoRedoButtons'
@@ -41,6 +42,7 @@ export const DocumentView = defineComponent({
         <Viewport>
           {store.documentType === DocumentType.DESIGN && <CanvasRender />}
           {store.documentType === DocumentType.JSON && <JsonView />}
+          {store.documentType === DocumentType.STORE && <StoreView />}
           {store.documentType === DocumentType.PREVIEW && (
             <div style={style}>
               <PreviewRender data={dndStore.data} />

@@ -1,5 +1,6 @@
 import { computed, defineComponent, ref } from 'vue'
 import * as monaco from 'monaco-editor'
+import { isDark } from 'vue-dark-switch'
 import monacoEditor from '@/components/monacoEditor/index.vue'
 import { useDndActionStore } from '@/store/dnd-action'
 
@@ -23,6 +24,7 @@ export const JsonView = defineComponent({
         <monacoEditor
           v-model={code.value}
           language={language.value}
+          theme={isDark.value ? 'vs-dark' : 'vs'}
           width="100%"
           height="100%"
           onEditorMounted={editorMounted}></monacoEditor>

@@ -66,13 +66,14 @@ class BrowserRuntimeVM {
     }
     return sandbox.eval(`
       (() => {
-        with (window.__INJECT_VARS__) { 
+        with (__INJECT_VARS__) { 
           const fn  = ${code}
-          // console.log('fn', fn)
+          // console.log('fn', __INJECT_VARS__)
           if(fn.startsWith('function') || fn.startsWith('(')) {
-           return eval(fn)(${params})
+           const result =  eval(fn)(${params})
+           return {value: result, scopStr: __INJECT_VARS__}
           }
-          return (fn)
+          return ({value: fn, scopStr: __INJECT_VARS__})
         }
       })()
     `)
@@ -82,10 +83,10 @@ class BrowserRuntimeVM {
 
   public execute(code: string, globalScope: InjectVMVarsType) {
     try {
-      const value = this.executeCode(code, {
+      const result = this.executeCode(code, {
         ...globalScope
       })
-      return { value, success: true }
+      return { value: result.value, scope: result.scopStr, success: true }
     } catch (err) {
       return { success: false, error: err, value: null }
     }

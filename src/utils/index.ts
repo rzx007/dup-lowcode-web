@@ -104,3 +104,27 @@ export function capitalizeFirstLetter(str: string) {
   }
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
+
+// sleep函数
+export function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+// 对象转字符串
+export function objectToString(obj: { [x: string]: any }) {
+  let str = '{'
+  for (const key in obj) {
+    if (typeof obj[key] === 'function') {
+      str += `${key}: ${obj[key].toString()},`
+    } else {
+      // todo: 循环遍历
+      str += `${key}: ${JSON.stringify(obj[key])},`
+    }
+  }
+  str = str.slice(0, -1) + '}'
+  return str
+}
+
+// 字符串转对象
+export function stringToObject(str: string) {
+  return eval(`(${str})`)
+}

@@ -39,7 +39,7 @@ export default defineComponent({
     }
     let editor: monaco.editor.IStandaloneCodeEditor
     const codeEditBox = ref()
-    const init = () => {
+    const init = async () => {
       monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({
         noSemanticValidation: true,
         noSyntaxValidation: false
@@ -54,7 +54,7 @@ export default defineComponent({
         theme: props.theme,
         ...props.options
       })
-      editor.onDidChangeModelContent(() => {
+      editor.onDidChangeModelContent(async () => {
         const value = editor.getValue()
         emit('update:modelValue', value)
         emit('change', value)
