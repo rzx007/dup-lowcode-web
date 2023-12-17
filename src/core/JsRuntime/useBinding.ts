@@ -1,6 +1,5 @@
 import _ from 'lodash'
 import { browserRuntimeVM } from '.'
-import { watchDebounced } from '@vueuse/core'
 import { isExpression, parseJsStrToLte } from '@/utils/expression'
 import { Ref, computed, ref, unref, watch } from 'vue'
 import { useStateStore } from '@/store/state-store'
@@ -22,7 +21,7 @@ export const useParseBinding = (
     // 循环props,判断值是表达式 的,
     for (const key in conleProps.value) {
       if (isExpression(unref(conleProps)[key])) {
-        const code = parseJsStrToLte(unref(conleProps)[key])
+        const [code, _] = parseJsStrToLte(unref(conleProps)[key])
         const result = browserRuntimeVM.execute(code, {
           ...window,
           ...unref(pageCode),
@@ -42,7 +41,6 @@ export const useParseBinding = (
       }
     }
   }
-  execute(props.value)
   const memoizedProps = computed(() => {
     return conleProps.value
   })
@@ -50,10 +48,16 @@ export const useParseBinding = (
   watch(
     () => props.value,
     newVal => {
-      console.log('组件的props变化了')
+      console.log('组件的props变化了', newVal)
+      /**
+       * 缺少精细变化监控,
+       * 执行两次execute,是因为先依赖的变量, 在后续其他的操作中改变值,没能正确更新导致执行结果不正确
+       * 后续优化:
+       */
+      execute(newVal)
       execute(newVal)
     },
-    { deep: true }
+    { deep: true, immediate: true }
   )
   return { memoizedProps, execute }
 }

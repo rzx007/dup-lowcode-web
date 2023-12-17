@@ -38,6 +38,7 @@ if (value && typeof value === 'string' && isExpression(value)) {
   console.log(`执行代码： ${value}`)
   console.log(parseJsStrToLte(value))
   setTimeout(() => {
-    console.log(browserRuntimeVM.execute(parseJsStrToLte(value), { ...props, ...window }))
+    const [code, _] = parseJsStrToLte(value)
+    console.log(browserRuntimeVM.execute(code, { ...props, ...window }))
   }, 1000)
 }

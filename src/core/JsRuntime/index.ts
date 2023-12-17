@@ -68,9 +68,9 @@ class BrowserRuntimeVM {
       (() => {
         with (__INJECT_VARS__) { 
           const fn  = ${code}
-          // console.log('fn', __INJECT_VARS__)
+          console.log('fn', fn)
           if(fn.startsWith('function') || fn.startsWith('(')) {
-           const result =  eval(fn)(${params})
+           const result = ${params} ? eval(fn)(${params}) : eval(fn)(1)
            return {value: result, scopStr: __INJECT_VARS__}
           }
           return ({value: fn, scopStr: __INJECT_VARS__})

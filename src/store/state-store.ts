@@ -23,16 +23,17 @@ export const useStateStore = defineStore('stateStore', () => {
       type = 'primary'
       disbaled = false
       return change()
+    },
+    sizeFn: (a) => {
+      type = 'danger'
+      return 'large'
     }
   }`)
-
+  const testCode = ref(12)
   const updateCodeStr = () => {
     const codeStr = objectToString(pageCode.value)
     pageCodeStr.value = codeStr
-    // console.log('pageCodeStr:')
-    // console.log(pageCodeStr.value)
   }
-
   const pageCode = computed(() => eval(`(${pageCodeStr.value})`))
   // 更新pageCode
   const updateCode = (scope: Record<string, any>) => {
@@ -41,9 +42,7 @@ export const useStateStore = defineStore('stateStore', () => {
         pageCode.value[key] = scope[key]
       }
     }
-    // console.log('pageCode:', pageCode.value)
     updateCodeStr()
   }
-
-  return { pageCode, pageCodeStr, updateCode }
+  return { pageCode, pageCodeStr, testCode, updateCode }
 })
