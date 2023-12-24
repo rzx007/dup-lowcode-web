@@ -13,6 +13,7 @@ specifiers:
   '@vitejs/plugin-vue-jsx': ^3.0.2
   '@vue/compiler-sfc': ^3.3.4
   '@vueuse/core': ^9.13.0
+  consola: ^3.2.3
   element-plus: ^2.3.9
   eslint: ^8.49.0
   eslint-config-prettier: ^9.0.0
@@ -44,6 +45,7 @@ dependencies:
   '@element-plus/icons-vue': 2.1.0_vue@3.3.4
   '@vue/compiler-sfc': 3.3.4
   '@vueuse/core': 9.13.0_vue@3.3.4
+  consola: 3.2.3
   element-plus: 2.3.12_vue@3.3.4
   localforage: 1.10.0
   lodash: 4.17.21
@@ -1947,6 +1949,11 @@ packages:
   /concat-map/0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
     dev: true
+
+  /consola/3.2.3:
+    resolution: {integrity: sha512-I5qxpzLv+sJhTVEoLYNcTW+bThDCPsit0vLNKShZx6rLtpilNpmmeTPaeqJb9ZE9dV3DGaeby6Vuhrw38WjeyQ==}
+    engines: {node: ^14.18.0 || >=16.10.0}
+    dev: false
 
   /conventional-changelog-angular/6.0.0:
     resolution: {integrity: sha512-6qLgrBF4gueoC7AFVHu51nHL9pF9FRjXrH+ceVf7WmAfH3gs+gEYOkvxhjMPjZu57I4AGUGoNTY8V7Hrgf1uqg==}

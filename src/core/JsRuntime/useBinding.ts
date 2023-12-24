@@ -4,6 +4,7 @@ import { isExpression, parseJsStrToLte } from '@/utils/expression'
 import { Ref, computed, ref, unref, watch } from 'vue'
 import { useStateStore } from '@/store/state-store'
 import { storeToRefs } from 'pinia'
+import { consola } from 'consola'
 
 export const useParseBinding = (
   props: Ref<Record<string, any>>,
@@ -27,7 +28,7 @@ export const useParseBinding = (
           ...unref(pageCode),
           ...{ slotScope: unref(slotScope) || {} }
         })
-        console.log('执行结果', result)
+        consola.success('执行结果', result)
         if (result.success) {
           const value =
             result?.value === 'true' ? true : result?.value === 'false' ? false : result?.value
