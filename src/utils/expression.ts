@@ -13,10 +13,10 @@ export const parseJsStrToLte = (code: string): string[] => {
 
   // {{}} -> ${}
   const result = code.replace(regex, '${$1}')
-
+  const result1 = code.replace(regex, '$1')
   // 转换成为模板字符串`${a1} ${a2}`格式
 
-  return [`\`${result}\``, result]
+  return [`\`${result}\``, result1]
 }
 
 export interface parseSetterValType extends Object {

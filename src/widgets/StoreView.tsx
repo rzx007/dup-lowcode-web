@@ -14,15 +14,15 @@ export const StoreView = defineComponent({
     const code = computed({
       get: () => {
         if (pageCodeStr.value) {
-          return pageCodeStr.value.startsWith('const store =')
+          return pageCodeStr.value.startsWith('const state =')
             ? pageCodeStr.value
-            : 'const store = ' + pageCodeStr.value
+            : 'const state = ' + pageCodeStr.value
         }
         return pageCodeStr.value
       },
       set: (codeStr: string) => {
-        if (codeStr.startsWith('const store = ')) {
-          pageCodeStr.value = codeStr.replace('const store = ', '')
+        if (codeStr.startsWith('const state = ')) {
+          pageCodeStr.value = codeStr.replace('const state = ', '')
         } else {
           pageCodeStr.value = codeStr
         }

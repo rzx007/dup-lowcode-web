@@ -1,40 +1,45 @@
 import { defineStore } from 'pinia'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { objectToString } from '@/utils/index'
 export const useStateStore = defineStore('stateStore', () => {
   const pageCodeStr = ref<string>(`{
-    disbaled: true,
-    type: 'success',
-    obj: {
-      name: 'danger',
-      color: 'red'
-    },
-    change: (str='small') => {
-      return str
-    },
-    size: (a) => {
-      obj.name = 'rex100'
-      console.log('这是传递进来的参数:', a)
-      console.log('按钮的初始type是:', type)
-      console.log('这是嵌套对象调用:', obj)
-      console.log('这是函数运行的结果:', change())
-      console.log('从作用域插槽slotScope取值:', slotScope)
-      console.log(document.querySelector('#app'))
-      type = 'primary'
-      disbaled = false
-      return change()
-    },
-    sizeFn: (a) => {
-      type = 'danger'
-      return 'large'
-    }
-  }`)
-  const testCode = ref(12)
+      disbaled: true,
+      type: 'success',
+      obj: {
+        name: 'danger',
+        color: 'red'
+      },
+      change: function(str='small') {
+        return str
+      },
+      size: function(a) {
+        this.obj.name = 'rex100'
+        console.log('这是传递进来的参数:', a)
+        console.log('按钮的初始type是:', this.type)
+        console.log('这是嵌套对象调用:', this.obj)
+        console.log('这是函数运行的结果:', this.change())
+        // console.log('从作用域插槽slotScope取值:', slotScope)
+        console.log(document.querySelector('#app'))
+        this.type = 'primary'
+        this.disbaled = false
+        return this.change()
+      },
+      sizeFn: function() {
+        this.type = 'danger'
+        return 'large'
+      },
+      // showType: function() {
+      //   console.info('这是按钮的type:', this.type)
+      // },
+    }`)
   const updateCodeStr = () => {
     const codeStr = objectToString(pageCode.value)
     pageCodeStr.value = codeStr
   }
-  const pageCode = computed(() => eval(`(${pageCodeStr.value})`))
+  const pageCode = ref(eval(`(${pageCodeStr.value})`))
+  watch(pageCodeStr, () => {
+    pageCode.value = eval(`(${pageCodeStr.value})`)
+  })
   // 更新pageCode
   const updateCode = (scope: Record<string, any>) => {
     for (const key in pageCode.value) {
@@ -44,5 +49,5 @@ export const useStateStore = defineStore('stateStore', () => {
     }
     updateCodeStr()
   }
-  return { pageCode, pageCodeStr, testCode, updateCode }
+  return { pageCode, pageCodeStr, updateCode }
 })
