@@ -6,7 +6,6 @@
       v-bind="{
         ...attrs,
         ...memoizedProps,
-
         ...(isControlledComponent
           ? {
               'model-value': modelValue,
@@ -32,10 +31,23 @@ export default {
 }
 </script>
 <script setup lang="ts">
-import { computed, toRef, useAttrs, useSlots, watch, ref, ComponentPublicInstance } from 'vue'
+import {
+  computed,
+  toRef,
+  useAttrs,
+  useSlots,
+  watch,
+  ref,
+  ComponentPublicInstance,
+  watchEffect
+} from 'vue'
 import ErrorBoundary from './ErrorBoundary.vue'
 import { useParseBinding } from '@/core/JsRuntime/useBinding'
+import { useStateStore } from '@/store/state-store'
+import { storeToRefs } from 'pinia'
 
+const stateStore = useStateStore()
+const { pageCode } = storeToRefs(stateStore)
 const slots = useSlots()
 const attrs = useAttrs()
 const props = defineProps<{
@@ -79,4 +91,7 @@ watch(
   },
   { deep: true, immediate: true }
 )
+watchEffect(() => {
+  console.log(memoizedProps.value)
+})
 </script>

@@ -14,6 +14,8 @@ export const ButtonMaterial: IComponentMaterial = {
     // size: `{{size(change('large'))}}`,
     size: `{{state.size(state.disbaled)}}`,
     // color: `{{slotScope?.row?.color||''}}`,
+    onClick: `{{ (e)=> state.clickHandler(e) }}`,
+    // onMouseenter: `{{ state.dbClick.bind(state) }}`,
     round: true,
     disabled: false
   },

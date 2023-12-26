@@ -7,11 +7,14 @@ import { consola } from 'consola'
 
 export const useParseBinding = (
   props: Ref<Record<string, any>>,
-  slotScope: Ref<Record<string, any>>,
+  slotScopes: Ref<Record<string, any>>,
   _id?: string
 ) => {
+  // @ts-ignore
+  const slotScope = unref(slotScopes)
   const stateStore = useStateStore()
-  const { pageCode } = storeToRefs(stateStore)
+  const { pageCodeStr } = storeToRefs(stateStore)
+  const pageCode = ref(eval(`(${pageCodeStr.value})`))
   // @ts-ignore
   const state = new Proxy(pageCode.value, {
     get(target, key, receiver) {

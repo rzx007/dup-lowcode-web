@@ -18,7 +18,7 @@ export const useStateStore = defineStore('stateStore', () => {
         console.log('按钮的初始type是:', this.type)
         console.log('这是嵌套对象调用:', this.obj)
         console.log('这是函数运行的结果:', this.change())
-        // console.log('从作用域插槽slotScope取值:', slotScope)
+        console.log('从作用域插槽slotScope取值:', slotScope)
         console.log(document.querySelector('#app'))
         this.type = 'primary'
         this.disbaled = false
@@ -28,9 +28,16 @@ export const useStateStore = defineStore('stateStore', () => {
         this.type = 'danger'
         return 'large'
       },
-      // showType: function() {
-      //   console.info('这是按钮的type:', this.type)
-      // },
+      clickHandler: function(e) {
+        console.info(e)
+        console.info(this)
+        console.info('这是按钮的type:',23132)
+        alert('点击的位置：' + e.clientX + ',' + e.clientY)
+      },
+      dbClick: function(e) {
+        console.log('dbClick', e)
+        this.clickHandler(e)
+      }
     }`)
   const updateCodeStr = () => {
     const codeStr = objectToString(pageCode.value)
