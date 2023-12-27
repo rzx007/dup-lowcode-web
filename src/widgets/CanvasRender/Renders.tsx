@@ -5,7 +5,7 @@ import ErrorBoundary from '@/core/wrapComponent/ErrorBoundary.vue'
 import { ITreeSchema } from '@/core/interfaces/component'
 import { SlotPalcehodler } from './SlotPalcehodler'
 import { useFieldsStore } from '@/store/fields-view'
-import { isObject, toCss, capitalizeFirstLetter } from '@/utils'
+import { toCss, capitalizeFirstLetter } from '@/utils'
 import './style.scss'
 
 export const Renders = defineComponent({

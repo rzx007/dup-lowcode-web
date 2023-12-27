@@ -4,7 +4,7 @@ import WrapComponent from '@/core/wrapComponent/index.vue'
 import { ITreeSchema } from '@/core/interfaces/component'
 import { SlotPalcehodler } from './SlotPalcehodler'
 import { useFieldsStore } from '@/store/fields-view'
-import { isObject, toCss, capitalizeFirstLetter } from '@/utils'
+import { toCss, capitalizeFirstLetter } from '@/utils'
 import './style.scss'
 import { isEmpty } from 'lodash'
 

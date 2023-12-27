@@ -16,7 +16,7 @@
     >
       <!-- 渲染(作用域)插槽 -->
       <template v-for="k in Object.keys(slots)" #[k]="scope" :key="k">
-        <slot :name="k" v-bind="scope"></slot>
+        <slot :key="k" :name="k" v-bind="scope"></slot>
       </template>
     </component>
     <!-- {{ memoizedProps }} -->

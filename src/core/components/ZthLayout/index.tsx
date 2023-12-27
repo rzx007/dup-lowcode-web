@@ -21,6 +21,7 @@ export const ZthLayout = defineComponent({
                   <Expand />
                 </el-icon>
               </div>
+              <div class="center">{slots.header?.()}</div>
               <div class="right">
                 <el-avatar icon={UserFilled} size={35} />
               </div>
