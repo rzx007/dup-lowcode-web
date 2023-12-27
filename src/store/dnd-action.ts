@@ -1,5 +1,6 @@
 import { ITreeSchema } from '@/core/interfaces/component'
 import { DndTypes } from '@/core/interfaces/dndTypes'
+import { isEmpty } from 'lodash'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
@@ -20,12 +21,13 @@ export const useDndActionStore = defineStore('dndActionStore', () => {
     }
     findIndex(dropItem.id, data.value, (list, index) => {
       const item = list[index]
-      if (item.slots) {
-        item.slots.forEach(slotItem => {
-          if (Object.keys(slotItem)[0] === slotName) {
-            slotItem[slotName].push(dragItem)
+      if (!isEmpty(item.slots)) {
+        for (const key in item.slots) {
+          const slots = item.slots[key]
+          if (key === slotName) {
+            slots.push(dragItem)
           }
-        })
+        }
       }
     })
   }
@@ -74,12 +76,11 @@ function findIndex(
     if (item.id === id) {
       callback(list, i)
       break
-    } else if (item.slots?.length) {
-      item.slots.forEach((slotObj: { [key: string]: ITreeSchema[] }) => {
-        for (const [, slots] of Object.entries(slotObj)) {
-          findIndex(id, slots, callback)
-        }
-      })
+    } else if (!isEmpty(item.slots)) {
+      for (const key in item.slots) {
+        const slots = item.slots[key]
+        findIndex(id, slots, callback)
+      }
     }
   }
 }

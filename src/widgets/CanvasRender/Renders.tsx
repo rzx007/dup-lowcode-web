@@ -1,4 +1,5 @@
 import { h, defineComponent, useAttrs, PropType, resolveComponent } from 'vue'
+import { isEmpty } from 'lodash'
 import { Shell } from './Shell'
 import ErrorBoundary from '@/core/wrapComponent/ErrorBoundary.vue'
 import { ITreeSchema } from '@/core/interfaces/component'
@@ -24,12 +25,6 @@ export const Renders = defineComponent({
   setup(props, _context) {
     const attrs = useAttrs()
     const fieldStore = useFieldsStore()
-    const slotName = (slot: string | Object): string => {
-      if (isObject(slot)) {
-        return Object.keys(slot)[0] as string
-      }
-      return slot as string
-    }
     // 处理ITreeSchema的events属性
     const handleEvents = (item: ITreeSchema) => {
       const eventArr: { [x: string]: any } = {}
@@ -57,11 +52,13 @@ export const Renders = defineComponent({
     // 遍历循环
     const reduceSlot = (item: ITreeSchema) => {
       const slots: { [key: string]: any } = {}
-      item.slots?.forEach(ele => {
-        const name = slotName(ele)
-        const children = ele![name] as ITreeSchema[]
+      if (isEmpty(item.slots)) {
+        return
+      }
+      for (const key in item.slots) {
+        const children = item.slots[key]
         children.length
-          ? (slots[name] = (scopeParams: Record<string, any>) => {
+          ? (slots[key] = (scopeParams: Record<string, any>) => {
               return (
                 <Renders
                   data={children}
@@ -71,10 +68,10 @@ export const Renders = defineComponent({
                 />
               )
             })
-          : (slots[name] = () => (
-              <SlotPalcehodler parentId={item.id} slotName={name} itemSchema={item} key={item.id} />
+          : (slots[key] = () => (
+              <SlotPalcehodler parentId={item.id} slotName={key} itemSchema={item} key={item.id} />
             ))
-      })
+      }
       return slots
     }
     return () => (
@@ -89,7 +86,7 @@ export const Renders = defineComponent({
                 default: () =>
                   h(ErrorBoundary, null, {
                     default: () => {
-                      if (item.slots?.length) {
+                      if (!isEmpty(item.slots)) {
                         return h(
                           //@ts-ignore
                           resolveComponent(item.componentName),

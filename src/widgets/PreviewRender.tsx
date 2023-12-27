@@ -2,6 +2,7 @@ import { PropType, defineComponent, useAttrs } from 'vue'
 import { capitalizeFirstLetter, isObject, toCss } from '@/utils'
 import { ITreeSchema } from '@/core/interfaces/component'
 import WrapComponent from '@/core/wrapComponent/index.vue'
+import { isEmpty } from 'lodash'
 export const PreviewRender = defineComponent({
   name: 'PreviewRender',
   props: {
@@ -14,12 +15,6 @@ export const PreviewRender = defineComponent({
   },
   setup(props) {
     const attrs = useAttrs()
-    const slotName = (slot: string | Object): string => {
-      if (isObject(slot)) {
-        return Object.keys(slot)[0] as string
-      }
-      return slot as string
-    }
     // 处理ITreeSchema的events属性
     const handleEvents = (item: ITreeSchema) => {
       const eventArr: { [x: string]: any } = {}
@@ -42,10 +37,12 @@ export const PreviewRender = defineComponent({
     }
     const reduceSlot = (item: ITreeSchema) => {
       const slots: { [key: string]: any } = {}
-      item.slots!.forEach(ele => {
-        const name = slotName(ele)
-        const children = ele![name] as ITreeSchema[]
-        slots[name] = (scopeParams: Record<string, any>) => {
+      if (isEmpty(item.slots)) {
+        return
+      }
+      for (const key in item.slots) {
+        const children = item.slots[key]
+        slots[key] = (scopeParams: Record<string, any>) => {
           return (
             <PreviewRender
               data={children}
@@ -53,7 +50,7 @@ export const PreviewRender = defineComponent({
               slotScopeParams={scopeParams}></PreviewRender>
           )
         }
-      })
+      }
       return slots
     }
     return () => (
@@ -66,7 +63,7 @@ export const PreviewRender = defineComponent({
             style: toCss(item.style),
             key: item.id
           }
-          if (item.slots?.length) {
+          if (!isEmpty(item.slots)) {
             return (
               <WrapComponent
                 componentName={item.componentName}

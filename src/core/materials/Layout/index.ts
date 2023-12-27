@@ -8,7 +8,7 @@ export const LayoutMaterial: IComponentMaterial = {
   componentName: ZthLayout.name,
   compoentsTitle: name,
   designerSchema: layoutSchema,
-  slots: [{ default: [] }, { header: [] }, { aside: [] }, { footer: [] }],
+  slots: { default: [], header: [], aside: [], footer: [] },
   props: {},
   style: {
     width: '100%',

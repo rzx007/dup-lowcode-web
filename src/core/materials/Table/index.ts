@@ -7,7 +7,7 @@ export const TableMaterial: IComponentMaterial = {
   componentName: 'ZthTable',
   compoentsTitle: name,
   designerSchema: buttonSchema,
-  slots: [{ username: [] }],
+  slots: { username: [] },
   props: {
     // 初始化属性
     columns: [

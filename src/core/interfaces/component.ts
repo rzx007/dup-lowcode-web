@@ -21,12 +21,12 @@ export interface IComponentMaterial {
   data?: {
     [key: string]: unknown
   }
-  slots?: { [key: string]: IComponentMaterial[] }[]
+  slots?: { [key: string]: IComponentMaterial[] }
 }
 
 interface INodeSchema extends IComponentMaterial {
   id: string
-  slots?: { [key: string]: INodeSchema[] }[]
+  slots?: { [key: string]: INodeSchema[] }
 }
 
 export type ITreeSchema = Omit<INodeSchema, 'resource'>
