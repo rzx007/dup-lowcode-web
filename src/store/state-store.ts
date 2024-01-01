@@ -12,6 +12,7 @@ export const useStateStore = defineStore('stateStore', () => {
       change: function(str='small') {
         return str
       },
+      size1: 'small',
       size: function(a) {
         this.obj.name = 'rex100'
         console.log('这是传递进来的参数:', a)
@@ -29,6 +30,7 @@ export const useStateStore = defineStore('stateStore', () => {
         return 'large'
       },
       clickHandler: function(e) {
+        this.size1 = 'large'
         console.info(e)
         console.info(this)
         console.info('这是按钮的type:',23132)

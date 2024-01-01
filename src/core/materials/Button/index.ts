@@ -12,7 +12,7 @@ export const ButtonMaterial: IComponentMaterial = {
     // 初始化属性
     type: '{{state.type}}',
     // size: `{{size(change('large'))}}`,
-    size: `{{state.size(state.disbaled)}}`,
+    size: `{{state.size1}}`,
     color: `{{slotScope?.row?.color||''}}`,
     onClick: `{{ (e)=> state.clickHandler(e) }}`,
     // onMouseenter: `{{ state.dbClick.bind(state) }}`,

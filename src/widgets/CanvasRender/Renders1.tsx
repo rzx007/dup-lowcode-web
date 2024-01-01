@@ -80,7 +80,7 @@ export const Renders = defineComponent({
         {props.data?.map(item => {
           const componentProps = {
             // ...item.props!,
-            ...handleEvents(item),
+            // ...handleEvents(item),
             ...attrs,
             style: toCss(item.style),
             key: item.id

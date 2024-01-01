@@ -13,15 +13,18 @@ export const useParseBinding = (
   // @ts-ignore
   const slotScope = unref(slotScopes)
   const stateStore = useStateStore()
-  const { pageCodeStr } = storeToRefs(stateStore)
-  const pageCode = ref(eval(`(${pageCodeStr.value})`))
+  const { pageCode } = storeToRefs(stateStore)
   // @ts-ignore
   const state = new Proxy(pageCode.value, {
     get(target, key, receiver) {
       return Reflect.get(target, key, receiver)
     },
     set(target, key, value, receiver) {
-      return Reflect.set(target, key, value, receiver)
+      // consola.success('执行之前的pageCode', _.cloneDeep(pageCode.value))
+      const result = Reflect.set(target, key, value, receiver)
+      pageCode.value = _.cloneDeep(target)
+      // consola.info('执行之后的pageCode', pageCode.value)
+      return result
     }
   })
   // consola.log('main type', eval('state.size(state.type)'))
@@ -50,7 +53,7 @@ export const useParseBinding = (
   watch(
     () => props.value,
     newVal => {
-      consola.info('组件的props变化了', newVal)
+      // consola.info('组件的props变化了', newVal)
       /**
        * 缺少精细变化监控,
        * 执行两次execute,是因为先依赖的变量, 在后续其他的操作中改变值,没能正确更新导致执行结果不正确
