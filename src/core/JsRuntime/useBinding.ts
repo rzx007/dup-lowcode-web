@@ -53,7 +53,7 @@ export const useParseBinding = (
   watch(
     () => props.value,
     newVal => {
-      // consola.info('组件的props变化了', newVal)
+      consola.info('组件的props变化了', newVal)
       /**
        * 缺少精细变化监控,
        * 执行两次execute,是因为先依赖的变量, 在后续其他的操作中改变值,没能正确更新导致执行结果不正确

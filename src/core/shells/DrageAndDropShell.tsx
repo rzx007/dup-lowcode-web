@@ -47,6 +47,23 @@ export const DnDShell = defineComponent({
           isShallowOver: monitor.isOver({ shallow: true })
         }
       },
+      canDrop(item) {
+        //1. 拖放时禁止将元素放置在它自己及children的位置上
+        const dragItem = item.schema
+        const dropItem = props.item
+        const dragSlots = dragItem.slots
+        if (dragSlots) {
+          const keys = Reflect.ownKeys(dragSlots) as string[]
+          for (let index = 0; index < keys.length; index++) {
+            const slots = dragSlots[keys[index]]
+            const isDrop = slots?.some((slot: any) => slot.id === dropItem.id)
+            if (isDrop) {
+              return false
+            }
+          }
+        }
+        return dragItem.id !== dropItem.id
+      },
       hover: (item: any, monitor: DropTargetMonitor) => {
         props.hover?.(item, monitor)
       },
