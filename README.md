@@ -1,18 +1,50 @@
-# Vue 3 + TypeScript + Vite
+<div align="center"> <a href="#"> <img alt="Inuyasha Logo" width="200" height="200" src="./src/assets/robot.png"> </a></div>
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+<h1 align="center">Inuyasha 低代码平台</h1>
 
-## Recommended IDE Setup
+## 📄 简介
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+尽可能少的概念，符合程序员开发习惯的低代码平台。
 
-## Type Support For `.vue` Imports in TS
+## ✨ 特性
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+- **最新技术栈**：使用 Vue3 等前端前沿技术开发
+- **插槽嵌套**: 可快愉快使用三方组件库
+- **动态交互**：符合程序员直觉的交互，帮助你快速构建页面
+- **状态可视化**: 解决低代码开发状态, 事件分散那以维护难题
+- **远程资源加载**: 可自定义加载远程脚本，远程资源，保持拓展性
+- **语义化Schema**: 语义化Schema，描述组件属性，事件，状态和位置，为AST出源码提供可能
+- **AI辅助代码生成**: 通过AI辅助代码生成，提高开发效率
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## 💻 开发
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+- 安装依赖
+
+```bash
+# node版本要求16.0以上
+npm install -g pnpm
+pnpm install
+```
+
+- 运行
+
+```bash
+pnpm dev
+```
+
+- 打包
+
+```bash
+pnpm build
+```
+
+## 🎯 功能规划
+
+- [x] 物料组件拖拽编排可能功能已完成
+- [x] 物料组件属性配置功能已完成(基础)
+- [x] 组件动态逻辑绑定及交互功能核心已完成
+- [ ] 物料中心
+- [ ] 状态可视化
+- [ ] 远程资源加载
+- [ ] AST出源码
+- [ ] 接入AI辅助代码生成

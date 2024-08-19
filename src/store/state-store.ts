@@ -30,7 +30,7 @@ export const useStateStore = defineStore('stateStore', () => {
         return 'large'
       },
       clickHandler: function(e) {
-        this.size1 = 'large'
+        this.size1 =  this.size1==='large' ? 'small' : 'large'
         console.info(e)
         console.info(this)
         console.info('这是按钮的type:',23132)
