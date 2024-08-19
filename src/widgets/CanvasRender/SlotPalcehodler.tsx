@@ -34,6 +34,18 @@ export const SlotPalcehodler = defineComponent({
         }
         const dragItem = item.schema
         const dropItem = props.itemSchema
+        const dragSlots = dragItem.slots
+        // 1. 拖放时禁止将元素放置在它自己及children的位置上
+        if (dragSlots) {
+          const keys = Reflect.ownKeys(dragSlots) as string[]
+          for (let index = 0; index < keys.length; index++) {
+            const slots = dragSlots[keys[index]]
+            const isDrop = slots?.some((slot: any) => slot.id === dropItem?.id)
+            if (isDrop) {
+              return false
+            }
+          }
+        }
         // 被放置的组件
         console.log(dragItem, dropItem, item.source)
         console.log('拖入的插槽名称：', props.slotName!)
